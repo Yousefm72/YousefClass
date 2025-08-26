@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية - YousefClass</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #112551, #1e40af);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 3rem auto;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 3rem;
+        }
+        
+        .menu-section {
+            margin-bottom: 3rem;
+        }
+        
+        .menu-section h2 {
+            color: #2563eb;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #e0e7ff;
+            padding-bottom: 1rem;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .menu-item {
+            background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+            border: 2px solid #e0e7ff;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+       
+
+
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+            border-color: #2563eb;
+        }
+        
+        .menu-item h3 {
+            color: #1e40af;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .menu-item p {
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .menu-item .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #2563eb;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 2rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>مرحباً بكم في Yousef Class</h1>
+        <h4 style="color: #edf0f1; text-align: center;">
+        <p>تعلم أساسيات الشبكات والبيانات والأنظمة الرقمية</p>
+        <p>   ICT : Information and Communication Technology</p>  
+        <p>تقنية المعلومات والاتصالات</p>
+    </h4>
+    </div>
+    
+    <div class="container">
+        <div class="menu-section">
+            <h2>القائمة الرئيسية</h2>
+            <div class="menu-grid">
+
+
+                <a href="ict.html" class="menu-item">
+                    <div class="icon"><img src="images/ict.png"  width="120" height="120"></div>
+                    <h3>مقدمة في ICT<br>تقنية المعلومات والاتصالات</h3>
+                    <p>تعرف على ألأساسيات ICT  </p>
+                       <span class="btn">ابدأ التعلم </span>
+                       
+                </a>
+               
+                 
+                
+              
+                
+                <a href="Page 1.html" class="menu-item">
+                    <div class="icon">🌐</div>
+                    <h3>الدرس الاول<br> ما هي الشبكة Network</h3>
+                    <p>تعرف على أساسيات الشبكات، أنواعها، طوبولوجياتها، ومكوناتها الأساسية مثل الموجهات والموزعات.</p>
+                    <span class="btn">ابدأ التعلم</span>
+                </a>
+                
+                <a href="Page 3.html" class="menu-item">
+                    <div class="icon">💾</div>
+                    <h3>الدرس الثاني<br> البيانات وتركيب الرسائل</h3>
+                    <p>افهم بنية البيانات، وحدات القياس، وتمثيل المعلومات في الحاسوب.</p>
+                    <span class="btn">ابدأ التعلم</span>
+                </a>
+                
+                <a href="page2.html" class="menu-item">
+                    <div class="icon">🔢</div>
+                    <h3>الدرس الثالث<br>لغة الآلة والأنظمة الرقمية</h3>
+                    <p>تعلم النظام الثنائي، النظام السادس عشر، والتحويل بين الأنظمة العددية المختلفة.</p>
+                    <span class="btn">ابدأ التعلم</span>
+                </a>
+                
+               
+                <a href="page4.html" class="menu-item">
+                    <div class="icon"><img src="images/osi.png" alt="Girl in a jacket" width="120" height="120"></div>
+                    <h3>الدرس الرابع<br>نموذج OSI - طبقات الشبكة</h3>
+                    <p>تعلم الطبقات السبع لنموذج OSI وكيفية عمل الشبكات بشكل منظم ومنهجي.</p>
+                    <span class="btn">ابدأ التعلم</span>
+                </a>
+                
+                <a href="page5.html" class="menu-item">
+                    <div class="icon"><img src="images/ip.png" alt="Girl in a jacket" width="120" height="120"></div>
+                    <h3>الدرس الخامس<br>عناوين الشبكة - Network Addresses</h3>
+                    <p>افهم عناوين IP وMAC وتقسيم الشبكات الفرعية وكيفية عمل العناوين في الشبكات.</p>
+                    <span class="btn">ابدأ التعلم</span>
+                </a>
+                
+                <a href="page6.html" class="menu-item">
+                    <div class="icon"><img src="images/switch.png" alt="Girl in a jacket" width="200" height="50"></div>
+                    <h3>الدرس السادس<br>فهم الموزع والأوامر الأساسية</h3>
+                    <p>تعلم كيفية عمل الموزعات، أوامر الإدارة الأساسية، وأفضل الممارسات لإدارة الشبكات.</p>
+                    <span class="btn">ابدأ التعلم</span>
+                </a>
+                
+                
+            </div>
+        </div>
+        
+       
+        
+        <div class="menu-section">
+            <h2>معلومات سريعة</h2>
+            <div style="background: #f8fafc; padding: 2rem; border-radius: 10px; border-right: 4px solid #2563eb;">
+                <h3 style="color: #1e40af; margin-bottom: 1rem;">عن الموقع</h3>
+                <p style="line-height: 1.8; margin-bottom: 1rem;">
+                    هذا الموقع التعليمي مصمم لمساعدتك في فهم أساسيات الشبكات والأنظمة الرقمية. 
+                    يتم تقديم المحتوى باللغة العربية مع أمثلة عملية ورسوم توضيحية.
+                </p>
+                <p style="line-height: 1.8;">
+                    <strong>المستوى:</strong> مبتدئ إلى متوسط<br>
+                    <strong>اللغة:</strong> العربية<br>
+                    <strong>التنسيق:</strong> HTML مع CSS مدمج
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2024 YousefClass - جميع الحقوق محفوظة</p>
+    </div>
+</body>
+</html> 

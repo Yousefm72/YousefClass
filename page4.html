@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج OSI - طبقات الشبكة</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            width: 60%;
+            margin: 5rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+        }
+        h1 {
+            color: #2563eb;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h2 {
+            color: #1e40af;
+            margin: 2rem 0 1rem;
+            text-align: right;
+        }
+        h3 {
+            color: #2563eb;
+            margin: 1.5rem 0 0.8rem;
+            text-align: right;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+        ul {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+        .osi-layer {
+            background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+            border: 2px solid #e0e7ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #2563eb;
+        }
+        .layer-number {
+            background: #2563eb;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-left: 1rem;
+            float: right;
+        }
+        .layer-title {
+            color: #1e40af;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .layer-english {
+            color: #6b7280;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        .protocols {
+            background: #e0e7ff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+            font-family: monospace;
+            font-size: 0.95rem;
+        }
+        .data-unit {
+            background: #fef3c7;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #92400e;
+        }
+        .example-box {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .example-title {
+            color: #0c4a6e;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .flow-diagram {
+            text-align: center;
+            margin: 2rem 0;
+            direction: ltr;
+        }
+        .flow-step {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            margin: 0.5rem;
+            font-weight: bold;
+            min-width: 120px;
+        }
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #2563eb;
+            margin: 0 0.5rem;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        .comparison-table th {
+            background: #e0e7ff;
+            color: #1e40af;
+            font-weight: bold;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color:#2563eb; text-align:center; margin-bottom:1.5rem;">نموذج OSI - طبقات الشبكة</h2>
+        <ul style="direction:rtl; font-size:1.1rem; margin-bottom:2.5rem; line-height:2.2;">
+            <li><a href="#what-is-osi" style="color:#1e40af; text-decoration:underline;">ما هو نموذج OSI؟</a></li>
+            <li><a href="#seven-layers" style="color:#1e40af; text-decoration:underline;">الطبقات السبع</a></li>
+            <li><a href="#layer-details" style="color:#1e40af; text-decoration:underline;">تفاصيل كل طبقة</a></li>
+            <li><a href="#data-flow" style="color:#1e40af; text-decoration:underline;">تدفق البيانات</a></li>
+            <li><a href="#tcp-ip-comparison" style="color:#1e40af; text-decoration:underline;">مقارنة مع TCP/IP</a></li>
+            <li><a href="#practical-examples" style="color:#1e40af; text-decoration:underline;">أمثلة عملية</a></li>
+        </ul>
+
+        <h1 id="what-is-osi">نموذج OSI (Open Systems Interconnection)</h1>
+        <p>
+            نموذج OSI هو إطار عمل نظري يوضح كيفية عمل الشبكات وتبادل البيانات بين الأجهزة. تم تطويره من قبل المنظمة الدولية للتوحيد القياسي (ISO) في عام 1984، ويقسم عملية الاتصال الشبكي إلى سبع طبقات منطقية، كل طبقة تتعامل مع جانب محدد من عملية الاتصال.
+        </p>
+        <p>
+            يساعد هذا النموذج المطورين والمهندسين على فهم كيفية عمل الشبكات، وتصميم بروتوكولات جديدة، وحل المشاكل الشبكية بطريقة منظمة ومنهجية.
+        </p>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="seven-layers">الطبقات السبع لنموذج OSI</h2>
+        <p>
+            يتم ترتيب الطبقات من الأعلى (طبقة التطبيق) إلى الأسفل (طبقة الفيزيائية). كل طبقة تقدم خدمات للطبقة التي فوقها، وتتلقى خدمات من الطبقة التي تحتها.
+        </p>
+
+        <div id="layer-details">
+            <!-- الطبقة 7: طبقة التطبيق -->
+            <div class="osi-layer">
+                <div class="layer-number">7</div>
+                <div class="layer-title">طبقة التطبيق (Application Layer)</div>
+                <div class="layer-english">Application Layer</div>
+                <p>
+                    هذه هي الطبقة التي يتعامل معها المستخدمون مباشرة. تقدم خدمات الشبكة للتطبيقات مثل متصفحات الويب، برامج البريد الإلكتروني، وبرامج نقل الملفات.
+                </p>
+                <p><strong>البروتوكولات:</strong></p>
+                <div class="protocols">HTTP, HTTPS, FTP, SMTP, POP3, IMAP, DNS, DHCP</div>
+                <p><strong>وحدة البيانات:</strong> <span class="data-unit">Message</span></p>
+                <p><strong>المسؤوليات:</strong></p>
+                <ul>
+                    <li>تقديم واجهة المستخدم للشبكة</li>
+                    <li>إدارة جلسات الاتصال</li>
+                    <li>تحديد متطلبات التطبيق</li>
+                    <li>التعامل مع الأخطاء والتطبيقات</li>
+                </ul>
+            </div>
+
+            <!-- الطبقة 6: طبقة العرض -->
+            <div class="osi-layer">
+                <div class="layer-number">6</div>
+                <div class="layer-title">طبقة العرض (Presentation Layer)</div>
+                <div class="layer-english">Presentation Layer</div>
+                <p>
+                    تتعامل هذه الطبقة مع تنسيق البيانات وعرضها، وضمان أن البيانات المرسلة من طبقة التطبيق يمكن قراءتها من قبل طبقة التطبيق في الجهاز المستقبل.
+                </p>
+                <p><strong>البروتوكولات:</strong></p>
+                <div class="protocols">SSL/TLS, JPEG, PNG, MPEG, ASCII, Unicode</div>
+                <p><strong>وحدة البيانات:</strong> <span class="data-unit">Message</span></p>
+                <p><strong>المسؤوليات:</strong></p>
+                <ul>
+                    <li>تشفير وفك تشفير البيانات</li>
+                    <li>ضغط وفك ضغط البيانات</li>
+                    <li>تحويل تنسيق البيانات</li>
+                    <li>إدارة الترميز (Encoding)</li>
+                </ul>
+            </div>
+
+            <!-- الطبقة 5: طبقة الجلسة -->
+            <div class="osi-layer">
+                <div class="layer-number">5</div>
+                <div class="layer-title">طبقة الجلسة (Session Layer)</div>
+                <div class="layer-english">Session Layer</div>
+                <p>
+                    تدير هذه الطبقة جلسات الاتصال بين التطبيقات، وتتحكم في فتح وإغلاق الاتصالات، ومزامنة البيانات بين الأجهزة.
+                </p>
+                <p><strong>البروتوكولات:</strong></p>
+                <div class="protocols">NetBIOS, RPC, SQL, NFS</div>
+                <p><strong>وحدة البيانات:</strong> <span class="data-unit">Message</span></p>
+                <p><strong>المسؤوليات:</strong></p>
+                <ul>
+                    <li>إنشاء وإدارة الجلسات</li>
+                    <li>مزامنة البيانات</li>
+                    <li>إدارة نقاط الفحص (Checkpoints)</li>
+                    <li>استئناف الجلسات المتوقفة</li>
+                </ul>
+            </div>
+
+            <!-- الطبقة 4: طبقة النقل -->
+            <div class="osi-layer">
+                <div class="layer-number">4</div>
+                <div class="layer-title">طبقة النقل (Transport Layer)</div>
+                <div class="layer-english">Transport Layer</div>
+                <p>
+                    تضمن هذه الطبقة نقل البيانات بشكل موثوق ودقيق بين نقاط النهاية، وتتحكم في تدفق البيانات وإدارة الأخطاء.
+                </p>
+                <p><strong>البروتوكولات:</strong></p>
+                <div class="protocols">TCP, UDP, SCTP, DCCP</div>
+                <p><strong>وحدة البيانات:</strong> <span class="data-unit">Segment (TCP) / Datagram (UDP)</span></p>
+                <p><strong>المسؤوليات:</strong></p>
+                <ul>
+                    <li>ضمان موثوقية نقل البيانات</li>
+                    <li>إدارة تدفق البيانات</li>
+                    <li>اكتشاف وإصلاح الأخطاء</li>
+                    <li>إعادة ترتيب الحزم الواردة</li>
+                </ul>
+            </div>
+
+            <!-- الطبقة 3: طبقة الشبكة -->
+            <div class="osi-layer">
+                <div class="layer-number">3</div>
+                <div class="layer-title">طبقة الشبكة (Network Layer)</div>
+                <div class="layer-english">Network Layer</div>
+                <p>
+                    تتعامل هذه الطبقة مع توجيه البيانات عبر الشبكة، وتحديد أفضل مسار للبيانات للوصول إلى وجهتها.
+                </p>
+                <p><strong>البروتوكولات:</strong></p>
+                <div class="protocols">IP, ICMP, OSPF, BGP, RIP, ARP</div>
+                <p><strong>وحدة البيانات:</strong> <span class="data-unit">Packet</span></p>
+                <p><strong>المسؤوليات:</strong></p>
+                <ul>
+                    <li>توجيه الحزم عبر الشبكة</li>
+                    <li>إدارة عناوين IP</li>
+                    <li>تحديد أفضل المسارات</li>
+                    <li>إدارة الازدحام الشبكي</li>
+                </ul>
+            </div>
+
+            <!-- الطبقة 2: طبقة ربط البيانات -->
+            <div class="osi-layer">
+                <div class="layer-number">2</div>
+                <div class="layer-title">طبقة ربط البيانات (Data Link Layer)</div>
+                <div class="layer-english">Data Link Layer</div>
+                <p>
+                    تتعامل هذه الطبقة مع نقل البيانات بين الأجهزة المتصلة مباشرة، وتتحكم في الوصول إلى الوسائط المشتركة.
+                </p>
+                <p><strong>البروتوكولات:</strong></p>
+                <div class="protocols">Ethernet, Wi-Fi, PPP, Frame Relay, ATM</div>
+                <p><strong>وحدة البيانات:</strong> <span class="data-unit">Frame</span></p>
+                <p><strong>المسؤوليات:</strong></p>
+                <ul>
+                    <li>إدارة الوصول إلى الوسائط</li>
+                    <li>اكتشاف وإصلاح الأخطاء</li>
+                    <li>إدارة عناوين MAC</li>
+                    <li>ضمان نقل البيانات الموثوق</li>
+                </ul>
+            </div>
+
+            <!-- الطبقة 1: الطبقة الفيزيائية -->
+            <div class="osi-layer">
+                <div class="layer-number">1</div>
+                <div class="layer-title">الطبقة الفيزيائية (Physical Layer)</div>
+                <div class="layer-english">Physical Layer</div>
+                <p>
+                    هذه هي الطبقة الأساسية التي تتعامل مع الوسائط الفيزيائية (الكابلات، الإشارات اللاسلكية) ونقل البتات (0 و 1).
+                </p>
+                <p><strong>البروتوكولات:</strong></p>
+                <div class="protocols">Ethernet, Wi-Fi, Bluetooth, USB, HDMI</div>
+                <p><strong>وحدة البيانات:</strong> <span class="data-unit">Bit</span></p>
+                <p><strong>المسؤوليات:</strong></p>
+                <ul>
+                    <li>نقل البتات عبر الوسائط</li>
+                    <li>تحديد خصائص الوسائط</li>
+                    <li>إدارة الإشارات الكهربائية</li>
+                    <li>تحديد التوصيلات والموصلات</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="data-flow">تدفق البيانات عبر طبقات OSI</h2>
+        <p>
+            عندما يتم إرسال بيانات من جهاز إلى آخر، تمر البيانات عبر جميع الطبقات السبع في الجهاز المرسل، ثم عبر الوسائط، وأخيراً عبر جميع الطبقات في الجهاز المستقبل.
+        </p>
+
+        <div class="flow-diagram">
+            <div class="flow-step">تطبيق</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">عرض</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">جلسة</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">نقل</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">شبكة</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">ربط</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-step">فيزيائية</div>
+        </div>
+
+        <div class="example-box">
+            <div class="example-title">مثال على تدفق البيانات:</div>
+            <p>
+                عند إرسال رسالة بريد إلكتروني:
+            </p>
+            <ol style="direction: rtl; text-align: right;">
+                <li><strong>طبقة التطبيق:</strong> برنامج البريد الإلكتروني يجهز الرسالة</li>
+                <li><strong>طبقة العرض:</strong> تشفير الرسالة وتنسيقها</li>
+                <li><strong>طبقة الجلسة:</strong> إنشاء جلسة اتصال مع خادم البريد</li>
+                <li><strong>طبقة النقل:</strong> تقسيم الرسالة إلى أجزاء وإضافة أرقام التسلسل</li>
+                <li><strong>طبقة الشبكة:</strong> إضافة عناوين IP للمصدر والوجهة</li>
+                <li><strong>طبقة ربط البيانات:</strong> إضافة عناوين MAC وإرسال الإطارات</li>
+                <li><strong>الطبقة الفيزيائية:</strong> تحويل البيانات إلى إشارات كهربائية</li>
+            </ol>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="tcp-ip-comparison">مقارنة نموذج OSI مع TCP/IP</h2>
+        <p>
+            نموذج TCP/IP هو نموذج عملي يستخدم في الإنترنت الفعلي، بينما نموذج OSI هو نموذج نظري. إليك مقارنة بينهما:
+        </p>
+
+        <table class="comparison-table">
+            <tr>
+                <th>طبقة OSI</th>
+                <th>طبقة TCP/IP</th>
+                <th>البروتوكولات</th>
+            </tr>
+            <tr>
+                <td>7. التطبيق</td>
+                <td>4. التطبيق</td>
+                <td>HTTP, FTP, SMTP, DNS</td>
+            </tr>
+            <tr>
+                <td>6. العرض</td>
+                <td>4. التطبيق</td>
+                <td>SSL/TLS, JPEG, MPEG</td>
+            </tr>
+            <tr>
+                <td>5. الجلسة</td>
+                <td>4. التطبيق</td>
+                <td>NetBIOS, RPC</td>
+            </tr>
+            <tr>
+                <td>4. النقل</td>
+                <td>3. النقل</td>
+                <td>TCP, UDP</td>
+            </tr>
+            <tr>
+                <td>3. الشبكة</td>
+                <td>2. الإنترنت</td>
+                <td>IP, ICMP, ARP</td>
+            </tr>
+            <tr>
+                <td>2. ربط البيانات</td>
+                <td>1. الوصول للشبكة</td>
+                <td>Ethernet, Wi-Fi</td>
+            </tr>
+            <tr>
+                <td>1. الفيزيائية</td>
+                <td>1. الوصول للشبكة</td>
+                <td>الكابلات, الإشارات</td>
+            </tr>
+        </table>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="practical-examples">أمثلة عملية</h2>
+        
+        <h3>مثال 1: تصفح موقع ويب</h3>
+        <div class="example-box">
+            <p><strong>الطبقة 7 (التطبيق):</strong> متصفح الويب يطلب صفحة من الخادم</p>
+            <p><strong>الطبقة 6 (العرض):</strong> تشفير HTTPS وتنسيق HTML</p>
+            <p><strong>الطبقة 5 (الجلسة):</strong> إنشاء جلسة آمنة مع الخادم</p>
+            <p><strong>الطبقة 4 (النقل):</strong> TCP يضمن وصول البيانات بشكل صحيح</p>
+            <p><strong>الطبقة 3 (الشبكة):</strong> IP يوجه الحزم عبر الإنترنت</p>
+            <p><strong>الطبقة 2 (ربط البيانات):</strong> Ethernet ينقل الإطارات محلياً</p>
+            <p><strong>الطبقة 1 (الفيزيائية):</strong> الكابلات تنقل الإشارات الكهربائية</p>
+        </div>
+
+        <h3>مثال 2: إرسال بريد إلكتروني</h3>
+        <div class="example-box">
+            <p><strong>الطبقة 7 (التطبيق):</strong> برنامج البريد يجهز الرسالة</p>
+            <p><strong>الطبقة 6 (العرض):</strong> تشفير الرسالة وتنسيقها</p>
+            <p><strong>الطبقة 5 (الجلسة):</strong> إنشاء جلسة مع خادم SMTP</p>
+            <p><strong>الطبقة 4 (النقل):</strong> TCP يضمن وصول الرسالة</p>
+            <p><strong>الطبقة 3 (الشبكة):</strong> IP يوجه الرسالة إلى الخادم</p>
+            <p><strong>الطبقة 2 (ربط البيانات):</strong> Ethernet ينقل البيانات</p>
+            <p><strong>الطبقة 1 (الفيزيائية):</strong> الكابلات تنقل البتات</p>
+        </div>
+
+        <h3>مثال 3: نقل ملف عبر FTP</h3>
+        <div class="example-box">
+            <p><strong>الطبقة 7 (التطبيق):</strong> برنامج FTP يطلب الملف</p>
+            <p><strong>الطبقة 6 (العرض):</strong> تنسيق البيانات وتشفيرها</p>
+            <p><strong>الطبقة 5 (الجلسة):</strong> إدارة جلسة FTP</p>
+            <p><strong>الطبقة 4 (النقل):</strong> TCP ينقل الملف بأجزاء</p>
+            <p><strong>الطبقة 3 (الشبكة):</strong> IP يوجه الحزم</p>
+            <p><strong>الطبقة 2 (ربط البيانات):</strong> Ethernet ينقل الإطارات</p>
+            <p><strong>الطبقة 1 (الفيزيائية):</strong> الكابلات تنقل البيانات</p>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2>أهمية نموذج OSI</h2>
+        <p>
+            نموذج OSI مهم لعدة أسباب:
+        </p>
+        <ul>
+            <li><strong>التعليم:</strong> يساعد في فهم كيفية عمل الشبكات</li>
+            <li><strong>التطوير:</strong> يوجه تطوير بروتوكولات جديدة</li>
+            <li><strong>استكشاف الأخطاء:</strong> يساعد في تحديد مكان المشاكل الشبكية</li>
+            <li><strong>التوافق:</strong> يضمن توافق المنتجات من مختلف الشركات</li>
+            <li><strong>التوثيق:</strong> يوفر لغة مشتركة للمهندسين</li>
+        </ul>
+
+        <p>
+            فهم نموذج OSI أساسي لأي شخص يعمل في مجال الشبكات، سواء كان مهندس شبكات، مطور برمجيات، أو مستخدم عادي يريد فهم كيفية عمل الإنترنت.
+        </p>
+    </div>
+</body>
+</html>

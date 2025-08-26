@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لغة الآلة</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            width: 60%;
+            margin: 5rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+        }
+        h1 {
+            color: #2563eb;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color:#2563eb; text-align:center; margin-bottom:1.5rem;">الموازين - בסיסים- Basses </h2>
+        <ul style="direction:rtl; font-size:1.1rem; margin-bottom:2.5rem; line-height:2.2;">
+            <li><a href="#machine" style="color:#1e40af; text-decoration:underline;">لغة الآلة</a></li>
+            <li><a href="#binary" style="color:#1e40af; text-decoration:underline;">النظام الثنائي (Binary)</a></li>
+            <li><a href="#binary-table" style="color:#1e40af; text-decoration:underline;">جدول مضاعفات النظام الثنائي</a></li>
+            <li><a href="#hex" style="color:#1e40af; text-decoration:underline;">النظام السادس عشر (Hexadecimal)</a></li>
+            <li><a href="#conversion-table" style="color:#1e40af; text-decoration:underline;">جدول التحويل بين الأنظمة</a></li>
+            <li><a href="#examples" style="color:#1e40af; text-decoration:underline;">أمثلة تطبيقية</a></li>
+        </ul>
+        <h1 id="machine">لغة الآلة</h1>
+        <p>
+            لغة الآلة هي اللغة الأساسية التي يفهمها الحاسوب بشكل مباشر، وتتكون من سلسلة من الأرقام الثنائية (0 و 1) تُسمى "البتات". كل أمر أو عملية في الحاسوب يتم تمثيلها بتسلسل معين من هذه الأرقام.
+        </p>
+        <p>
+            تُعتبر لغة الآلة هي الأقرب إلى مكونات الحاسوب (المعالج والذاكرة)، حيث يتم تنفيذ التعليمات بسرعة وكفاءة عالية. ومع ذلك، فإن كتابة البرامج بلغة الآلة صعب جدًا على الإنسان، لأنها تتطلب معرفة دقيقة بتفاصيل العتاد وتكون غير مفهومة تقريبًا للبشر.
+        </p>
+        <p>
+            مثال على تعليمة بلغة الآلة:
+            <br>
+            <span style="background:#eee; padding:0.3rem 0.7rem; border-radius:5px; font-family:monospace;">10110000 01100001</span>
+        </p>
+        <p>
+            لهذا السبب، تم تطوير لغات البرمجة الأعلى (مثل لغة التجميع واللغات عالية المستوى) لتسهيل كتابة البرامج وجعلها أكثر وضوحًا وسهولة للمبرمجين.
+        </p>
+        <hr style="margin: 2rem 0;">
+        <h2 id="binary" style="color:#1e40af; text-align:center; margin-bottom:1rem;">النظام الثنائي (Binary System, בינרי)</h2>
+        <p>
+            النظام الثنائي هو نظام عددي يُستخدم في الحاسوب، ويعتمد فقط على رقمين هما 0 و 1. كل رقم في النظام الثنائي يُسمى "بت" (bit)، وهو أصغر وحدة بيانات في الحاسوب.
+        </p>
+        <p>
+            في النظام العشري (الذي نستخدمه في حياتنا اليومية) نستخدم الأرقام من 0 إلى 9، أما في النظام الثنائي فنستخدم فقط 0 و 1. كل خانة في العدد الثنائي تمثل قوة للعدد 2.
+        </p>
+        <p>
+            <strong>أمثلة:</strong>
+            <br>
+            <span style="background:#eee; padding:0.3rem 0.7rem; border-radius:5px; font-family:monospace;">1010<sub>2</sub> = 10<sub>10</sub></span>
+            <br>
+            <span style="background:#eee; padding:0.3rem 0.7rem; border-radius:5px; font-family:monospace;">1101<sub>2</sub> = 13<sub>10</sub></span>
+        </p>
+        <p>
+            يستخدم الحاسوب النظام الثنائي لأنه يتعامل مع حالتين فقط: وجود تيار كهربائي (1) أو عدم وجود تيار (0)، ولهذا فإن جميع البيانات والتعليمات داخل الحاسوب تُخزن وتُعالج باستخدام النظام الثنائي.
+        </p>
+        <h3 id="binary-table" style="color:#2563eb; text-align:center; margin:2rem 0 1rem;">جدول مضاعفات النظام الثنائي حتى 255</h3>
+        <div style="overflow-x:auto; direction:ltr;">
+            <table style="width:100%; border-collapse:collapse; text-align:center; font-size:1.1rem; background:#fff;">
+                <tr style="background:#e0e7ff;">
+                    <th style="padding:8px; border:1px solid #ddd;">128</th>
+                    <th style="padding:8px; border:1px solid #ddd;">64</th>
+                    <th style="padding:8px; border:1px solid #ddd;">32</th>
+                    <th style="padding:8px; border:1px solid #ddd;">16</th>
+                    <th style="padding:8px; border:1px solid #ddd;">8</th>
+                    <th style="padding:8px; border:1px solid #ddd;">4</th>
+                    <th style="padding:8px; border:1px solid #ddd;">2</th>
+                    <th style="padding:8px; border:1px solid #ddd;">1</th>
+                </tr>
+                <tr>
+                    <td style="padding:16px; border:1px solid #ddd; height:2.5em;"></td>
+                    <td style="padding:16px; border:1px solid #ddd;"></td>
+                    <td style="padding:16px; border:1px solid #ddd;"></td>
+                    <td style="padding:16px; border:1px solid #ddd;"></td>
+                    <td style="padding:16px; border:1px solid #ddd;"></td>
+                    <td style="padding:16px; border:1px solid #ddd;"></td>
+                    <td style="padding:16px; border:1px solid #ddd;"></td>
+                    <td style="padding:16px; border:1px solid #ddd;"></td>
+                </tr>
+            </table>
+        </div>
+        <div style="margin-top:2rem;">
+            <h4 style="color:#1e40af; text-align:right;">مثال: تحويل العدد 77 من النظام العشري إلى النظام الثنائي</h4>
+            <p>نبحث عن أكبر مضاعف للعدد 2 لا يتجاوز 77، ثم نضع 1 تحته ونطرح قيمته، ونكرر العملية مع الباقي حتى نصل إلى الصفر:</p>
+            <div style="overflow-x:auto; direction:ltr;">
+                <table style="width:100%; border-collapse:collapse; text-align:center; font-size:1.1rem; background:#fff;">
+                    <tr style="background:#e0e7ff;">
+                        <th style="padding:8px; border:1px solid #ddd;">128</th>
+                        <th style="padding:8px; border:1px solid #ddd;">64</th>
+                        <th style="padding:8px; border:1px solid #ddd;">32</th>
+                        <th style="padding:8px; border:1px solid #ddd;">16</th>
+                        <th style="padding:8px; border:1px solid #ddd;">8</th>
+                        <th style="padding:8px; border:1px solid #ddd;">4</th>
+                        <th style="padding:8px; border:1px solid #ddd;">2</th>
+                        <th style="padding:8px; border:1px solid #ddd;">1</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:16px; border:1px solid #ddd;">0</td>
+                        <td style="padding:16px; border:1px solid #ddd;">1</td>
+                        <td style="padding:16px; border:1px solid #ddd;">0</td>
+                        <td style="padding:16px; border:1px solid #ddd;">0</td>
+                        <td style="padding:16px; border:1px solid #ddd;">1</td>
+                        <td style="padding:16px; border:1px solid #ddd;">1</td>
+                        <td style="padding:16px; border:1px solid #ddd;">0</td>
+                        <td style="padding:16px; border:1px solid #ddd;">1</td>
+                    </tr>
+                </table>
+            </div>
+            <p style="margin-top:1rem;">إذًا: <span style="background:#eee; padding:0.3rem 0.7rem; border-radius:5px; font-family:monospace;">77<sub>10</sub> = 01001101<sub>2</sub></span></p>
+            <p>وللتحويل من ثنائي إلى عشري، نجمع القيم التي تحتها 1:<br>
+            64 + 8 + 4 + 1 = 77</p>
+        </div>
+        <hr style="margin: 2rem 0;">
+        <h2 id="hex" style="color:#1e40af; text-align:center; margin-bottom:1rem;">النظام السادس عشر (Hexadecimal, הקסדצימלי)</h2>
+        <p>
+            النظام السادس عشر هو نظام عددي يُستخدم بكثرة في الحاسوب، خاصة في تمثيل العناوين والبيانات، ويعتمد على 16 رمزًا: الأرقام من 0 إلى 9 والحروف من A إلى F. كل خانة في النظام السادس عشر تمثل قيمة من 0 حتى 15.
+        </p>
+        <p>
+            <strong>الرموز المستخدمة:</strong> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F<br>
+            حيث أن:
+            <br>
+            A = 10<br>
+            B = 11<br>
+            C = 12<br>
+            D = 13<br>
+            E = 14<br>
+            F = 15
+        </p>
+        <p>
+            <strong>أمثلة:</strong>
+            <br>
+            <span style="background:#eee; padding:0.3rem 0.7rem; border-radius:5px; font-family:monospace;">1A<sub>16</sub> = 26<sub>10</sub></span>
+            <br>
+            <span style="background:#eee; padding:0.3rem 0.7rem; border-radius:5px; font-family:monospace;">FF<sub>16</sub> = 255<sub>10</sub></span>
+            <br>
+            <span style="background:#eee; padding:0.3rem 0.7rem; border-radius:5px; font-family:monospace;">7B<sub>16</sub> = 123<sub>10</sub></span>
+        </p>
+        <p>
+            يستخدم النظام السادس عشر لأنه يسهل تمثيل الأعداد الثنائية الطويلة بشكل مختصر، فكل رقم واحد في النظام السادس عشر يعادل 4 أرقام في النظام الثنائي.
+        </p>
+        <h3 id="conversion-table" style="color:#2563eb; text-align:center; margin:2rem 0 1rem;">جدول التحويل بين الأنظمة حتى العدد 15</h3>
+        <div style="overflow-x:auto; direction:ltr;">
+            <table style="width:60%; min-width:320px; margin:auto; border-collapse:collapse; text-align:center; font-size:1.1rem; background:#fff;">
+                <tr style="background:#e0e7ff;">
+                    <th style="padding:8px; border:1px solid #ddd;">Dec</th>
+                    <th style="padding:8px; border:1px solid #ddd;">Bin</th>
+                    <th style="padding:8px; border:1px solid #ddd;">Hex</th>
+                </tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">0</td><td style="padding:8px; border:1px solid #ddd;">0000</td><td style="padding:8px; border:1px solid #ddd;">0</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">1</td><td style="padding:8px; border:1px solid #ddd;">0001</td><td style="padding:8px; border:1px solid #ddd;">1</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">2</td><td style="padding:8px; border:1px solid #ddd;">0010</td><td style="padding:8px; border:1px solid #ddd;">2</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">3</td><td style="padding:8px; border:1px solid #ddd;">0011</td><td style="padding:8px; border:1px solid #ddd;">3</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">4</td><td style="padding:8px; border:1px solid #ddd;">0100</td><td style="padding:8px; border:1px solid #ddd;">4</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">5</td><td style="padding:8px; border:1px solid #ddd;">0101</td><td style="padding:8px; border:1px solid #ddd;">5</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">6</td><td style="padding:8px; border:1px solid #ddd;">0110</td><td style="padding:8px; border:1px solid #ddd;">6</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">7</td><td style="padding:8px; border:1px solid #ddd;">0111</td><td style="padding:8px; border:1px solid #ddd;">7</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">8</td><td style="padding:8px; border:1px solid #ddd;">1000</td><td style="padding:8px; border:1px solid #ddd;">8</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">9</td><td style="padding:8px; border:1px solid #ddd;">1001</td><td style="padding:8px; border:1px solid #ddd;">9</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">10</td><td style="padding:8px; border:1px solid #ddd;">1010</td><td style="padding:8px; border:1px solid #ddd;">A</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">11</td><td style="padding:8px; border:1px solid #ddd;">1011</td><td style="padding:8px; border:1px solid #ddd;">B</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">12</td><td style="padding:8px; border:1px solid #ddd;">1100</td><td style="padding:8px; border:1px solid #ddd;">C</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">13</td><td style="padding:8px; border:1px solid #ddd;">1101</td><td style="padding:8px; border:1px solid #ddd;">D</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">14</td><td style="padding:8px; border:1px solid #ddd;">1110</td><td style="padding:8px; border:1px solid #ddd;">E</td></tr>
+                <tr><td style="padding:8px; border:1px solid #ddd;">15</td><td style="padding:8px; border:1px solid #ddd;">1111</td><td style="padding:8px; border:1px solid #ddd;">F</td></tr>
+            </table>
+        </div>
+        <div id="examples" style="margin-top:2rem;">
+            <h4 style="color:#1e40af; text-align:right;">مثال تطبيقي: تحويل العدد الثنائي 1011101101 إلى النظام السادس عشر وبالعكس</h4>
+            <p>نقسم العدد الثنائي إلى مجموعات من 4 أرقام بدءًا من اليمين (نضيف أصفارًا على اليسار إذا لزم الأمر):</p>
+            <p style="direction:ltr; text-align:center; font-family:monospace; font-size:1.1rem;">
+                1&nbsp;&nbsp;0111&nbsp;1011&nbsp;01<br>
+                <span style="color:#888; font-size:0.95em;">نضيف صفرين على اليسار ليصبح العدد 10 أرقام (4-4-4):</span><br>
+                00<span style="color:#2563eb;">1</span>&nbsp;0111&nbsp;1011&nbsp;01<br>
+                <span style="color:#2563eb;">0001</span>&nbsp;0111&nbsp;1011&nbsp;01
+            </p>
+            <p>نقسم العدد النهائي إلى مجموعات رباعية:</p>
+            <p style="direction:ltr; text-align:center; font-family:monospace; font-size:1.1rem;">
+                <span style="background:#e0e7ff; padding:0.2rem 0.5rem; border-radius:5px;">0010</span>
+                <span style="background:#e0e7ff; padding:0.2rem 0.5rem; border-radius:5px;">1110</span>
+                <span style="background:#e0e7ff; padding:0.2rem 0.5rem; border-radius:5px;">1101</span>
+            </p>
+            <p>نبحث عن كل مجموعة في الجدول:</p>
+            <ul style="direction:ltr; text-align:left;">
+                <li>0010 = 2</li>
+                <li>1110 = E</li>
+                <li>1101 = D</li>
+            </ul>
+            <p style="text-align:center; font-size:1.1rem;">إذًا: <span style="background:#eee; padding:0.3rem 0.7rem; border-radius:5px; font-family:monospace;">1011101101<sub>2</sub> = 2ED<sub>16</sub></span></p>
+            <p>للعكس: لتحويل 2ED<sub>16</sub> إلى ثنائي، نكتب قيمة كل رمز من الجدول:</p>
+            <ul style="direction:ltr; text-align:left;">
+                <li>2 = 0010</li>
+                <li>E = 1110</li>
+                <li>D = 1101</li>
+            </ul>
+            <p style="text-align:center; font-family:monospace; font-size:1.1rem;">2ED<sub>16</sub> = 001011101101<sub>2</sub></p>
+            <p>نحذف الأصفار الزائدة على اليسار إذا لزم الأمر: <span style="background:#eee; padding:0.2rem 0.5rem; border-radius:5px; font-family:monospace;">1011101101<sub>2</sub></span></p>
+        </div>
+    </div>
+</body>
+</html> 

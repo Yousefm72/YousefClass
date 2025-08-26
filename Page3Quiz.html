@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار البيانات والرسائل - Message DATA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            width: 70%;
+            margin: 3rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+        }
+        h1 {
+            color: #2563eb;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h2 {
+            color: #1e40af;
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+        h3 {
+            color: #2563eb;
+            margin: 1.5rem 0 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+        .quiz-question {
+            background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #0ea5e9;
+        }
+        .quiz-options {
+            margin: 1rem 0;
+        }
+        .quiz-option {
+            background: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        .quiz-option:hover {
+            border-color: #0ea5e9;
+            background: #f0f9ff;
+        }
+        .quiz-option.selected {
+            border-color: #2563eb;
+            background: #dbeafe;
+        }
+        .quiz-option.correct {
+            border-color: #16a34a;
+            background: #dcfce7;
+        }
+        .quiz-option.incorrect {
+            border-color: #dc2626;
+            background: #fef2f2;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 2rem auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        .submit-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .results {
+            background: linear-gradient(145deg, #f0fdf4, #dcfce7);
+            border: 2px solid #16a34a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #16a34a;
+            text-align: center;
+            display: none;
+        }
+        .score {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #166534;
+            margin-bottom: 1rem;
+        }
+        .feedback {
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .nav-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        .code-example {
+            background: #1f2937;
+            color: #f9fafb;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>اختبار البيانات والرسائل - Message DATA</h1>
+        <p style="text-align: center; font-size: 1.1rem; color: #6b7280;">
+            اختبر معرفتك في مجال البيانات والرسائل ونقل المعلومات
+        </p>
+
+        <form id="quizForm">
+            <div class="quiz-question">
+                <h3>السؤال 1:</h3>
+                <p>ما هو المصطلح المستخدم لوصف المعلومات المنقولة عبر الشبكة؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q1" value="a" id="q1a">
+                        <label for="q1a">البرنامج (Program)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="true">
+                        <input type="radio" name="q1" value="b" id="q1b">
+                        <label for="q1b">البيانات (Data)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q1" value="c" id="q1c">
+                        <label for="q1c">الجهاز (Device)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q1" value="d" id="q1d">
+                        <label for="q1d">الشبكة (Network)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 2:</h3>
+                <p>ما هي أصغر وحدة للبيانات في الحاسوب؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q2" value="a" id="q2a">
+                        <label for="q2a">البايت (Byte)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q2" value="b" id="q2b">
+                        <label for="q2b">الكيلوبايت (Kilobyte)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="true">
+                        <input type="radio" name="q2" value="c" id="q2c">
+                        <label for="q2c">البت (Bit)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q2" value="d" id="q2d">
+                        <label for="q2d">الميجابايت (Megabyte)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 3:</h3>
+                <p>ما هو البروتوكول المستخدم لإرسال البريد الإلكتروني؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q3" value="a" id="q3a">
+                        <label for="q3a">HTTP</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q3" value="b" id="q3b">
+                        <label for="q3b">FTP</label>
+                    </div>
+                    <div class="quiz-option" data-correct="true">
+                        <input type="radio" name="q3" value="c" id="q3c">
+                        <label for="q3c">SMTP</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q3" value="d" id="q3d">
+                        <label for="q3d">HTTPS</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 4:</h3>
+                <p>ما هي العملية التي يتم فيها تقسيم البيانات إلى أجزاء صغيرة للنقل؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q4" value="a" id="q4a">
+                        <label for="q4a">التشفير (Encryption)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q4" value="b" id="q4b">
+                        <label for="q4b">الضغط (Compression)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="true">
+                        <input type="radio" name="q4" value="c" id="q4c">
+                        <label for="q4c">التجزئة (Fragmentation)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q4" value="d" id="q4d">
+                        <label for="q4d">النسخ (Copying)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 5:</h3>
+                <p>ما هو نوع البيانات الذي يمثل النصوص والكلمات؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q5" value="a" id="q5a">
+                        <label for="q5a">البيانات الرقمية (Numeric Data)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="true">
+                        <input type="radio" name="q5" value="b" id="q5b">
+                        <label for="q5b">البيانات النصية (Text Data)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q5" value="c" id="q5c">
+                        <label for="q5c">البيانات الصوتية (Audio Data)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q5" value="d" id="q5d">
+                        <label for="q5d">البيانات المرئية (Visual Data)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 6:</h3>
+                <p>ما هو البروتوكول المستخدم لاستقبال البريد الإلكتروني؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q6" value="a" id="q6a">
+                        <label for="q6a">SMTP</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q6" value="b" id="q6b">
+                        <label for="q6b">FTP</label>
+                    </div>
+                    <div class="quiz-option" data-correct="true">
+                        <input type="radio" name="q6" value="c" id="q6c">
+                        <label for="q6c">POP3 أو IMAP</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q6" value="d" id="q6d">
+                        <label for="q6d">HTTP</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 7:</h3>
+                <p>ما هي العملية التي تحمي البيانات من الوصول غير المصرح به؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q7" value="a" id="q7a">
+                        <label for="q7a">الضغط (Compression)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q7" value="b" id="q7b">
+                        <label for="q7b">النسخ الاحتياطي (Backup)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="true">
+                        <input type="radio" name="q7" value="c" id="q7c">
+                        <label for="q7c">التشفير (Encryption)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q7" value="d" id="q7d">
+                        <label for="q7d">التجزئة (Fragmentation)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 8:</h3>
+                <p>ما هو نوع البيانات الذي يمثل الصور والفيديوهات؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q8" value="a" id="q8a">
+                        <label for="q8a">البيانات النصية (Text Data)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q8" value="b" id="q8b">
+                        <label for="q8b">البيانات الرقمية (Numeric Data)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="true">
+                        <input type="radio" name="q8" value="c" id="q8c">
+                        <label for="q8c">البيانات الوسائطية (Multimedia Data)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q8" value="d" id="q8d">
+                        <label for="q8d">البيانات الصوتية (Audio Data)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 9:</h3>
+                <p>ما هو البروتوكول المستخدم لنقل الملفات عبر الإنترنت؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q9" value="a" id="q9a">
+                        <label for="q9a">HTTP</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q9" value="b" id="q9b">
+                        <label for="q9b">SMTP</label>
+                    </div>
+                    <div class="quiz-option" data-correct="true">
+                        <input type="radio" name="q9" value="c" id="q9c">
+                        <label for="q9c">FTP</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q9" value="d" id="q9d">
+                        <label for="q9d">POP3</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 10:</h3>
+                <p>ما هي العملية التي تقلل من حجم البيانات لتوفير مساحة التخزين؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q10" value="a" id="q10a">
+                        <label for="q10a">التشفير (Encryption)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q10" value="b" id="q10b">
+                        <label for="q10b">التجزئة (Fragmentation)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="false">
+                        <input type="radio" name="q10" value="c" id="q10c">
+                        <label for="q10c">النسخ الاحتياطي (Backup)</label>
+                    </div>
+                    <div class="quiz-option" data-correct="true">
+                        <input type="radio" name="q10" value="d" id="q10d">
+                        <label for="q10d">الضغط (Compression)</label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">إرسال الإجابات</button>
+        </form>
+
+        <div class="results" id="results">
+            <div class="score" id="score"></div>
+            <div class="feedback" id="feedback"></div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="Page 3.html" class="nav-btn">العودة لصفحة البيانات والرسائل</a>
+            <a href="index.html" class="nav-btn">العودة للرئيسية</a>
+        </div>
+    </div>
+
+    <script>
+        let quizSubmitted = false;
+
+        // Quiz functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('quizForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const results = document.getElementById('results');
+            const scoreElement = document.getElementById('score');
+            const feedbackElement = document.getElementById('feedback');
+
+            // Add click handlers for quiz options
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const radio = this.querySelector('input[type="radio"]');
+                    const questionDiv = this.closest('.quiz-question');
+                    
+                    // Remove previous selections in this question
+                    questionDiv.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Select this option
+                    radio.checked = true;
+                    this.classList.add('selected');
+                });
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (quizSubmitted) return;
+                
+                submitQuiz();
+            });
+
+            function submitQuiz() {
+                quizSubmitted = true;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'تم الإرسال';
+
+                let correctAnswers = 0;
+                const totalQuestions = 10;
+
+                // Check answers
+                const answers = {
+                    q1: 'b', q2: 'c', q3: 'c', q4: 'c', q5: 'b',
+                    q6: 'c', q7: 'c', q8: 'c', q9: 'c', q10: 'd'
+                };
+
+                Object.keys(answers).forEach(questionId => {
+                    const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+                    const questionDiv = document.querySelector(`input[name="${questionId}"]`).closest('.quiz-question');
+                    
+                    if (selectedAnswer && selectedAnswer.value === answers[questionId]) {
+                        correctAnswers++;
+                        questionDiv.querySelectorAll('.quiz-option').forEach(option => {
+                            if (option.querySelector('input').value === answers[questionId]) {
+                                option.classList.add('correct');
+                            }
+                        });
+                    } else {
+                        // Show correct answer
+                        questionDiv.querySelectorAll('.quiz-option').forEach(option => {
+                            if (option.querySelector('input').value === answers[questionId]) {
+                                option.classList.add('correct');
+                            }
+                        });
+                        
+                        // Show incorrect selection if any
+                        if (selectedAnswer) {
+                            selectedAnswer.closest('.quiz-option').classList.add('incorrect');
+                        }
+                    }
+                });
+
+                // Calculate score
+                const percentage = (correctAnswers / totalQuestions) * 100;
+                
+                // Display results
+                scoreElement.textContent = `النتيجة: ${correctAnswers} من ${totalQuestions} (${percentage}%)`;
+                
+                let feedback = '';
+                if (percentage >= 90) {
+                    feedback = 'ممتاز! لديك فهم رائع لمفاهيم البيانات والرسائل.';
+                } else if (percentage >= 70) {
+                    feedback = 'جيد جداً! لديك فهم جيد للموضوع.';
+                } else if (percentage >= 50) {
+                    feedback = 'جيد! يمكنك تحسين معرفتك أكثر.';
+                } else {
+                    feedback = 'يحتاج إلى مزيد من الدراسة. راجع المحتوى مرة أخرى.';
+                }
+                
+                feedbackElement.textContent = feedback;
+                results.style.display = 'block';
+                
+                // Scroll to results
+                results.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>

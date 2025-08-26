@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدرس السادس - فهم الموزع والأوامر الأساسية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            width: 60%;
+            margin: 5rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+        }
+        h1 {
+            color: #2563eb;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h2 {
+            color: #1e40af;
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+        h3 {
+            color: #2563eb;
+            margin: 1.5rem 0 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+        .info-box {
+            background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #0ea5e9;
+        }
+        .command-box {
+            background: #1f2937;
+            color: #f9fafb;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+        }
+        .highlight {
+            background: linear-gradient(145deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #f59e0b;
+        }
+        .warning {
+            background: linear-gradient(145deg, #fef2f2, #fecaca);
+            border: 2px solid #dc2626;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #dc2626;
+        }
+        .success {
+            background: linear-gradient(145deg, #f0fdf4, #dcfce7);
+            border: 2px solid #16a34a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #16a34a;
+        }
+        ul {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .nav-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>الدرس السادس: فهم الموزع والأوامر الأساسية</h1>
+        
+        <p>
+            الموزع (Switch) هو أحد أهم أجهزة الشبكة التي تعمل في الطبقة الثانية من نموذج OSI. 
+            يقوم الموزع بتوجيه البيانات بين الأجهزة المتصلة به بناءً على عناوين MAC، مما يجعله أكثر كفاءة من الموزع البسيط (Hub).
+        </p>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>ما هو الموزع (Switch)؟</h2>
+        
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">تعريف الموزع</h4>
+            <p>
+                الموزع هو جهاز شبكة ذكي يعمل في الطبقة الثانية (Data Link Layer) من نموذج OSI. 
+                يقوم بإنشاء دوائر افتراضية بين الأجهزة المتصلة به، مما يسمح بنقل البيانات بشكل متوازٍ وفعال.
+            </p>
+        </div>
+
+        <h3>مميزات الموزع مقارنة بالموزع البسيط (Hub)</h3>
+        
+        <div class="success">
+            <h4 style="color:#166534; margin-bottom: 0.8rem;">مميزات الموزع</h4>
+            <ul>
+                <li><strong>الكفاءة العالية:</strong> ينقل البيانات فقط إلى الجهاز المستهدف</li>
+                <li><strong>الأمان:</strong> لا يمكن للأجهزة الأخرى رؤية البيانات المرسلة</li>
+                <li><strong>النطاق الترددي:</strong> يستخدم النطاق الترددي بكفاءة أكبر</li>
+                <li><strong>التعلم الذكي:</strong> يتعلم عناوين MAC للأجهزة المتصلة</li>
+                <li><strong>إدارة أفضل للشبكة:</strong> يمكن إدارته وتكوينه</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h4 style="color:#991b1b; margin-bottom: 0.8rem;">عيوب الموزع البسيط (Hub)</h4>
+            <ul>
+                <li><strong>الكفاءة المنخفضة:</strong> يرسل البيانات لجميع الأجهزة</li>
+                <li><strong>مشاكل الأمان:</strong> يمكن لجميع الأجهزة رؤية البيانات</li>
+                <li><strong>استهلاك النطاق الترددي:</strong> يستهلك النطاق الترددي بشكل غير فعال</li>
+                <li><strong>عدم وجود إدارة:</strong> لا يمكن تكوينه أو إدارته</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>كيف يعمل الموزع؟</h2>
+        
+        <h3>1. عملية التعلم (Learning Process)</h3>
+        <p>
+            عندما يتم تشغيل الموزع لأول مرة، يكون جدول عناوين MAC فارغاً. 
+            مع مرور الوقت، يتعلم الموزع عناوين MAC للأجهزة المتصلة به من خلال:
+        </p>
+        <ul>
+            <li>مراقبة البيانات الواردة من كل منفذ</li>
+            <li>استخراج عنوان MAC المرسل من البيانات</li>
+            <li>ربط عنوان MAC بالمنفذ الذي وصلت منه البيانات</li>
+            <li>تخزين هذه المعلومات في جدول عناوين MAC</li>
+        </ul>
+
+        <h3>2. عملية التوجيه (Forwarding Process)</h3>
+        <p>
+            عندما يريد جهاز إرسال بيانات إلى جهاز آخر:
+        </p>
+        <ul>
+            <li>يرسل الجهاز البيانات مع عنوان MAC للجهاز المستهدف</li>
+            <li>يستقبل الموزع البيانات ويبحث في جدول عناوين MAC</li>
+            <li>إذا وجد العنوان، يرسل البيانات إلى المنفذ المناسب</li>
+            <li>إذا لم يجد العنوان، يرسل البيانات إلى جميع المنافذ (Flooding)</li>
+        </ul>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>الأوامر الأساسية لإدارة الموزع</h2>
+        
+        <div class="highlight">
+            <h4 style="color:#92400e; margin-bottom: 0.8rem;">ملاحظة مهمة</h4>
+            <p>
+                هذه الأوامر تعتمد على نوع الموزع والشركة المصنعة. 
+                سنركز على الأوامر الأساسية المستخدمة في معظم الموزعات.
+            </p>
+        </div>
+
+        <h3>1. أوامر عرض المعلومات</h3>
+        
+        <div class="command-box">
+            <strong>show version</strong> - عرض إصدار البرنامج والمعلومات الأساسية
+        </div>
+        
+        <div class="command-box">
+            <strong>show running-config</strong> - عرض التكوين الحالي
+        </div>
+        
+        <div class="command-box">
+            <strong>show interfaces</strong> - عرض حالة جميع المنافذ
+        </div>
+        
+        <div class="command-box">
+            <strong>show mac address-table</strong> - عرض جدول عناوين MAC
+        </div>
+
+        <h3>2. أوامر التكوين الأساسية</h3>
+        
+        <div class="command-box">
+            <strong>enable</strong> - الدخول إلى وضع التكوين
+        </div>
+        
+        <div class="command-box">
+            <strong>configure terminal</strong> - الدخول إلى وضع التكوين العام
+        </div>
+        
+        <div class="command-box">
+            <strong>interface [type] [number]</strong> - اختيار منفذ معين للتكوين
+        </div>
+        
+        <div class="command-box">
+            <strong>no shutdown</strong> - تفعيل المنفذ
+        </div>
+
+        <h3>3. أوامر إدارة المنافذ</h3>
+        
+        <div class="command-box">
+            <strong>interface fastethernet 0/1</strong> - اختيار منفذ Ethernet
+        </div>
+        
+        <div class="command-box">
+            <strong>description [وصف]</strong> - إضافة وصف للمنفذ
+        </div>
+        
+        <div class="command-box">
+            <strong>speed [10|100|1000|auto]</strong> - تحديد سرعة المنفذ
+        </div>
+        
+        <div class="command-box">
+            <strong>duplex [half|full|auto]</strong> - تحديد نوع الاتصال
+
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>أمثلة عملية على الأوامر</h2>
+        
+        <h3>مثال 1: عرض معلومات المنفذ</h3>
+        <div class="command-box">
+            Switch# show interface fastethernet 0/1<br>
+            FastEthernet0/1 is up, line protocol is up<br>
+            Hardware is Fast Ethernet, address is 0010.7b39.3d4c<br>
+            MTU 1500 bytes, BW 100000 Kbit, DLY 100 usec<br>
+            reliability 255/255, txload 1/255, rxload 1/255
+        </div>
+
+        <h3>مثال 2: تكوين منفذ جديد</h3>
+        <div class="command-box">
+            Switch# configure terminal<br>
+            Switch(config)# interface fastethernet 0/5<br>
+            Switch(config-if)# description "Printer Connection"<br>
+            Switch(config-if)# speed 100<br>
+            Switch(config-if)# duplex full<br>
+            Switch(config-if)# no shutdown
+        </div>
+
+        <h3>مثال 3: عرض جدول عناوين MAC</h3>
+        <div class="command-box">
+            Switch# show mac address-table<br>
+            Mac Address Table<br>
+            -----------------------------------------<br>
+            Vlan    Mac Address       Type        Ports<br>
+            ----    -----------       ----        -----<br>
+            1       0001.42aa.1234    DYNAMIC     Fa0/1<br>
+            1       0001.42bb.5678    DYNAMIC     Fa0/2<br>
+            1       0001.42cc.9abc    DYNAMIC     Fa0/3
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>أفضل الممارسات لإدارة الموزعات</h2>
+        
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">نصائح مهمة</h4>
+            <ul>
+                <li><strong>تسمية المنافذ:</strong> استخدم أوصاف واضحة لكل منفذ</li>
+                <li><strong>تحديث البرامج:</strong> حافظ على أحدث إصدار من البرنامج</li>
+                <li><strong>النسخ الاحتياطي:</strong> احفظ التكوين بانتظام</li>
+                <li><strong>مراقبة الأداء:</strong> راقب استخدام المنافذ والنطاق الترددي</li>
+                <li><strong>الأمان:</strong> استخدم كلمات مرور قوية وقم بتعطيل المنافذ غير المستخدمة</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>الخلاصة</h2>
+        
+        <p>
+            الموزع هو جهاز شبكة متقدم يوفر كفاءة وأمان أفضل من الموزع البسيط. 
+            من خلال فهم كيفية عمله وتعلم الأوامر الأساسية، يمكنك إدارة الشبكات بشكل فعال.
+        </p>
+        
+        <p>
+            تذكر أن الممارسة العملية هي أفضل طريقة لتعلم هذه المفاهيم. 
+            استخدم محاكيات الشبكات مثل Packet Tracer أو GNS3 لتطبيق ما تعلمته.
+        </p>
+
+        <div class="nav-buttons">
+            <a href="page5.html" class="nav-btn">← الدرس السابق</a>
+            <a href="index.html" class="nav-btn">العودة للرئيسية</a>
+        </div>
+    </div>
+</body>
+</html>

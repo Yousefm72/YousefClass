@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عناوين الشبكة - Network Addresses</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            width: 60%;
+            margin: 5rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+        }
+        h1 {
+            color: #2563eb;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h2 {
+            color: #1e40af;
+            margin: 2rem 0 1rem;
+            text-align: right;
+        }
+        h3 {
+            color: #2563eb;
+            margin: 1.5rem 0 0.8rem;
+            text-align: right;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+        ul {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+        .address-box {
+            background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+            border: 2px solid #e0e7ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #2563eb;
+        }
+        .address-title {
+            color: #1e40af;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .address-example {
+            background: #e0e7ff;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 1.1rem;
+            text-align: center;
+            direction: ltr;
+        }
+        .address-format {
+            background: #fef3c7;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+            font-family: monospace;
+            font-size: 0.95rem;
+            color: #92400e;
+        }
+        .info-box {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .info-title {
+            color: #0c4a6e;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        .comparison-table th {
+            background: #e0e7ff;
+            color: #1e40af;
+            font-weight: bold;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        .ip-version {
+            background: #dcfce7;
+            border: 1px solid #16a34a;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .ip-version-title {
+            color: #166534;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .subnet-example {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .subnet-title {
+            color: #92400e;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .binary-visual {
+            background: #f1f5f9;
+            border: 1px solid #64748b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            direction: ltr;
+            text-align: center;
+        }
+        .binary-bit {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 0.3rem 0.5rem;
+            margin: 0.1rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            min-width: 25px;
+        }
+        .binary-bit.zero {
+            background: #6b7280;
+        }
+        .binary-bit.network {
+            background: #dc2626;
+        }
+        .binary-bit.host {
+            background: #059669;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color:#2563eb; text-align:center; margin-bottom:1.5rem;">عناوين الشبكة - Network Addresses</h2>
+        <ul style="direction:rtl; font-size:1.1rem; margin-bottom:2.5rem; line-height:2.2;">
+            <li><a href="#what-are-addresses" style="color:#1e40af; text-decoration:underline;">ما هي عناوين الشبكة؟</a></li>
+            <li><a href="#ip-addresses" style="color:#1e40af; text-decoration:underline;">عناوين IP</a></li>
+            <li><a href="#mac-addresses" style="color:#1e40af; text-decoration:underline;">عناوين MAC</a></li>
+            <li><a href="#subnetting" style="color:#1e40af; text-decoration:underline;">تقسيم الشبكات الفرعية</a></li>
+            <li><a href="#address-types" style="color:#1e40af; text-decoration:underline;">أنواع العناوين</a></li>
+            <li><a href="#practical-examples" style="color:#1e40af; text-decoration:underline;">أمثلة عملية</a></li>
+        </ul>
+
+        <h1 id="what-are-addresses">عناوين الشبكة (Network Addresses)</h1>
+        <p>
+            عناوين الشبكة هي معرفات فريدة تُستخدم لتحديد الأجهزة والخدمات في الشبكة. تعمل هذه العناوين مثل "العناوين البريدية" في العالم الرقمي، حيث تسمح للأجهزة بالعثور على بعضها البعض وتبادل البيانات.
+        </p>
+        <p>
+            هناك أنواع مختلفة من العناوين، كل نوع يخدم غرضاً محدداً في عملية الاتصال الشبكي. فهم هذه العناوين أساسي لتصميم وإدارة الشبكات.
+        </p>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="ip-addresses">عناوين IP (Internet Protocol Addresses)</h2>
+        <p>
+            عناوين IP هي العناوين الأساسية المستخدمة في الإنترنت والشبكات المحلية. كل جهاز متصل بالشبكة يحتاج إلى عنوان IP فريد للتواصل مع الأجهزة الأخرى.
+        </p>
+
+        <div class="ip-version">
+            <div class="ip-version-title">IPv4 (الإصدار الرابع)</div>
+            <p>
+                IPv4 هو الإصدار الأكثر شيوعاً من بروتوكول الإنترنت. يتكون من 32 بت (4 بايت) ويُكتب على شكل أربعة أرقام مفصولة بنقاط.
+            </p>
+            <div class="address-example">192.168.1.100</div>
+            <p><strong>الخصائص:</strong></p>
+            <ul>
+                <li>32 بت (4 بايت)</li>
+                <li>4.3 مليار عنوان متاح</li>
+                <li>يُكتب بصيغة عشرية مفصولة بنقاط</li>
+                <li>مثال: 192.168.1.100</li>
+            </ul>
+        </div>
+
+        <div class="ip-version">
+            <div class="ip-version-title">IPv6 (الإصدار السادس)</div>
+            <p>
+                IPv6 هو الإصدار الجديد من بروتوكول الإنترنت، تم تطويره لحل مشكلة نفاد عناوين IPv4. يتكون من 128 بت (16 بايت).
+            </p>
+            <div class="address-example">2001:0db8:85a3:0000:0000:8a2e:0370:7334</div>
+            <p><strong>الخصائص:</strong></p>
+            <ul>
+                <li>128 بت (16 بايت)</li>
+                <li>340 تريليون تريليون عنوان متاح</li>
+                <li>يُكتب بصيغة سداسية عشرية مفصولة بنقطتين</li>
+                <li>يدعم اختصار الأصفار المتتالية</li>
+            </ul>
+        </div>
+
+        <div class="address-box">
+            <div class="address-title">تنسيق عنوان IPv4</div>
+            <p>
+                يتكون عنوان IPv4 من أربعة أجزاء، كل جزء يمثل بايت واحد (8 بت). كل جزء يمكن أن يكون رقماً من 0 إلى 255.
+            </p>
+            <div class="binary-visual">
+                <div class="binary-bit">192</div>
+                <div class="binary-bit">.</div>
+                <div class="binary-bit">168</div>
+                <div class="binary-bit">.</div>
+                <div class="binary-bit">1</div>
+                <div class="binary-bit">.</div>
+                <div class="binary-bit">100</div>
+                <br>
+                <small style="color: #64748b;">Byte 1 | Byte 2 | Byte 3 | Byte 4</small>
+            </div>
+            <p><strong>التحويل إلى ثنائي:</strong></p>
+            <div class="address-format">192 = 11000000 | 168 = 10101000 | 1 = 00000001 | 100 = 01100100</div>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="mac-addresses">عناوين MAC (Media Access Control)</h2>
+        <p>
+            عناوين MAC هي عناوين فيزيائية فريدة تُخصص لكل جهاز شبكة عند التصنيع. تُستخدم في طبقة ربط البيانات للتعرف على الأجهزة في الشبكة المحلية.
+        </p>
+
+        <div class="address-box">
+            <div class="address-title">تنسيق عنوان MAC</div>
+            <p>
+                يتكون عنوان MAC من 48 بت (6 بايت) ويُكتب بصيغة سداسية عشرية مفصولة بنقطتين أو شرطات.
+            </p>
+            <div class="address-example">00:1A:2B:3C:4D:5E</div>
+            <div class="address-example">00-1A-2B-3C-4D-5E</div>
+            <p><strong>البنية:</strong></p>
+            <ul>
+                <li><strong>OUI (Organizationally Unique Identifier):</strong> أول 3 بايت (24 بت) - تحدد الشركة المصنعة</li>
+                <li><strong>NIC Specific:</strong> آخر 3 بايت (24 بت) - تحدد الجهاز الفردي</li>
+            </ul>
+            <div class="binary-visual">
+                <div class="binary-bit">00:1A:2B</div>
+                <div class="binary-bit">:</div>
+                <div class="binary-bit">3C:4D:5E</div>
+                <br>
+                <small style="color: #64748b;">OUI (الشركة المصنعة) | NIC (الجهاز الفردي)</small>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-title">معلومات مهمة عن عناوين MAC:</div>
+            <ul>
+                <li>عنوان فريد عالمياً لكل جهاز</li>
+                <li>لا يمكن تغييره (مُدمج في العتاد)</li>
+                <li>يُستخدم فقط في الشبكة المحلية</li>
+                <li>لا ينتقل عبر الإنترنت</li>
+                <li>مفيد لتحديد الأجهزة في الشبكة</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="subnetting">تقسيم الشبكات الفرعية (Subnetting)</h2>
+        <p>
+            تقسيم الشبكات الفرعية هو عملية تقسيم شبكة كبيرة إلى شبكات أصغر لتحسين الأداء والأمان.
+        </p>
+
+        <div class="subnet-example">
+            <div class="subnet-title">مثال على تقسيم الشبكة 192.168.1.0/24</div>
+            <p>
+                الشبكة 192.168.1.0/24 تعني أن أول 24 بت (3 بايت) تمثل معرف الشبكة، والباقي (8 بت) يمثل عناوين الأجهزة.
+            </p>
+            <div class="binary-visual">
+                <div class="binary-bit network">192</div>
+                <div class="binary-bit">.</div>
+                <div class="binary-bit network">168</div>
+                <div class="binary-bit">.</div>
+                <div class="binary-bit network">1</div>
+                <div class="binary-bit">.</div>
+                <div class="binary-bit host">0-255</div>
+                <br>
+                <small style="color: #64748b;">معرف الشبكة (Network ID) | عناوين الأجهزة (Host Addresses)</small>
+            </div>
+            <p><strong>معلومات الشبكة:</strong></p>
+            <ul>
+                <li><strong>عنوان الشبكة:</strong> 192.168.1.0</li>
+                <li><strong>قناع الشبكة الفرعية:</strong> 255.255.255.0</li>
+                <li><strong>عدد عناوين الأجهزة:</strong> 254 (256 - 2)</li>
+                <li><strong>أول عنوان جهاز:</strong> 192.168.1.1</li>
+                <li><strong>آخر عنوان جهاز:</strong> 192.168.1.254</li>
+                <li><strong>عنوان البث:</strong> 192.168.1.255</li>
+            </ul>
+        </div>
+
+        <div class="subnet-example">
+            <div class="subnet-title">تقسيم الشبكة إلى شبكات فرعية أصغر</div>
+            <p>
+                يمكن تقسيم الشبكة 192.168.1.0/24 إلى شبكات فرعية أصغر:
+            </p>
+            <table class="comparison-table">
+                <tr>
+                    <th>الشبكة الفرعية</th>
+                    <th>قناع الشبكة</th>
+                    <th>نطاق العناوين</th>
+                    <th>عدد الأجهزة</th>
+                </tr>
+                <tr>
+                    <td>192.168.1.0/26</td>
+                    <td>255.255.255.192</td>
+                    <td>192.168.1.1 - 192.168.1.62</td>
+                    <td>62</td>
+                </tr>
+                <tr>
+                    <td>192.168.1.64/26</td>
+                    <td>255.255.255.192</td>
+                    <td>192.168.1.65 - 192.168.1.126</td>
+                    <td>62</td>
+                </tr>
+                <tr>
+                    <td>192.168.1.128/26</td>
+                    <td>255.255.255.192</td>
+                    <td>192.168.1.129 - 192.168.1.190</td>
+                    <td>62</td>
+                </tr>
+                <tr>
+                    <td>192.168.1.192/26</td>
+                    <td>255.255.255.192</td>
+                    <td>192.168.1.193 - 192.168.1.254</td>
+                    <td>62</td>
+                </tr>
+            </table>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="address-types">أنواع عناوين IP</h2>
+        
+        <div class="address-box">
+            <div class="address-title">العناوين العامة (Public Addresses)</div>
+            <p>
+                العناوين العامة هي عناوين فريدة عالمياً تُستخدم في الإنترنت. تُخصص من قبل منظمات إدارة الإنترنت.
+            </p>
+            <div class="address-example">203.0.113.45</div>
+            <p><strong>الخصائص:</strong></p>
+            <ul>
+                <li>فريدة عالمياً</li>
+                <li>تُستخدم في الإنترنت</li>
+                <li>تُخصص من قبل IANA</li>
+                <li>يمكن الوصول إليها من أي مكان</li>
+            </ul>
+        </div>
+
+        <div class="address-box">
+            <div class="address-title">العناوين الخاصة (Private Addresses)</div>
+            <p>
+                العناوين الخاصة تُستخدم في الشبكات المحلية ولا يمكن الوصول إليها من الإنترنت مباشرة.
+            </p>
+            <div class="address-example">192.168.1.100</div>
+            <div class="address-example">10.0.0.50</div>
+            <div class="address-example">172.16.0.25</div>
+            <p><strong>النطاقات الخاصة:</strong></p>
+            <ul>
+                <li><strong>Class A:</strong> 10.0.0.0 - 10.255.255.255</li>
+                <li><strong>Class B:</strong> 172.16.0.0 - 172.31.255.255</li>
+                <li><strong>Class C:</strong> 192.168.0.0 - 192.168.255.255</li>
+            </ul>
+        </div>
+
+        <div class="address-box">
+            <div class="address-title">العناوين المحجوزة (Reserved Addresses)</div>
+            <p>
+                بعض العناوين محجوزة لأغراض خاصة ولا يمكن استخدامها للأجهزة العادية.
+            </p>
+            <ul>
+                <li><strong>127.0.0.1:</strong> localhost (الجهاز نفسه)</li>
+                <li><strong>0.0.0.0:</strong> عنوان افتراضي</li>
+                <li><strong>255.255.255.255:</strong> عنوان البث العام</li>
+                <li><strong>169.254.x.x:</strong> عنوان APIPA (فشل DHCP)</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="practical-examples">أمثلة عملية</h2>
+        
+        <h3>مثال 1: إعداد شبكة منزلية</h3>
+        <div class="info-box">
+            <p><strong>الشبكة:</strong> 192.168.1.0/24</p>
+            <p><strong>الموجه (Router):</strong> 192.168.1.1</p>
+            <p><strong>الحاسوب 1:</strong> 192.168.1.10</p>
+            <p><strong>الحاسوب 2:</strong> 192.168.1.11</p>
+            <p><strong>الهاتف الذكي:</strong> 192.168.1.12</p>
+            <p><strong>الطابعة:</strong> 192.168.1.20</p>
+        </div>
+
+        <h3>مثال 2: شبكة مكتبية</h3>
+        <div class="info-box">
+            <p><strong>الشبكة الرئيسية:</strong> 10.0.0.0/16</p>
+            <p><strong>قسم الموارد البشرية:</strong> 10.0.1.0/24</p>
+            <p><strong>قسم المحاسبة:</strong> 10.0.2.0/24</p>
+            <p><strong>قسم المبيعات:</strong> 10.0.3.0/24</p>
+            <p><strong>قسم تقنية المعلومات:</strong> 10.0.4.0/24</p>
+        </div>
+
+        <h3>مثال 3: عناوين MAC في الشبكة</h3>
+        <div class="info-box">
+            <p><strong>الحاسوب:</strong> 00:1A:2B:3C:4D:5E (Intel Corporation)</p>
+            <p><strong>الموجه:</strong> 00:0C:41:6F:8A:2B (Cisco Systems)</p>
+            <p><strong>الطابعة:</strong> 00:17:C8:9A:B3:4F (HP Inc.)</p>
+            <p><strong>الهاتف:</strong> 00:1B:63:84:45:E6 (Apple Inc.)</p>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2>أهمية فهم العناوين</h2>
+        <p>
+            فهم عناوين الشبكة مهم لعدة أسباب:
+        </p>
+        <ul>
+            <li><strong>تصميم الشبكات:</strong> يساعد في تخطيط الشبكات بكفاءة</li>
+            <li><strong>استكشاف الأخطاء:</strong> يسهل تحديد وحل المشاكل الشبكية</li>
+            <li><strong>الأمان:</strong> يساعد في تطبيق سياسات الأمان</li>
+            <li><strong>إدارة الشبكة:</strong> يسهل مراقبة وإدارة الأجهزة</li>
+            <li><strong>التوافق:</strong> يضمن عمل الأجهزة معاً بشكل صحيح</li>
+        </ul>
+
+        <p>
+            عناوين الشبكة هي الأساس الذي تعتمد عليه جميع عمليات الاتصال الشبكي. فهم كيفية عملها وكيفية تنسيقها ضروري لأي شخص يعمل في مجال الشبكات أو يريد فهم كيفية عمل الإنترنت.
+        </p>
+    </div>
+</body>
+</html>
