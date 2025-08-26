@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدرس السابع - شرح البروتوكولات</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            width: 60%;
+            margin: 5rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+        }
+        h1 {
+            color: #2563eb;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h2 {
+            color: #1e40af;
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+        h3 {
+            color: #2563eb;
+            margin: 1.5rem 0 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+        .info-box {
+            background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #0ea5e9;
+        }
+        .protocol-box {
+            background: #1f2937;
+            color: #f9fafb;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+        }
+        .highlight {
+            background: linear-gradient(145deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #f59e0b;
+        }
+        .warning {
+            background: linear-gradient(145deg, #fef2f2, #fecaca);
+            border: 2px solid #dc2626;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #dc2626;
+        }
+        .success {
+            background: linear-gradient(145deg, #f0fdf4, #dcfce7);
+            border: 2px solid #16a34a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #16a34a;
+        }
+        .protocol-comparison {
+            background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #64748b;
+        }
+        ul {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .nav-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        .protocol-layer {
+            background: linear-gradient(145deg, #ede9fe, #ddd6fe);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #8b5cf6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>الدرس السابع: شرح البروتوكولات</h1>
+        
+        <p>
+            البروتوكولات (Protocols) هي مجموعة من القواعد والمعايير التي تحكم كيفية تواصل الأجهزة وتبادل البيانات عبر الشبكة. 
+            بدون البروتوكولات، لن تتمكن الأجهزة من فهم بعضها البعض أو تبادل المعلومات بشكل صحيح.
+        </p>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>ما هو البروتوكول؟</h2>
+        
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">تعريف البروتوكول</h4>
+            <p>
+                البروتوكول هو مجموعة من القواعد والمعايير المتفق عليها التي تحدد كيفية:
+            </p>
+            <ul>
+                <li>تنسيق البيانات المرسلة</li>
+                <li>تشفير وفك تشفير المعلومات</li>
+                <li>إدارة الأخطاء والتحكم في التدفق</li>
+                <li>تحديد هوية المرسل والمستقبل</li>
+                <li>ضمان وصول البيانات بشكل صحيح</li>
+            </ul>
+        </div>
+
+        <h3>مثال بسيط على البروتوكول</h3>
+        <p>
+            تخيل أنك تتحدث مع شخص عبر الهاتف. البروتوكول هنا يشمل:
+        </p>
+        <ul>
+            <li>رفع السماعة أولاً</li>
+            <li>التحية بـ "السلام عليكم"</li>
+            <li>التحدث بوضوح وباللغة العربية</li>
+            <li>الإنصات عندما يتحدث الطرف الآخر</li>
+            <li>إنهاء المحادثة بـ "مع السلامة"</li>
+        </ul>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>أنواع البروتوكولات الرئيسية</h2>
+        
+        <h3>1. بروتوكولات الطبقة الفيزيائية</h3>
+        
+        <div class="protocol-layer">
+            <h4 style="color:#7c3aed; margin-bottom: 0.8rem;">بروتوكولات الطبقة الأولى</h4>
+            <ul>
+                <li><strong>Ethernet:</strong> يحدد كيفية إرسال البيانات عبر الكابلات</li>
+                <li><strong>Wi-Fi (802.11):</strong> يتحكم في الاتصال اللاسلكي</li>
+                <li><strong>USB:</strong> يحدد كيفية توصيل الأجهزة</li>
+                <li><strong>Bluetooth:</strong> للاتصال قصير المدى</li>
+            </ul>
+        </div>
+
+        <h3>2. بروتوكولات طبقة ربط البيانات</h3>
+        
+        <div class="protocol-layer">
+            <h4 style="color:#7c3aed; margin-bottom: 0.8rem;">بروتوكولات الطبقة الثانية</h4>
+            <ul>
+                <li><strong>PPP (Point-to-Point Protocol):</strong> للاتصال المباشر بين جهازين</li>
+                <li><strong>HDLC (High-Level Data Link Control):</strong> للتحكم في ربط البيانات</li>
+                <li><strong>Frame Relay:</strong> لتوصيل الشبكات الواسعة</li>
+                <li><strong>ATM (Asynchronous Transfer Mode):</strong> لنقل البيانات عالية السرعة</li>
+            </ul>
+        </div>
+
+        <h3>3. بروتوكولات طبقة الشبكة</h3>
+        
+        <div class="protocol-layer">
+            <h4 style="color:#7c3aed; margin-bottom: 0.8rem;">بروتوكولات الطبقة الثالثة</h4>
+            <ul>
+                <li><strong>IP (Internet Protocol):</strong> البروتوكول الأساسي للإنترنت</li>
+                <li><strong>ICMP (Internet Control Message Protocol):</strong> لرسائل التحكم والأخطاء</li>
+                <li><strong>ARP (Address Resolution Protocol):</strong> لربط عناوين IP بعناوين MAC</li>
+                <li><strong>RARP (Reverse ARP):</strong> العكس من ARP</li>
+            </ul>
+        </div>
+
+        <h3>4. بروتوكولات طبقة النقل</h3>
+        
+        <div class="protocol-layer">
+            <h4 style="color:#7c3aed; margin-bottom: 0.8rem;">بروتوكولات الطبقة الرابعة</h4>
+            <ul>
+                <li><strong>TCP (Transmission Control Protocol):</strong> موثوق ولكن أبطأ</li>
+                <li><strong>UDP (User Datagram Protocol):</strong> سريع ولكن غير موثوق</li>
+                <li><strong>SCTP (Stream Control Transmission Protocol):</strong> يجمع مميزات TCP و UDP</li>
+            </ul>
+        </div>
+
+        <h3>5. بروتوكولات طبقة التطبيقات</h3>
+        
+        <div class="protocol-layer">
+            <h4 style="color:#7c3aed; margin-bottom: 0.8rem;">بروتوكولات الطبقة السابعة</h4>
+            <ul>
+                <li><strong>HTTP/HTTPS:</strong> لتصفح الويب</li>
+                <li><strong>FTP:</strong> لنقل الملفات</li>
+                <li><strong>SMTP:</strong> لإرسال البريد الإلكتروني</li>
+                <li><strong>POP3/IMAP:</strong> لاستقبال البريد الإلكتروني</li>
+                <li><strong>DNS:</strong> لتحويل أسماء النطاقات إلى عناوين IP</li>
+                <li><strong>SSH:</strong> للاتصال الآمن بالأجهزة البعيدة</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>مقارنة بين TCP و UDP</h2>
+        
+        <div class="protocol-comparison">
+            <h4 style="color:#475569; margin-bottom: 0.8rem;">مقارنة شاملة</h4>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                <tr style="background: #f1f5f9;">
+                    <th style="padding: 0.8rem; border: 1px solid #cbd5e1; text-align: right;">المعيار</th>
+                    <th style="padding: 0.8rem; border: 1px solid #cbd5e1; text-align: right;">TCP</th>
+                    <th style="padding: 0.8rem; border: 1px solid #cbd5e1; text-align: right;">UDP</th>
+                </tr>
+                <tr>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1; font-weight: bold;">الموثوقية</td>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">موثوق 100%</td>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">غير موثوق</td>
+                </tr>
+                <tr style="background: #f8fafc;">
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1; font-weight: bold;">السرعة</td>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">أبطأ</td>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">أسرع</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1; font-weight: bold;">التحكم في التدفق</td>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">متوفر</td>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">غير متوفر</td>
+                </tr>
+                <tr style="background: #f8fafc;">
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1; font-weight: bold;">ترتيب البيانات</td>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">مضمون</td>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">غير مضمون</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1; font-weight: bold;">الاستخدامات</td>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">البريد الإلكتروني، تصفح الويب، نقل الملفات</td>
+                    <td style="padding: 0.8rem; border: 1px solid #cbd5e1;">البث المباشر، الألعاب، DNS</td>
+                </tr>
+            </table>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>أمثلة عملية على البروتوكولات</h2>
+        
+        <h3>1. بروتوكول HTTP (HyperText Transfer Protocol)</h3>
+        
+        <div class="protocol-box">
+            <strong>مثال على طلب HTTP:</strong><br>
+            GET /index.html HTTP/1.1<br>
+            Host: www.example.com<br>
+            User-Agent: Mozilla/5.0<br>
+            Accept: text/html<br>
+            <br>
+            <strong>مثال على الاستجابة:</strong><br>
+            HTTP/1.1 200 OK<br>
+            Content-Type: text/html<br>
+            Content-Length: 1234<br>
+            <br>
+            &lt;html&gt;&lt;body&gt;مرحباً&lt;/body&gt;&lt;/html&gt;
+        </div>
+
+        <h3>2. بروتوكول DNS (Domain Name System)</h3>
+        
+        <div class="protocol-box">
+            <strong>طلب DNS:</strong><br>
+            السؤال: ما هو عنوان IP لـ www.google.com؟<br>
+            <br>
+            <strong>استجابة DNS:</strong><br>
+            الجواب: www.google.com = 142.250.191.14<br>
+            نوع السجل: A<br>
+            وقت الحياة: 300 ثانية
+        </div>
+
+        <h3>3. بروتوكول SMTP (Simple Mail Transfer Protocol)</h3>
+        
+        <div class="protocol-box">
+            <strong>مثال على إرسال بريد إلكتروني:</strong><br>
+            HELO mail.example.com<br>
+            MAIL FROM: user@example.com<br>
+            RCPT TO: recipient@domain.com<br>
+            DATA<br>
+            Subject: رسالة تجريبية<br>
+            <br>
+            هذه رسالة تجريبية<br>
+            .<br>
+            QUIT
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>كيفية عمل البروتوكولات معاً</h2>
+        
+        <div class="highlight">
+            <h4 style="color:#92400e; margin-bottom: 0.8rem;">مثال: زيارة موقع ويب</h4>
+            <p>عندما تزور موقع ويب، تعمل عدة بروتوكولات معاً:</p>
+            <ol>
+                <li><strong>DNS:</strong> يحول اسم الموقع إلى عنوان IP</li>
+                <li><strong>TCP:</strong> ينشئ اتصالاً موثوقاً مع الخادم</li>
+                <li><strong>IP:</strong> يوجه البيانات عبر الشبكة</li>
+                <li><strong>Ethernet:</strong> يرسل البيانات عبر الكابل</li>
+                <li><strong>HTTP:</strong> يطلب صفحة الويب</li>
+                <li><strong>HTML:</strong> يعرض المحتوى في المتصفح</li>
+            </ol>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>أمان البروتوكولات</h2>
+        
+        <h3>البروتوكولات الآمنة</h3>
+        
+        <div class="success">
+            <h4 style="color:#166534; margin-bottom: 0.8rem;">بروتوكولات الأمان</h4>
+            <ul>
+                <li><strong>HTTPS:</strong> HTTP مع التشفير (SSL/TLS)</li>
+                <li><strong>SSH:</strong> للاتصال الآمن بالأجهزة البعيدة</li>
+                <li><strong>SFTP:</strong> FTP آمن</li>
+                <li><strong>IPSec:</strong> لتشفير البيانات على مستوى الشبكة</li>
+                <li><strong>VPN:</strong> لإنشاء اتصال آمن عبر الإنترنت</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <h4 style="color:#991b1b; margin-bottom: 0.8rem;">البروتوكولات غير الآمنة</h4>
+            <ul>
+                <li><strong>HTTP:</strong> البيانات غير مشفرة</li>
+                <li><strong>FTP:</strong> كلمات المرور غير مشفرة</li>
+                <li><strong>Telnet:</strong> جميع البيانات غير مشفرة</li>
+                <li><strong>SNMP v1/v2:</strong> كلمات المرور ضعيفة</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>أفضل الممارسات لاستخدام البروتوكولات</h2>
+        
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">نصائح مهمة</h4>
+            <ul>
+                <li><strong>استخدم البروتوكولات الآمنة:</strong> HTTPS بدلاً من HTTP</li>
+                <li><strong>تحديث البروتوكولات:</strong> استخدم أحدث الإصدارات</li>
+                <li><strong>مراقبة الشبكة:</strong> راقب حركة البيانات والبروتوكولات المستخدمة</li>
+                <li><strong>تكوين الجدار الناري:</strong> احجب البروتوكولات غير المرغوب فيها</li>
+                <li><strong>التدريب المستمر:</strong> ابق على اطلاع بأحدث البروتوكولات</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>الخلاصة</h2>
+        
+        <p>
+            البروتوكولات هي العمود الفقري للشبكات والإنترنت. بدونها، لن تتمكن الأجهزة من التواصل أو تبادل البيانات. 
+            فهم البروتوكولات المختلفة وكيفية عملها معاً يساعد في:
+        </p>
+        <ul>
+            <li>حل مشاكل الشبكة بسرعة</li>
+            <li>تحسين أداء الشبكة</li>
+            <li>ضمان أمان البيانات</li>
+            <li>اختيار البروتوكول المناسب لكل تطبيق</li>
+        </ul>
+        
+        <p>
+            تذكر أن البروتوكولات تتطور باستمرار، لذلك من المهم البقاء على اطلاع بأحدث التطورات في هذا المجال.
+        </p>
+
+        <div class="nav-buttons">
+            <a href="page6.html" class="nav-btn">← الدرس السابق</a>
+            <a href="QuizPage7.html" class="nav-btn">اختبار البروتوكولات</a>
+            <a href="index.html" class="nav-btn">العودة للرئيسية</a>
+        </div>
+    </div>
+</body>
+</html>
