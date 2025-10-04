@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أنواع كابلات الشبكة - Network Cable Types</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            width: 60%;
+            margin: 5rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+        }
+        h1 {
+            color: #2563eb;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h2 {
+            color: #1e40af;
+            margin: 2rem 0 1rem;
+            text-align: right;
+        }
+        h3 {
+            color: #2563eb;
+            margin: 1.5rem 0 0.8rem;
+            text-align: right;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+        ul {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+        .cable-box {
+            background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+            border: 2px solid #e0e7ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #2563eb;
+        }
+        .cable-title {
+            color: #1e40af;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .cable-specs {
+            background: #e0e7ff;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+        .cable-image {
+            text-align: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        .cable-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .cable-image-placeholder {
+            background: #e5e7eb;
+            border: 2px dashed #9ca3af;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            color: #6b7280;
+            margin: 1rem 0;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        .comparison-table th {
+            background: #e0e7ff;
+            color: #1e40af;
+            font-weight: bold;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        .info-box {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .info-title {
+            color: #0c4a6e;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .advantage-box {
+            background: #dcfce7;
+            border: 1px solid #16a34a;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .advantage-title {
+            color: #166534;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .disadvantage-box {
+            background: #fef2f2;
+            border: 1px solid #dc2626;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .disadvantage-title {
+            color: #991b1b;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .connector-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .connector-title {
+            color: #92400e;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .speed-indicator {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 0.2rem;
+        }
+        .distance-indicator {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 0.2rem;
+        }
+        .cost-indicator {
+            display: inline-block;
+            background: #f59e0b;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 0.2rem;
+        }
+        .cable-diagram {
+            text-align: center;
+            margin: 2rem 0;
+            direction: ltr;
+        }
+        .cable-part {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            margin: 0.5rem;
+            font-weight: bold;
+            min-width: 100px;
+        }
+        .cable-part.core {
+            background: #dc2626;
+        }
+        .cable-part.shield {
+            background: #16a34a;
+        }
+        .cable-part.jacket {
+            background: #6b7280;
+        }
+        .cable-arrow {
+            font-size: 1.5rem;
+            color: #2563eb;
+            margin: 0 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color:#2563eb; text-align:center; margin-bottom:1.5rem;">أنواع كابلات الشبكة - Network Cable Types</h2>
+        <ul style="direction:rtl; font-size:1.1rem; margin-bottom:2.5rem; line-height:2.2;">
+            <li><a href="#cable-intro" style="color:#1e40af; text-decoration:underline;">مقدمة في كابلات الشبكة</a></li>
+            <li><a href="#twisted-pair" style="color:#1e40af; text-decoration:underline;">الكابلات الملتوية</a></li>
+            <li><a href="#coaxial" style="color:#1e40af; text-decoration:underline;">الكابلات المحورية</a></li>
+            <li><a href="#fiber-optic" style="color:#1e40af; text-decoration:underline;">كابلات الألياف الضوئية</a></li>
+            <li><a href="#connectors" style="color:#1e40af; text-decoration:underline;">الموصلات</a></li>
+            <li><a href="#comparison" style="color:#1e40af; text-decoration:underline;">مقارنة الأنواع</a></li>
+            <li><a href="#selection" style="color:#1e40af; text-decoration:underline;">اختيار النوع المناسب</a></li>
+        </ul>
+
+        <h1 id="cable-intro">مقدمة في كابلات الشبكة</h1>
+        <p>
+            كابلات الشبكة هي الوسائط الفيزيائية التي تنقل البيانات بين الأجهزة في الشبكة. تعتبر هذه الكابلات العمود الفقري لأي شبكة سلكية، حيث تحدد سرعة نقل البيانات، المسافة القصوى، ومستوى الأمان.
+        </p>
+        <p>
+            هناك عدة أنواع من كابلات الشبكة، كل نوع له خصائصه واستخداماته المحددة. اختيار النوع المناسب يعتمد على متطلبات الشبكة، الميزانية، والبيئة المحيطة.
+        </p>
+
+        <div class="info-box">
+            <div class="info-title">العوامل المؤثرة في اختيار كابلات الشبكة:</div>
+            <ul>
+                <li><strong>السرعة المطلوبة:</strong> سرعة نقل البيانات</li>
+                <li><strong>المسافة:</strong> المسافة بين الأجهزة</li>
+                <li><strong>التكلفة:</strong> الميزانية المتاحة</li>
+                <li><strong>البيئة:</strong> الظروف المحيطة (حرارة، رطوبة، تداخل)</li>
+                <li><strong>الأمان:</strong> مستوى الحماية المطلوب</li>
+                <li><strong>التوافق:</strong> التوافق مع الأجهزة الموجودة</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="twisted-pair">الكابلات الملتوية (Twisted Pair Cables)</h2>
+        <p>
+            الكابلات الملتوية هي النوع الأكثر شيوعاً في الشبكات المحلية. تتكون من زوجين أو أكثر من الأسلاك النحاسية الملتوية معاً لتقليل التداخل الكهرومغناطيسي.
+        </p>
+
+        <div class="cable-diagram">
+            <div class="cable-part jacket">الغلاف الخارجي</div>
+            <div class="cable-arrow">↓</div>
+            <div class="cable-part shield">الدرع (اختياري)</div>
+            <div class="cable-arrow">↓</div>
+            <div class="cable-part core">الأزواج الملتوية</div>
+        </div>
+
+        <h3>أنواع الكابلات الملتوية</h3>
+
+        <div class="cable-box">
+            <div class="cable-title">UTP - Unshielded Twisted Pair (كابل غير محمي)</div>
+            <p>
+                الكابل الأكثر شيوعاً في الشبكات المنزلية والمكتبية. لا يحتوي على درع حماية، مما يجعله أقل تكلفة وأسهل في التركيب.
+            </p>
+            <div class="cable-specs">
+                <strong>المواصفات:</strong> 4 أزواج من الأسلاك النحاسية | بدون درع | غلاف بلاستيكي
+            </div>
+            <div class="advantage-box">
+                <div class="advantage-title">المميزات:</div>
+                <ul>
+                    <li>تكلفة منخفضة</li>
+                    <li>سهولة التركيب والصيانة</li>
+                    <li>مرونة عالية</li>
+                    <li>توافق مع معظم الأجهزة</li>
+                </ul>
+            </div>
+            <div class="disadvantage-box">
+                <div class="disadvantage-title">العيوب:</div>
+                <ul>
+                    <li>حساس للتداخل الكهرومغناطيسي</li>
+                    <li>مسافة محدودة (100 متر)</li>
+                    <li>أمان أقل</li>
+                </ul>
+            </div>
+            <div class="cable-image-placeholder">
+                <p>صورة كابل UTP</p>
+                <p>4 أزواج من الأسلاك الملتوية بدون درع</p>
+            </div>
+        </div>
+
+        <div class="cable-box">
+            <div class="cable-title">STP - Shielded Twisted Pair (كابل محمي)</div>
+            <p>
+                يحتوي على درع معدني حول كل زوج من الأسلاك أو حول جميع الأزواج لحماية أفضل من التداخل الكهرومغناطيسي.
+            </p>
+            <div class="cable-specs">
+                <strong>المواصفات:</strong> 4 أزواج محمية | درع معدني | غلاف خارجي سميك
+            </div>
+            <div class="advantage-box">
+                <div class="advantage-title">المميزات:</div>
+                <ul>
+                    <li>حماية أفضل من التداخل</li>
+                    <li>أداء أفضل في البيئات الصعبة</li>
+                    <li>أمان أعلى</li>
+                    <li>نقل بيانات أكثر استقراراً</li>
+                </ul>
+            </div>
+            <div class="disadvantage-box">
+                <div class="disadvantage-title">العيوب:</div>
+                <ul>
+                    <li>تكلفة أعلى</li>
+                    <li>صعوبة في التركيب</li>
+                    <li>وزن أكبر</li>
+                    <li>يتطلب تأريض صحيح</li>
+                </ul>
+            </div>
+            <div class="cable-image-placeholder">
+                <p>صورة كابل STP</p>
+                <p>أزواج محمية بدرع معدني</p>
+            </div>
+        </div>
+
+        <h3>فئات الكابلات الملتوية (Categories)</h3>
+
+        <table class="comparison-table">
+            <tr>
+                <th>الفئة</th>
+                <th>السرعة القصوى</th>
+                <th>التردد</th>
+                <th>المسافة القصوى</th>
+                <th>الاستخدامات</th>
+            </tr>
+            <tr>
+                <td>Cat 3</td>
+                <td><span class="speed-indicator">10 Mbps</span></td>
+                <td>16 MHz</td>
+                <td><span class="distance-indicator">100m</span></td>
+                <td>شبكات قديمة، الهاتف</td>
+            </tr>
+            <tr>
+                <td>Cat 5</td>
+                <td><span class="speed-indicator">100 Mbps</span></td>
+                <td>100 MHz</td>
+                <td><span class="distance-indicator">100m</span></td>
+                <td>شبكات Fast Ethernet</td>
+            </tr>
+            <tr>
+                <td>Cat 5e</td>
+                <td><span class="speed-indicator">1 Gbps</span></td>
+                <td>100 MHz</td>
+                <td><span class="distance-indicator">100m</span></td>
+                <td>شبكات Gigabit Ethernet</td>
+            </tr>
+            <tr>
+                <td>Cat 6</td>
+                <td><span class="speed-indicator">1 Gbps</span></td>
+                <td>250 MHz</td>
+                <td><span class="distance-indicator">100m</span></td>
+                <td>شبكات Gigabit Ethernet</td>
+            </tr>
+            <tr>
+                <td>Cat 6A</td>
+                <td><span class="speed-indicator">10 Gbps</span></td>
+                <td>500 MHz</td>
+                <td><span class="distance-indicator">100m</span></td>
+                <td>شبكات 10 Gigabit Ethernet</td>
+            </tr>
+            <tr>
+                <td>Cat 7</td>
+                <td><span class="speed-indicator">10 Gbps</span></td>
+                <td>600 MHz</td>
+                <td><span class="distance-indicator">100m</span></td>
+                <td>شبكات عالية السرعة</td>
+            </tr>
+            <tr>
+                <td>Cat 8</td>
+                <td><span class="speed-indicator">25-40 Gbps</span></td>
+                <td>2000 MHz</td>
+                <td><span class="distance-indicator">30m</span></td>
+                <td>مراكز البيانات</td>
+            </tr>
+        </table>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="coaxial">الكابلات المحورية (Coaxial Cables)</h2>
+        <p>
+            الكابلات المحورية تتكون من موصل مركزي محاط بطبقة عازلة، ثم طبقة موصلة خارجية، وأخيراً غلاف واقي. كانت شائعة في الماضي ولكنها أقل استخداماً الآن.
+        </p>
+
+        <div class="cable-diagram">
+            <div class="cable-part jacket">الغلاف الخارجي</div>
+            <div class="cable-arrow">↓</div>
+            <div class="cable-part shield">الموصل الخارجي</div>
+            <div class="cable-arrow">↓</div>
+            <div class="cable-part core">الموصل المركزي</div>
+        </div>
+
+        <div class="cable-box">
+            <div class="cable-title">أنواع الكابلات المحورية</div>
+            <p><strong>RG-6:</strong> يستخدم في التلفزيون الكبلي والإنترنت</p>
+            <p><strong>RG-58:</strong> كان يستخدم في شبكات Ethernet القديمة</p>
+            <p><strong>RG-59:</strong> يستخدم في التطبيقات السمعية والبصرية</p>
+            
+            <div class="advantage-box">
+                <div class="advantage-title">المميزات:</div>
+                <ul>
+                    <li>مقاومة جيدة للتداخل</li>
+                    <li>مسافة أطول من الكابلات الملتوية</li>
+                    <li>أداء مستقر</li>
+                    <li>مناسب للبيئات الصعبة</li>
+                </ul>
+            </div>
+            
+            <div class="disadvantage-box">
+                <div class="disadvantage-title">العيوب:</div>
+                <ul>
+                    <li>تكلفة عالية</li>
+                    <li>صعوبة في التركيب</li>
+                    <li>مرونة منخفضة</li>
+                    <li>يتطلب موصلات خاصة</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="fiber-optic">كابلات الألياف الضوئية (Fiber Optic Cables)</h2>
+        <p>
+            كابلات الألياف الضوئية تستخدم الضوء لنقل البيانات بدلاً من الإشارات الكهربائية. توفر سرعات عالية جداً ومسافات طويلة مع حماية ممتازة من التداخل.
+        </p>
+
+        <div class="cable-diagram">
+            <div class="cable-part jacket">الغلاف الخارجي</div>
+            <div class="cable-arrow">↓</div>
+            <div class="cable-part shield">طبقة الحماية</div>
+            <div class="cable-arrow">↓</div>
+            <div class="cable-part core">الألياف الضوئية</div>
+        </div>
+
+        <h3>أنواع كابلات الألياف الضوئية</h3>
+
+        <div class="cable-box">
+            <div class="cable-title">Single Mode Fiber (ألياف أحادية النمط)</div>
+            <p>
+                تستخدم ليزر واحد لنقل البيانات عبر ليف واحد. مناسبة للمسافات الطويلة والسرعات العالية جداً.
+            </p>
+            <div class="cable-specs">
+                <strong>المواصفات:</strong> قطر اللب: 9 ميكرومتر | ليزر واحد | مسافة تصل إلى 100 كم
+            </div>
+            <div class="advantage-box">
+                <div class="advantage-title">المميزات:</div>
+                <ul>
+                    <li>مسافة طويلة جداً (حتى 100 كم)</li>
+                    <li>سرعة عالية جداً</li>
+                    <li>لا يوجد تداخل كهرومغناطيسي</li>
+                    <li>أمان عالي</li>
+                </ul>
+            </div>
+            <div class="disadvantage-box">
+                <div class="disadvantage-title">العيوب:</div>
+                <ul>
+                    <li>تكلفة عالية جداً</li>
+                    <li>صعوبة في التركيب والصيانة</li>
+                    <li>يتطلب معدات خاصة</li>
+                    <li>حساس للانحناءات الحادة</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cable-box">
+            <div class="cable-title">Multi Mode Fiber (ألياف متعددة النمط)</div>
+            <p>
+                تستخدم عدة أشعة ضوئية لنقل البيانات. مناسبة للمسافات المتوسطة والسرعات العالية.
+            </p>
+            <div class="cable-specs">
+                <strong>المواصفات:</strong> قطر اللب: 50-62.5 ميكرومتر | عدة أشعة | مسافة تصل إلى 2 كم
+            </div>
+            <div class="advantage-box">
+                <div class="advantage-title">المميزات:</div>
+                <ul>
+                    <li>تكلفة أقل من Single Mode</li>
+                    <li>سهولة في التركيب</li>
+                    <li>سرعة عالية</li>
+                    <li>مناسبة للشبكات المحلية</li>
+                </ul>
+            </div>
+            <div class="disadvantage-box">
+                <div class="disadvantage-title">العيوب:</div>
+                <ul>
+                    <li>مسافة محدودة (حتى 2 كم)</li>
+                    <li>تكلفة أعلى من الكابلات النحاسية</li>
+                    <li>يتطلب معدات خاصة</li>
+                    <li>حساس للانحناءات</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>مقارنة أنواع الألياف الضوئية</h3>
+        <table class="comparison-table">
+            <tr>
+                <th>النوع</th>
+                <th>قطر اللب</th>
+                <th>المسافة القصوى</th>
+                <th>السرعة</th>
+                <th>التكلفة</th>
+                <th>الاستخدامات</th>
+            </tr>
+            <tr>
+                <td>Single Mode</td>
+                <td>9 ميكرومتر</td>
+                <td><span class="distance-indicator">100 كم</span></td>
+                <td><span class="speed-indicator">10+ Gbps</span></td>
+                <td><span class="cost-indicator">عالية جداً</span></td>
+                <td>شبكات المسافات الطويلة</td>
+            </tr>
+            <tr>
+                <td>Multi Mode</td>
+                <td>50-62.5 ميكرومتر</td>
+                <td><span class="distance-indicator">2 كم</span></td>
+                <td><span class="speed-indicator">1-10 Gbps</span></td>
+                <td><span class="cost-indicator">عالية</span></td>
+                <td>الشبكات المحلية</td>
+            </tr>
+        </table>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="connectors">الموصلات (Connectors)</h2>
+        <p>
+            الموصلات هي الأجزاء التي تربط الكابلات بالأجهزة. كل نوع من الكابلات يتطلب موصلات خاصة به.
+        </p>
+
+        <div class="connector-box">
+            <div class="connector-title">RJ-45 (Registered Jack 45)</div>
+            <p>
+                الموصل الأكثر شيوعاً للكابلات الملتوية. يحتوي على 8 دبابيس ويدعم سرعات تصل إلى 10 Gbps.
+            </p>
+            <div class="cable-specs">
+                <strong>الاستخدامات:</strong> Ethernet, Fast Ethernet, Gigabit Ethernet
+            </div>
+            <div class="cable-image-placeholder">
+                <p>صورة موصل RJ-45</p>
+                <p>موصل بلاستيكي شفاف مع 8 دبابيس ذهبية</p>
+            </div>
+        </div>
+
+        <div class="connector-box">
+            <div class="connector-title">BNC (Bayonet Neill-Concelman)</div>
+            <p>
+                موصل للكابلات المحورية. يستخدم نظام قفل دوار لضمان الاتصال الآمن.
+            </p>
+            <div class="cable-specs">
+                <strong>الاستخدامات:</strong> الكابلات المحورية، التلفزيون الكبلي
+            </div>
+        </div>
+
+        <div class="connector-box">
+            <div class="connector-title">LC (Lucent Connector)</div>
+            <p>
+                موصل صغير للألياف الضوئية. يوفر كثافة عالية في التوصيلات.
+            </p>
+            <div class="cable-specs">
+                <strong>الاستخدامات:</strong> الألياف الضوئية، مراكز البيانات
+            </div>
+        </div>
+
+        <div class="connector-box">
+            <div class="connector-title">SC (Subscriber Connector)</div>
+            <p>
+                موصل للألياف الضوئية مع نظام دفع وسحب للاتصال الآمن.
+            </p>
+            <div class="cable-specs">
+                <strong>الاستخدامات:</strong> الألياف الضوئية، الشبكات المحلية
+            </div>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="comparison">مقارنة شاملة بين أنواع الكابلات</h2>
+        
+        <table class="comparison-table">
+            <tr>
+                <th>نوع الكابل</th>
+                <th>السرعة القصوى</th>
+                <th>المسافة القصوى</th>
+                <th>التكلفة</th>
+                <th>سهولة التركيب</th>
+                <th>مقاومة التداخل</th>
+                <th>الاستخدامات الشائعة</th>
+            </tr>
+            <tr>
+                <td>UTP Cat 5e</td>
+                <td><span class="speed-indicator">1 Gbps</span></td>
+                <td><span class="distance-indicator">100m</span></td>
+                <td><span class="cost-indicator">منخفضة</span></td>
+                <td>سهل جداً</td>
+                <td>منخفضة</td>
+                <td>الشبكات المنزلية والمكتبية</td>
+            </tr>
+            <tr>
+                <td>STP Cat 6</td>
+                <td><span class="speed-indicator">1 Gbps</span></td>
+                <td><span class="distance-indicator">100m</span></td>
+                <td><span class="cost-indicator">متوسطة</span></td>
+                <td>متوسط</td>
+                <td>عالية</td>
+                <td>الشبكات المكتبية</td>
+            </tr>
+            <tr>
+                <td>Coaxial RG-6</td>
+                <td><span class="speed-indicator">100 Mbps</span></td>
+                <td><span class="distance-indicator">500m</span></td>
+                <td><span class="cost-indicator">متوسطة</span></td>
+                <td>صعب</td>
+                <td>عالية</td>
+                <td>التلفزيون الكبلي</td>
+            </tr>
+            <tr>
+                <td>Multi Mode Fiber</td>
+                <td><span class="speed-indicator">10 Gbps</span></td>
+                <td><span class="distance-indicator">2km</span></td>
+                <td><span class="cost-indicator">عالية</span></td>
+                <td>صعب جداً</td>
+                <td>ممتازة</td>
+                <td>الشبكات المؤسسية</td>
+            </tr>
+            <tr>
+                <td>Single Mode Fiber</td>
+                <td><span class="speed-indicator">100+ Gbps</span></td>
+                <td><span class="distance-indicator">100km</span></td>
+                <td><span class="cost-indicator">عالية جداً</span></td>
+                <td>صعب جداً</td>
+                <td>ممتازة</td>
+                <td>شبكات المسافات الطويلة</td>
+            </tr>
+        </table>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="selection">اختيار النوع المناسب</h2>
+        
+        <h3>للشبكات المنزلية</h3>
+        <div class="info-box">
+            <div class="info-title">التوصية: UTP Cat 5e أو Cat 6</div>
+            <ul>
+                <li>تكلفة منخفضة</li>
+                <li>سهولة التركيب</li>
+                <li>سرعة كافية للاستخدام المنزلي</li>
+                <li>توافق مع جميع الأجهزة</li>
+            </ul>
+        </div>
+
+        <h3>للشبكات المكتبية</h3>
+        <div class="info-box">
+            <div class="info-title">التوصية: STP Cat 6 أو Cat 6A</div>
+            <ul>
+                <li>حماية أفضل من التداخل</li>
+                <li>سرعة عالية</li>
+                <li>مناسب للبيئات المكتبية</li>
+                <li>دعم للسرعات المستقبلية</li>
+            </ul>
+        </div>
+
+        <h3>للشبكات المؤسسية الكبيرة</h3>
+        <div class="info-box">
+            <div class="info-title">التوصية: Multi Mode Fiber</div>
+            <ul>
+                <li>سرعة عالية جداً</li>
+                <li>مسافة طويلة</li>
+                <li>أمان ممتاز</li>
+                <li>مناسب للمراكز الرئيسية</li>
+            </ul>
+        </div>
+
+        <h3>للشبكات بين المدن</h3>
+        <div class="info-box">
+            <div class="info-title">التوصية: Single Mode Fiber</div>
+            <ul>
+                <li>مسافة طويلة جداً</li>
+                <li>سرعة عالية جداً</li>
+                <li>أمان ممتاز</li>
+                <li>مناسب للشبكات الواسعة</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2>نصائح مهمة لاختيار وتركيب الكابلات</h2>
+        
+        <div class="advantage-box">
+            <div class="advantage-title">نصائح الاختيار:</div>
+            <ul>
+                <li><strong>خطط للمستقبل:</strong> اختر كابلات تدعم السرعات المستقبلية</li>
+                <li><strong>اعتبر البيئة:</strong> اختر كابلات مناسبة للظروف المحيطة</li>
+                <li><strong>احسب التكلفة الإجمالية:</strong> ضع في الاعتبار التكلفة والصيانة</li>
+                <li><strong>تأكد من التوافق:</strong> تأكد من توافق الكابلات مع الأجهزة</li>
+            </ul>
+        </div>
+
+        <div class="advantage-box">
+            <div class="advantage-title">نصائح التركيب:</div>
+            <ul>
+                <li><strong>تجنب الانحناءات الحادة:</strong> خاصة في الألياف الضوئية</li>
+                <li><strong>استخدم قنوات مناسبة:</strong> لحماية الكابلات</li>
+                <li><strong>اترك مساحة للصيانة:</strong> لا تضع الكابلات في أماكن ضيقة</li>
+                <li><strong>وثق كل شيء:</strong> سجل مواقع ومواصفات الكابلات</li>
+                <li><strong>اختبر الاتصالات:</strong> تأكد من عمل جميع التوصيلات</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2>الخلاصة</h2>
+        <p>
+            اختيار نوع الكابل المناسب هو قرار مهم يؤثر على أداء الشبكة وتكلفتها. الكابلات الملتوية مناسبة للاستخدامات العامة، بينما الألياف الضوئية ضرورية للسرعات العالية والمسافات الطويلة.
+        </p>
+        <p>
+            فهم خصائص كل نوع من الكابلات يساعد في اتخاذ القرار الصحيح وتصميم شبكة فعالة وموثوقة. تذكر أن الاستثمار في كابلات جيدة يوفر أداءً أفضل وموثوقية أعلى على المدى الطويل.
+        </p>
+
+        <div class="nav-buttons" style="text-align: center; margin: 3rem 0; padding: 2rem; background: #f8fafc; border-radius: 15px;">
+            <a href="index.html" class="nav-btn" style="background: linear-gradient(135deg, #2563eb, #1e40af); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: bold; margin: 0 1rem; transition: all 0.3s ease;">العودة للصفحة الرئيسية</a>
+            <a href="page4.html" class="nav-btn" style="background: linear-gradient(135deg, #2563eb, #1e40af); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: bold; margin: 0 1rem; transition: all 0.3s ease;">الدرس السابق - نموذج OSI</a>
+            <a href="page5.html" class="nav-btn" style="background: linear-gradient(135deg, #2563eb, #1e40af); color: white; padding: 1rem 2rem; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: bold; margin: 0 1rem; transition: all 0.3s ease;">الدرس التالي - عناوين الشبكة</a>
+        </div>
+    </div>
+</body>
+</html>
