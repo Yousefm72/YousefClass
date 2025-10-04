@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطة العمل - 14 أسبوع | YousefClass</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #112551, #1e40af);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 3rem auto;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 3rem;
+        }
+        
+        .week-section {
+            margin-bottom: 4rem;
+            border: 2px solid #e0e7ff;
+            border-radius: 15px;
+            padding: 2rem;
+            background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+        }
+        
+        .week-header {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .week-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        
+        .week-header p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.9;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .content-box {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-right: 4px solid #2563eb;
+        }
+        
+        .content-box h3 {
+            color: #1e40af;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .content-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .content-box li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+            padding-right: 1.5rem;
+        }
+        
+        .content-box li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: #16a34a;
+            font-weight: bold;
+        }
+        
+        .content-box li:last-child {
+            border-bottom: none;
+        }
+        
+        .page-link {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .page-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .quiz-link {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            margin-right: 1rem;
+        }
+        
+        .quiz-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+        }
+        
+        .nav-buttons {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 15px;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .progress-bar {
+            background: #e5e7eb;
+            border-radius: 10px;
+            height: 20px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .week-number {
+            background: #f59e0b;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(145deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #f59e0b;
+        }
+        
+        .info-box {
+            background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #0ea5e9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-btn {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>خطة العمل - 14 أسبوع</h1>
+        <p>برنامج شامل لتعلم أساسيات الشبكات والبيانات والأنظمة الرقمية</p>
+        <p>ICT - تقنية المعلومات والاتصالات</p>
+    </div>
+    
+    <div class="container">
+        <div class="info-box">
+            <h3 style="color: #0c4a6e; margin-bottom: 1rem;">معلومات عامة عن الخطة</h3>
+            <p><strong>المدة:</strong> 14 أسبوع (فصل دراسي كامل)</p>
+            <p><strong>المستوى:</strong> مبتدئ إلى متوسط</p>
+            <p><strong>اللغة:</strong> العربية</p>
+            <p><strong>التقييم:</strong> اختبارات أسبوعية + مشروع نهائي</p>
+            <p><strong>المتطلبات:</strong> حاسوب شخصي + اتصال بالإنترنت</p>
+        </div>
+
+        <!-- الأسبوع الأول -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع الأول</div>
+                <h2>مقدمة في تقنية المعلومات والاتصالات (ICT)</h2>
+                <p>الأسبوع التأسيسي - فهم الأساسيات</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المحتوى النظري</h3>
+                    <ul>
+                        <li>تعريف ICT وأهميتها</li>
+                        <li>المكونات الأساسية لـ ICT</li>
+                        <li>تاريخ تطور تقنية المعلومات</li>
+                        <li>تأثير ICT على المجتمع</li>
+                        <li>شركة سيسكو ودورها في تطوير الشبكات</li>
+                    </ul>
+                    <a href="ict.html" class="page-link">ابدأ التعلم</a>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الأنشطة العملية</h3>
+                    <ul>
+                        <li>استكشاف مكونات الحاسوب الأساسية</li>
+                        <li>فهم أنواع البرمجيات المختلفة</li>
+                        <li>تعلم أساسيات استخدام الإنترنت</li>
+                        <li>مقدمة في أمان المعلومات</li>
+                        <li>إنشاء حساب تعليمي على منصة التعلم</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم</h3>
+                    <ul>
+                        <li>اختبار قصير عن أساسيات ICT</li>
+                        <li>تقرير عن تأثير التقنية على حياتك اليومية</li>
+                        <li>عرض تقديمي عن شركة تقنية مختارة</li>
+                    </ul>
+                    <a href="ItcQuiz.html" class="quiz-link">اختبار ICT</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع الثاني -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع الثاني</div>
+                <h2>مقدمة في الشبكات - ما هي الشبكة؟</h2>
+                <p>فهم أساسيات الشبكات وأنواعها</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المحتوى النظري</h3>
+                    <ul>
+                        <li>تعريف الشبكة وأهميتها</li>
+                        <li>المكونات الأساسية لأي شبكة</li>
+                        <li>أنواع الشبكات حسب المساحة الجغرافية</li>
+                        <li>أنواع الشبكات حسب الملكية والغرض</li>
+                        <li>مقارنة بين أنواع الشبكات المختلفة</li>
+                    </ul>
+                    <a href="Page 1.html" class="page-link">ابدأ التعلم</a>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الأنشطة العملية</h3>
+                    <ul>
+                        <li>رسم مخططات للشبكات المختلفة</li>
+                        <li>استكشاف شبكة المنزل أو المدرسة</li>
+                        <li>تعلم استخدام أدوات تشخيص الشبكة</li>
+                        <li>مقارنة سرعات الشبكات المختلفة</li>
+                        <li>إنشاء شبكة محلية بسيطة</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم</h3>
+                    <ul>
+                        <li>اختبار عن أنواع الشبكات</li>
+                        <li>مشروع: تصميم شبكة لمدرسة</li>
+                        <li>عرض تقديمي عن شبكة محلية</li>
+                    </ul>
+                    <a href="Page1Quiz.html" class="quiz-link">اختبار الشبكات</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع الثالث -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع الثالث</div>
+                <h2>البيانات وتركيب الرسائل</h2>
+                <p>فهم بنية البيانات وتمثيل المعلومات</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المحتوى النظري</h3>
+                    <ul>
+                        <li>تعريف البيانات والمعلومات</li>
+                        <li>وحدات قياس البيانات (Bit, Byte, KB, MB, GB)</li>
+                        <li>تمثيل البيانات في الحاسوب</li>
+                        <li>أنواع البيانات المختلفة</li>
+                        <li>ضغط البيانات وفوائده</li>
+                    </ul>
+                    <a href="Page 3.html" class="page-link">ابدأ التعلم</a>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الأنشطة العملية</h3>
+                    <ul>
+                        <li>حساب أحجام الملفات المختلفة</li>
+                        <li>تجربة ضغط الملفات</li>
+                        <li>تحليل أنواع البيانات في الملفات</li>
+                        <li>مقارنة أحجام الصور والفيديوهات</li>
+                        <li>إنشاء ملفات بامتدادات مختلفة</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم</h3>
+                    <ul>
+                        <li>اختبار عن وحدات البيانات</li>
+                        <li>مشروع: تحليل أحجام الملفات</li>
+                        <li>تقرير عن ضغط البيانات</li>
+                    </ul>
+                    <a href="Page3Quiz.html" class="quiz-link">اختبار البيانات</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع الرابع -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع الرابع</div>
+                <h2>لغة الآلة والأنظمة الرقمية</h2>
+                <p>تعلم النظام الثنائي والتحويل بين الأنظمة</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المحتوى النظري</h3>
+                    <ul>
+                        <li>النظام الثنائي (Binary System)</li>
+                        <li>النظام السادس عشر (Hexadecimal)</li>
+                        <li>النظام العشري (Decimal)</li>
+                        <li>التحويل بين الأنظمة المختلفة</li>
+                        <li>تمثيل الأرقام السالبة</li>
+                    </ul>
+                    <a href="page2.html" class="page-link">ابدأ التعلم</a>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الأنشطة العملية</h3>
+                    <ul>
+                        <li>تحويل الأرقام بين الأنظمة</li>
+                        <li>استخدام حاسبة الأنظمة الرقمية</li>
+                        <li>تمثيل الألوان بالنظام السادس عشر</li>
+                        <li>حل تمارين التحويل المختلفة</li>
+                        <li>برمجة بسيطة للتحويل</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم</h3>
+                    <ul>
+                        <li>اختبار تحويل الأنظمة الرقمية</li>
+                        <li>مشروع: حاسبة الأنظمة</li>
+                        <li>عرض تقديمي عن الأنظمة الرقمية</li>
+                    </ul>
+                    <a href="Page2Quiz.html" class="quiz-link">اختبار الأنظمة</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع الخامس -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع الخامس</div>
+                <h2>نموذج OSI - طبقات الشبكة</h2>
+                <p>فهم الطبقات السبع لنموذج OSI</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المحتوى النظري</h3>
+                    <ul>
+                        <li>مقدمة عن نموذج OSI</li>
+                        <li>الطبقة الفيزيائية (Physical Layer)</li>
+                        <li>طبقة ربط البيانات (Data Link Layer)</li>
+                        <li>طبقة الشبكة (Network Layer)</li>
+                        <li>طبقة النقل (Transport Layer)</li>
+                        <li>طبقة الجلسة (Session Layer)</li>
+                        <li>طبقة العرض (Presentation Layer)</li>
+                        <li>طبقة التطبيق (Application Layer)</li>
+                    </ul>
+                    <a href="page4.html" class="page-link">ابدأ التعلم</a>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الأنشطة العملية</h3>
+                    <ul>
+                        <li>رسم مخطط طبقات OSI</li>
+                        <li>تحليل حركة البيانات عبر الطبقات</li>
+                        <li>استخدام أدوات تحليل الشبكة</li>
+                        <li>مقارنة OSI مع TCP/IP</li>
+                        <li>محاكاة عمل الطبقات المختلفة</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم</h3>
+                    <ul>
+                        <li>اختبار عن طبقات OSI</li>
+                        <li>مشروع: رسم تفاعلي للطبقات</li>
+                        <li>تقرير عن وظائف كل طبقة</li>
+                    </ul>
+                    <a href="Page4Quiz.html" class="quiz-link">اختبار OSI</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع السادس -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع السادس</div>
+                <h2>عناوين الشبكة - Network Addresses</h2>
+                <p>فهم عناوين IP وMAC وتقسيم الشبكات</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المحتوى النظري</h3>
+                    <ul>
+                        <li>عناوين IP (IPv4 و IPv6)</li>
+                        <li>عناوين MAC</li>
+                        <li>تقسيم الشبكات الفرعية (Subnetting)</li>
+                        <li>عناوين خاصة وعامة</li>
+                        <li>DNS وترجمة العناوين</li>
+                    </ul>
+                    <a href="page5.html" class="page-link">ابدأ التعلم</a>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الأنشطة العملية</h3>
+                    <ul>
+                        <li>فحص عناوين IP للمحطة</li>
+                        <li>تقسيم شبكة فرعية</li>
+                        <li>استخدام أوامر ping وtracert</li>
+                        <li>تحليل عناوين MAC</li>
+                        <li>إعداد DNS محلي</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم</h3>
+                    <ul>
+                        <li>اختبار عن العناوين</li>
+                        <li>مشروع: تصميم مخطط عناوين</li>
+                        <li>تقرير عن تقسيم الشبكات</li>
+                    </ul>
+                    <a href="Page5Quiz.html" class="quiz-link">اختبار العناوين</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع السابع -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع السابع</div>
+                <h2>فهم الموزع والأوامر الأساسية</h2>
+                <p>تعلم إدارة الموزعات وأوامر الشبكة</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المحتوى النظري</h3>
+                    <ul>
+                        <li>مقدمة عن الموزعات (Switches)</li>
+                        <li>أنواع الموزعات المختلفة</li>
+                        <li>جدول MAC Address</li>
+                        <li>أوامر إدارة الشبكة الأساسية</li>
+                        <li>أفضل الممارسات لإدارة الشبكات</li>
+                    </ul>
+                    <a href="page6.html" class="page-link">ابدأ التعلم</a>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الأنشطة العملية</h3>
+                    <ul>
+                        <li>استخدام أوامر ipconfig وifconfig</li>
+                        <li>فحص جدول ARP</li>
+                        <li>استخدام أوامر netstat</li>
+                        <li>تحليل حركة الشبكة</li>
+                        <li>إعداد موزع بسيط</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم</h3>
+                    <ul>
+                        <li>اختبار عن الموزعات</li>
+                        <li>مشروع: إعداد شبكة محلية</li>
+                        <li>تقرير عن أوامر الشبكة</li>
+                    </ul>
+                    <a href="Page6Quiz.html" class="quiz-link">اختبار الموزعات</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع الثامن -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع الثامن</div>
+                <h2>شرح البروتوكولات</h2>
+                <p>فهم أنواع البروتوكولات ومقارنة TCP و UDP</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المحتوى النظري</h3>
+                    <ul>
+                        <li>تعريف البروتوكولات</li>
+                        <li>بروتوكول TCP</li>
+                        <li>بروتوكول UDP</li>
+                        <li>مقارنة TCP و UDP</li>
+                        <li>بروتوكولات أخرى (HTTP, HTTPS, FTP)</li>
+                    </ul>
+                    <a href="Page7.html" class="page-link">ابدأ التعلم</a>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الأنشطة العملية</h3>
+                    <ul>
+                        <li>تحليل حركة TCP و UDP</li>
+                        <li>استخدام Wireshark لتحليل البروتوكولات</li>
+                        <li>اختبار سرعة الاتصال</li>
+                        <li>مقارنة أداء البروتوكولات</li>
+                        <li>إعداد خادم ويب بسيط</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم</h3>
+                    <ul>
+                        <li>اختبار عن البروتوكولات</li>
+                        <li>مشروع: تحليل حركة الشبكة</li>
+                        <li>عرض تقديمي عن البروتوكولات</li>
+                    </ul>
+                    <a href="QuizPage7.html" class="quiz-link">اختبار البروتوكولات</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع التاسع -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع التاسع</div>
+                <h2>أمان الشبكات الأساسي</h2>
+                <p>مقدمة في أمان الشبكات والحماية</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المحتوى النظري</h3>
+                    <ul>
+                        <li>مقدمة في أمان الشبكات</li>
+                        <li>الجدران النارية (Firewalls)</li>
+                        <li>التشفير وأهميته</li>
+                        <li>الشبكات الخاصة الافتراضية (VPN)</li>
+                        <li>أفضل الممارسات الأمنية</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الأنشطة العملية</h3>
+                    <ul>
+                        <li>إعداد جدار ناري بسيط</li>
+                        <li>استخدام VPN</li>
+                        <li>فحص أمان الشبكة</li>
+                        <li>تشفير الملفات</li>
+                        <li>إنشاء كلمات مرور قوية</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم</h3>
+                    <ul>
+                        <li>اختبار عن أمان الشبكات</li>
+                        <li>مشروع: تقييم أمان شبكة</li>
+                        <li>تقرير عن التهديدات الأمنية</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع العاشر -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع العاشر</div>
+                <h2>الشبكات اللاسلكية</h2>
+                <p>فهم تقنيات الشبكات اللاسلكية</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المحتوى النظري</h3>
+                    <ul>
+                        <li>مقدمة في الشبكات اللاسلكية</li>
+                        <li>معايير Wi-Fi المختلفة</li>
+                        <li>أمان الشبكات اللاسلكية</li>
+                        <li>Bluetooth و NFC</li>
+                        <li>الشبكات الخلوية</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الأنشطة العملية</h3>
+                    <ul>
+                        <li>إعداد شبكة Wi-Fi آمنة</li>
+                        <li>فحص الشبكات اللاسلكية المتاحة</li>
+                        <li>استخدام Bluetooth</li>
+                        <li>اختبار سرعة الشبكة اللاسلكية</li>
+                        <li>إعداد نقطة وصول</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم</h3>
+                    <ul>
+                        <li>اختبار عن الشبكات اللاسلكية</li>
+                        <li>مشروع: إعداد شبكة لاسلكية</li>
+                        <li>تقرير عن معايير Wi-Fi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع الحادي عشر -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع الحادي عشر</div>
+                <h2>إدارة الشبكات</h2>
+                <p>تعلم إدارة وصيانة الشبكات</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المحتوى النظري</h3>
+                    <ul>
+                        <li>مقدمة في إدارة الشبكات</li>
+                        <li>أدوات مراقبة الشبكة</li>
+                        <li>استكشاف الأخطاء وإصلاحها</li>
+                        <li>صيانة الشبكة الوقائية</li>
+                        <li>توثيق الشبكة</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الأنشطة العملية</h3>
+                    <ul>
+                        <li>استخدام أدوات مراقبة الشبكة</li>
+                        <li>تشخيص مشاكل الاتصال</li>
+                        <li>إنشاء خطة صيانة</li>
+                        <li>توثيق إعدادات الشبكة</li>
+                        <li>إنشاء تقرير حالة الشبكة</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم</h3>
+                    <ul>
+                        <li>اختبار عن إدارة الشبكات</li>
+                        <li>مشروع: خطة إدارة شبكة</li>
+                        <li>تقرير عن صيانة الشبكة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع الثاني عشر -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع الثاني عشر</div>
+                <h2>تقنيات الشبكات المتقدمة</h2>
+                <p>مقدمة في التقنيات الحديثة</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المحتوى النظري</h3>
+                    <ul>
+                        <li>الشبكات الافتراضية (VLAN)</li>
+                        <li>الشبكات السحابية</li>
+                        <li>إنترنت الأشياء (IoT)</li>
+                        <li>الشبكات المحددة بالبرمجيات (SDN)</li>
+                        <li>تقنيات المستقبل</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الأنشطة العملية</h3>
+                    <ul>
+                        <li>إعداد VLAN بسيط</li>
+                        <li>استكشاف الخدمات السحابية</li>
+                        <li>ربط أجهزة IoT</li>
+                        <li>محاكاة SDN</li>
+                        <li>بحث عن تقنيات المستقبل</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم</h3>
+                    <ul>
+                        <li>اختبار عن التقنيات المتقدمة</li>
+                        <li>مشروع: تقرير عن تقنية حديثة</li>
+                        <li>عرض تقديمي عن المستقبل</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع الثالث عشر -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع الثالث عشر</div>
+                <h2>مراجعة شاملة</h2>
+                <p>مراجعة جميع المواضيع المغطاة</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>مراجعة المحتوى</h3>
+                    <ul>
+                        <li>مراجعة أساسيات ICT</li>
+                        <li>مراجعة أنواع الشبكات</li>
+                        <li>مراجعة الأنظمة الرقمية</li>
+                        <li>مراجعة نموذج OSI</li>
+                        <li>مراجعة العناوين والبروتوكولات</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التمارين العملية</h3>
+                    <ul>
+                        <li>حل اختبارات سابقة</li>
+                        <li>تمارين تحويل الأنظمة</li>
+                        <li>مشاكل شبكات عملية</li>
+                        <li>تحليل حالات دراسية</li>
+                        <li>مراجعة المشاريع</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التحضير للامتحان</h3>
+                    <ul>
+                        <li>إنشاء ملخصات</li>
+                        <li>حل أسئلة متنوعة</li>
+                        <li>مراجعة المفاهيم الأساسية</li>
+                        <li>تحضير العروض التقديمية</li>
+                        <li>مراجعة المشروع النهائي</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسبوع الرابع عشر -->
+        <div class="week-section">
+            <div class="week-header">
+                <div class="week-number">الأسبوع الرابع عشر</div>
+                <h2>المشروع النهائي والامتحان</h2>
+                <p>تقديم المشاريع والامتحان النهائي</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-box">
+                    <h3>المشروع النهائي</h3>
+                    <ul>
+                        <li>تصميم شبكة متكاملة</li>
+                        <li>تطبيق جميع المفاهيم المكتسبة</li>
+                        <li>إنشاء تقرير شامل</li>
+                        <li>عرض تقديمي للمشروع</li>
+                        <li>تقييم الأقران</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>الامتحان النهائي</h3>
+                    <ul>
+                        <li>اختبار نظري شامل</li>
+                        <li>اختبار عملي</li>
+                        <li>حل مشاكل شبكات</li>
+                        <li>تحليل حالات دراسية</li>
+                        <li>تقييم المهارات المكتسبة</li>
+                    </ul>
+                </div>
+                
+                <div class="content-box">
+                    <h3>التقييم النهائي</h3>
+                    <ul>
+                        <li>تقييم المشروع النهائي</li>
+                        <li>تقييم الامتحان النهائي</li>
+                        <li>تقييم المشاركة والأنشطة</li>
+                        <li>تقييم التطور الشخصي</li>
+                        <li>شهادة إنجاز الدورة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h3 style="color: #92400e; margin-bottom: 1rem;">نصائح للنجاح في الخطة</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #fbbf24;">📚 <strong>الانتظام:</strong> اتبع الخطة أسبوعياً ولا تتأخر</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #fbbf24;">💻 <strong>الممارسة:</strong> طبق ما تتعلمه عملياً</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #fbbf24;">❓ <strong>الأسئلة:</strong> لا تتردد في طرح الأسئلة</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #fbbf24;">📝 <strong>التدوين:</strong> احتفظ بملاحظات منظمة</li>
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #fbbf24;">🔄 <strong>المراجعة:</strong> راجع المحتوى بانتظام</li>
+                <li style="padding: 0.5rem 0;">👥 <strong>التعاون:</strong> تعاون مع الزملاء في التعلم</li>
+            </ul>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-btn">العودة للصفحة الرئيسية</a>
+            <a href="ict.html" class="nav-btn">ابدأ بالأسبوع الأول</a>
+        </div>
+    </div>
+</body>
+</html>

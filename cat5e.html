@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كابل CAT5e وطريقة توصيله - YousefClass</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #112551, #1e40af);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 2rem;
+        }
+        
+        .back-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-right: 4px solid #2563eb;
+        }
+        
+        .section h2 {
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .section h3 {
+            color: #2563eb;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .wiring-diagram {
+            background: #fff;
+            border: 2px solid #e0e7ff;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .wiring-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .wiring-table th {
+            background: #2563eb;
+            color: white;
+            padding: 1rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .wiring-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e0e7ff;
+        }
+        
+        .wiring-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .color-code {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 0 5px;
+            border: 2px solid #333;
+        }
+        
+        .white { background-color: #ffffff; }
+        .orange { background-color: #ff8c00; }
+        .green { background-color: #008000; }
+        .blue { background-color: #0000ff; }
+        .brown { background-color: #8b4513; }
+        
+        .steps {
+            background: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-right: 4px solid #10b981;
+        }
+        
+        .steps h4 {
+            color: #059669;
+            margin-bottom: 1rem;
+        }
+        
+        .steps ol {
+            padding-right: 1.5rem;
+        }
+        
+        .steps li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+        
+        .warning {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #92400e;
+        }
+        
+        .warning h4 {
+            color: #d97706;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-box {
+            background: #dbeafe;
+            border: 1px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #1e40af;
+        }
+        
+        .info-box h4 {
+            color: #1d4ed8;
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 1rem;
+            }
+            
+            .wiring-table {
+                font-size: 0.9rem;
+            }
+            
+            .wiring-table th,
+            .wiring-table td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>كابل CAT5e وطريقة توصيله</h1>
+        <p>دليل شامل لفهم كابل الشبكة وتوصيله بشكل صحيح</p>
+        <div class="image-container" style="margin-top: 2rem;">
+            <img src="Images/cat5e.png" alt="كابل CAT5e" style="max-width: 300px; height: auto;">
+        </div>
+    </div>
+    
+    <div class="container">
+        <a href="index.html" class="back-btn">← العودة للصفحة الرئيسية</a>
+        
+        <div class="section">
+            <h2>ما هو كابل CAT5e؟</h2>
+            <div class="image-container">
+                <img src="Images/cat5.png" alt="كابل CAT5e" style="max-width: 400px;">
+            </div>
+            <p>
+                كابل CAT5e (Category 5 Enhanced) هو نوع من كابلات الشبكة المحلية (LAN) المستخدمة لنقل البيانات في الشبكات المحلية. يُعتبر تحسينًا على كابل CAT5 الأصلي، حيث يوفر أداءً أفضل في نقل البيانات مع تقليل التداخل الكهرومغناطيسي.
+            </p>
+            
+            <h3>الخصائص الرئيسية لكابل CAT5e:</h3>
+            <ul style="font-size: 1.1rem; line-height: 1.8; padding-right: 2rem;">
+                <li><strong>السرعة:</strong> يدعم سرعات تصل إلى 1000 ميجابت في الثانية (1 جيجابت)</li>
+                <li><strong>المسافة:</strong> يمكن استخدامه لمسافات تصل إلى 100 متر</li>
+                <li><strong>التردد:</strong> يعمل بترددات تصل إلى 100 ميجاهرتز</li>
+                <li><strong>المواد:</strong> يتكون من 4 أزواج من الأسلاك الملتوية</li>
+                <li><strong>الموصل:</strong> يستخدم موصل RJ-45 في نهايات الكابل</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>مكونات كابل CAT5e</h2>
+            <p>
+                يتكون كابل CAT5e من عدة مكونات أساسية:
+            </p>
+            
+            <h3>1. الأسلاك الداخلية:</h3>
+            <p>يحتوي الكابل على 8 أسلاك مقسمة إلى 4 أزواج، كل زوج ملتوي مع بعضه البعض لتقليل التداخل:</p>
+            
+            <table class="wiring-table">
+                <thead>
+                    <tr>
+                        <th>رقم السلك</th>
+                        <th>اللون</th>
+                        <th>الوظيفة</th>
+                        <th>الزوج</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><span class="color-code white"></span> أبيض-برتقالي</td>
+                        <td>إرسال البيانات +</td>
+                        <td>الزوج 2</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><span class="color-code orange"></span> برتقالي</td>
+                        <td>إرسال البيانات -</td>
+                        <td>الزوج 2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><span class="color-code white"></span> أبيض-أخضر</td>
+                        <td>استقبال البيانات +</td>
+                        <td>الزوج 3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><span class="color-code blue"></span> أزرق</td>
+                        <td>غير مستخدم</td>
+                        <td>الزوج 1</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><span class="color-code white"></span> أبيض-أزرق</td>
+                        <td>غير مستخدم</td>
+                        <td>الزوج 1</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><span class="color-code green"></span> أخضر</td>
+                        <td>استقبال البيانات -</td>
+                        <td>الزوج 3</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><span class="color-code white"></span> أبيض-بني</td>
+                        <td>غير مستخدم</td>
+                        <td>الزوج 4</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><span class="color-code brown"></span> بني</td>
+                        <td>غير مستخدم</td>
+                        <td>الزوج 4</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>2. الموصل RJ-45:</h3>
+            <p>
+                موصل RJ-45 هو الموصل المستخدم في نهايات كابل الشبكة. يحتوي على 8 دبابيس معدنية صغيرة تُستخدم لتوصيل الأسلاك.
+            </p>
+        </div>
+        
+        <div class="section">
+            <h2>طرق توصيل كابل CAT5e</h2>
+            
+            <h3>1. التوصيل المستقيم (Straight-through):</h3>
+            <p>
+                يُستخدم هذا النوع من التوصيل عند ربط أجهزة مختلفة، مثل ربط الحاسوب بالموزع (Switch) أو الموجه (Router).
+            </p>
+            
+            <div class="wiring-diagram">
+                <h4>ترتيب الأسلاك في التوصيل المستقيم:</h4>
+                <table class="wiring-table">
+                    <thead>
+                        <tr>
+                            <th>رقم الدبوس</th>
+                            <th>اللون</th>
+                            <th>الوظيفة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td><span class="color-code white"></span> أبيض-برتقالي</td><td>إرسال +</td></tr>
+                        <tr><td>2</td><td><span class="color-code orange"></span> برتقالي</td><td>إرسال -</td></tr>
+                        <tr><td>3</td><td><span class="color-code white"></span> أبيض-أخضر</td><td>استقبال +</td></tr>
+                        <tr><td>4</td><td><span class="color-code blue"></span> أزرق</td><td>غير مستخدم</td></tr>
+                        <tr><td>5</td><td><span class="color-code white"></span> أبيض-أزرق</td><td>غير مستخدم</td></tr>
+                        <tr><td>6</td><td><span class="color-code green"></span> أخضر</td><td>استقبال -</td></tr>
+                        <tr><td>7</td><td><span class="color-code white"></span> أبيض-بني</td><td>غير مستخدم</td></tr>
+                        <tr><td>8</td><td><span class="color-code brown"></span> بني</td><td>غير مستخدم</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>2. التوصيل المتقاطع (Crossover):</h3>
+            <p>
+                يُستخدم هذا النوع عند ربط أجهزة متشابهة، مثل ربط حاسوبين مباشرة أو ربط موزعين.
+            </p>
+            
+            <div class="wiring-diagram">
+                <h4>ترتيب الأسلاك في التوصيل المتقاطع:</h4>
+                <p>في هذا النوع، يتم تبديل مواضع الأسلاك الأخضر والبرتقالي في أحد طرفي الكابل:</p>
+                <table class="wiring-table">
+                    <thead>
+                        <tr>
+                            <th>الطرف الأول</th>
+                            <th>الطرف الثاني</th>
+                            <th>اللون</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>1</td><td><span class="color-code white"></span> أبيض-برتقالي</td></tr>
+                        <tr><td>2</td><td>2</td><td><span class="color-code orange"></span> برتقالي</td></tr>
+                        <tr><td>3</td><td>6</td><td><span class="color-code white"></span> أبيض-أخضر</td></tr>
+                        <tr><td>4</td><td>4</td><td><span class="color-code blue"></span> أزرق</td></tr>
+                        <tr><td>5</td><td>5</td><td><span class="color-code white"></span> أبيض-أزرق</td></tr>
+                        <tr><td>6</td><td>3</td><td><span class="color-code green"></span> أخضر</td></tr>
+                        <tr><td>7</td><td>7</td><td><span class="color-code white"></span> أبيض-بني</td></tr>
+                        <tr><td>8</td><td>8</td><td><span class="color-code brown"></span> بني</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>خطوات توصيل كابل CAT5e</h2>
+            
+            <div class="steps">
+                <h4>الأدوات المطلوبة:</h4>
+                <ul>
+                    <li>كابل CAT5e</li>
+                    <li>موصلات RJ-45</li>
+                    <li>أداة قطع الكابلات</li>
+                    <li>أداة الضغط (Crimping Tool)</li>
+                    <li>مقياس الكابل (Cable Tester)</li>
+                </ul>
+            </div>
+            
+            <div class="steps">
+                <h4>خطوات التوصيل:</h4>
+                <ol>
+                    <li><strong>قطع الكابل:</strong> قطع الكابل بالطول المطلوب مع ترك مسافة إضافية قليلة</li>
+                    <li><strong>إزالة الغطاء الخارجي:</strong> إزالة حوالي 2 سم من الغطاء الخارجي للكابل</li>
+                    <li><strong>فرد الأسلاك:</strong> فرد الأسلاك الثمانية وإزالة أي عوازل إضافية</li>
+                    <li><strong>ترتيب الأسلاك:</strong> ترتيب الأسلاك حسب اللون المطلوب (مستقيم أو متقاطع)</li>
+                    <li><strong>قص الأسلاك:</strong> قص الأسلاك لتكون متساوية الطول (حوالي 1.5 سم)</li>
+                    <li><strong>إدخال الأسلاك:</strong> إدخال الأسلاك في موصل RJ-45 بالترتيب الصحيح</li>
+                    <li><strong>الضغط:</strong> استخدام أداة الضغط لتثبيت الموصل</li>
+                    <li><strong>الاختبار:</strong> اختبار الكابل للتأكد من عمله بشكل صحيح</li>
+                </ol>
+            </div>
+            
+            <div class="warning">
+                <h4>⚠️ تحذيرات مهمة:</h4>
+                <ul>
+                    <li>تأكد من أن الأسلاك مرتبة بالترتيب الصحيح قبل الضغط</li>
+                    <li>لا تترك أي جزء من الأسلاك خارج الموصل</li>
+                    <li>تأكد من أن الموصل مثبت بقوة</li>
+                    <li>اختبر الكابل بعد التوصيل للتأكد من عمله</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>استخدامات كابل CAT5e</h2>
+            
+            <h3>1. الشبكات المحلية (LAN):</h3>
+            <p>يُستخدم لربط أجهزة الحاسوب في المكتب أو المنزل</p>
+            
+            <h3>2. الإنترنت:</h3>
+            <p>يُستخدم لتوصيل أجهزة الحاسوب بالموجه أو المودم</p>
+            
+            <h3>3. أنظمة المراقبة:</h3>
+            <p>يُستخدم في أنظمة كاميرات المراقبة IP</p>
+            
+            <h3>4. أنظمة الهاتف:</h3>
+            <p>يُستخدم في أنظمة الهاتف الرقمي</p>
+            
+            <div class="info-box">
+                <h4>💡 معلومة مفيدة:</h4>
+                <p>
+                    معظم الأجهزة الحديثة تدعم Auto-MDIX، مما يعني أنها تستطيع التعامل مع كلا نوعي التوصيل (المستقيم والمتقاطع) تلقائياً. ومع ذلك، من المهم معرفة الفرق بينهما لفهم الشبكات بشكل أفضل.
+                </p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>صيانة واستكشاف الأخطاء</h2>
+            
+            <h3>مشاكل شائعة وحلولها:</h3>
+            
+            <div class="steps">
+                <h4>1. عدم وجود اتصال:</h4>
+                <ul>
+                    <li>تحقق من ترتيب الأسلاك</li>
+                    <li>تأكد من أن الموصل مثبت بقوة</li>
+                    <li>اختبر الكابل باستخدام مقياس الكابلات</li>
+                </ul>
+            </div>
+            
+            <div class="steps">
+                <h4>2. سرعة بطيئة:</h4>
+                <ul>
+                    <li>تحقق من جودة الكابل</li>
+                    <li>تأكد من عدم وجود تداخل كهرومغناطيسي</li>
+                    <li>تحقق من إعدادات الشبكة</li>
+                </ul>
+            </div>
+            
+            <div class="steps">
+                <h4>3. انقطاع متكرر:</h4>
+                <ul>
+                    <li>تحقق من التوصيلات</li>
+                    <li>تأكد من عدم وجود تلف في الكابل</li>
+                    <li>تحقق من جودة الموصلات</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
