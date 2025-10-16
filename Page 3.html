@@ -48,6 +48,8 @@
             <li><a href="#parts" style="color:#1e40af; text-decoration:underline;">أجزاء البيانات</a></li>
             <li><a href="#message" style="color:#1e40af; text-decoration:underline;">تركيب الرسالة</a></li>
             <li><a href="#diagram" style="color:#1e40af; text-decoration:underline;">مخطط الرسالة</a></li>
+            <li><a href="#message-types" style="color:#1e40af; text-decoration:underline;">أنواع الرسائل: Unicast / Multicast / Broadcast</a></li>
+            <li><a href="#packet-parts" style="color:#1e40af; text-decoration:underline;">أجزاء حزمة البيانات وطبقات OSI</a></li>
             <li><a href="#memory-units" style="color:#1e40af; text-decoration:underline;">وحدات قياس البيانات</a></li>
             <li><a href="#hello-example" style="color:#1e40af; text-decoration:underline;">مثال Hello World</a></li>
         </ul>
@@ -124,6 +126,111 @@
         <p>
             بعد جمع البيانات، يمكن معالجتها وتحويلها إلى معلومات مفيدة تساعد في اتخاذ القرار أو حل المشكلات.
         </p>
+        <h2 id="message-types">أنواع الرسائل في الشبكات: Unicast و Multicast و Broadcast</h2>
+        <p>
+            عند إرسال رسالة عبر الشبكة، يحدد نوع الإرسال عدد وأسلوب وصولها إلى الأجهزة الهدف. فيما يلي الأنواع الثلاثة الأكثر شيوعًا:
+        </p>
+        <ul>
+            <li>
+                <strong>Unicast (أحادي الإرسال):</strong> رسالة من مُرسِل واحد إلى مُستقبِل واحد محدد.
+                <br>مثال عملي: جهازك يطلب صفحة من خادم موقع معيّن؛ الحزم تتجه إلى عنوان IP محدد واحد، وإطار الإيثرنت يحمل عنوان MAC خاص بالمستقبِل.
+            </li>
+            <li>
+                <strong>Multicast (متعدد الإرسال إلى مجموعة):</strong> رسالة واحدة تُرسل إلى مجموعة أجهزة مشترِكة في عنوان متعدد البث.
+                <br>مثال عملي: بث درس مباشر داخل شبكة المدرسة إلى الصفوف المشترِكة على عنوان متعدد البث مثل 239.1.1.1؛ الأجهزة المشترِكة فقط هي التي تستقبل.
+            </li>
+            <li>
+                <strong>Broadcast (بث عام محلي):</strong> رسالة تُرسل إلى جميع الأجهزة داخل نفس الشبكة المحلية (القطاع الفرعي).
+                <br>مثال عملي: استعلام ARP "من صاحب IP 192.168.1.20؟" يُرسل إلى عنوان MAC العام ff:ff:ff:ff:ff:ff بحيث تستقبله كل الأجهزة في الشبكة المحلية.
+            </li>
+        </ul>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:1rem; margin:1rem 0;">
+            <div style="color:#1e40af; font-weight:bold; margin-bottom:0.5rem;">ملاحظات سريعة</div>
+            <ul style="margin:0;">
+                <li>البث العام Broadcast لا يتجاوز حدود الشبكة المحلية عادةً، بينما Unicast و Multicast يمكن توجيههما بين الشبكات.</li>
+                <li>نطاق عناوين IP متعدد البث هو 224.0.0.0 إلى 239.255.255.255، ويستخدم بروتوكولات مثل IGMP للاشتراك.</li>
+            </ul>
+        </div>
+
+        <h2 id="packet-parts">أجزاء حزمة البيانات وعلاقتها بطبقات OSI</h2>
+        <p>
+            عند إرسال البيانات عبر الشبكة، تمر عبر طبقات نموذج OSI المختلفة، وتتخذ أشكالاً مختلفة في كل طبقة. كل طبقة تضيف معلومات تحكم خاصة بها تسمى "ترويسة" (Header).
+        </p>
+
+        <div style="background:#f0f9ff; border:1px solid #0ea5e9; border-radius:8px; padding:1.5rem; margin:1.5rem 0;">
+            <h3 style="color:#0c4a6e; margin-top:0;">البيانات (Data) - طبقة التطبيق (Layer 7)</h3>
+            <p style="margin-bottom:1rem;">
+                <strong>الوصف:</strong> البيانات الأصلية التي يريد المستخدم إرسالها (نص، صورة، ملف، إلخ).<br>
+                <strong>مثال:</strong> "مرحباً بك في الشبكة" أو محتوى صفحة ويب.
+            </p>
+            <div style="background:#fff; border:1px solid #0ea5e9; border-radius:6px; padding:0.8rem; font-family:monospace; direction:ltr; text-align:left;">
+                <strong>Data:</strong> "Hello World" (11 bytes)
+            </div>
+        </div>
+
+        <div style="background:#f0fdf4; border:1px solid #22c55e; border-radius:8px; padding:1.5rem; margin:1.5rem 0;">
+            <h3 style="color:#14532d; margin-top:0;">القطعة (Segment) - طبقة النقل (Layer 4)</h3>
+            <p style="margin-bottom:1rem;">
+                <strong>الوصف:</strong> البيانات + ترويسة TCP أو UDP تحتوي على معلومات المنفذ ورقم التسلسل.<br>
+                <strong>مثال:</strong> TCP Segment مع منفذ المصدر والهدف.
+            </p>
+            <div style="background:#fff; border:1px solid #22c55e; border-radius:6px; padding:0.8rem; font-family:monospace; direction:ltr; text-align:left;">
+                <strong>TCP Header (20 bytes):</strong> Source Port, Dest Port, Sequence, Checksum<br>
+                <strong>Data:</strong> "Hello World" (11 bytes)<br>
+                <strong>Total Segment:</strong> 31 bytes
+            </div>
+        </div>
+
+        <div style="background:#fefce8; border:1px solid #eab308; border-radius:8px; padding:1.5rem; margin:1.5rem 0;">
+            <h3 style="color:#713f12; margin-top:0;">الحزمة (Packet) - طبقة الشبكة (Layer 3)</h3>
+            <p style="margin-bottom:1rem;">
+                <strong>الوصف:</strong> القطعة + ترويسة IP تحتوي على عناوين IP المصدر والهدف.<br>
+                <strong>مثال:</strong> IP Packet مع عناوين IPv4.
+            </p>
+            <div style="background:#fff; border:1px solid #eab308; border-radius:6px; padding:0.8rem; font-family:monospace; direction:ltr; text-align:left;">
+                <strong>IP Header (20 bytes):</strong> Source IP, Dest IP, TTL, Protocol<br>
+                <strong>TCP Segment:</strong> 31 bytes<br>
+                <strong>Total Packet:</strong> 51 bytes
+            </div>
+        </div>
+
+        <div style="background:#fef2f2; border:1px solid #ef4444; border-radius:8px; padding:1.5rem; margin:1.5rem 0;">
+            <h3 style="color:#7f1d1d; margin-top:0;">الإطار (Frame) - طبقة ربط البيانات (Layer 2)</h3>
+            <p style="margin-bottom:1rem;">
+                <strong>الوصف:</strong> الحزمة + ترويسة Ethernet تحتوي على عناوين MAC المصدر والهدف.<br>
+                <strong>مثال:</strong> Ethernet Frame مع عناوين MAC.
+            </p>
+            <div style="background:#fff; border:1px solid #ef4444; border-radius:6px; padding:0.8rem; font-family:monospace; direction:ltr; text-align:left;">
+                <strong>Ethernet Header (14 bytes):</strong> Dest MAC, Source MAC, Type<br>
+                <strong>IP Packet:</strong> 51 bytes<br>
+                <strong>FCS (4 bytes):</strong> Error Detection<br>
+                <strong>Total Frame:</strong> 69 bytes
+            </div>
+        </div>
+
+        <div style="background:#f3e8ff; border:1px solid #a855f7; border-radius:8px; padding:1.5rem; margin:1.5rem 0;">
+            <h3 style="color:#581c87; margin-top:0;">البت (Bit) - الطبقة الفيزيائية (Layer 1)</h3>
+            <p style="margin-bottom:1rem;">
+                <strong>الوصف:</strong> الإطار مُحول إلى إشارات كهربائية أو ضوئية (0 و 1).<br>
+                <strong>مثال:</strong> إشارات كهربائية على كابل Ethernet أو إشارات ضوئية في الألياف البصرية.
+            </p>
+            <div style="background:#fff; border:1px solid #a855f7; border-radius:6px; padding:0.8rem; font-family:monospace; direction:ltr; text-align:left;">
+                <strong>Bits:</strong> 01001000 01100101 01101100 01101100 01101111...<br>
+                <strong>Total:</strong> 69 bytes × 8 = 552 bits
+            </div>
+        </div>
+
+        <div style="background:#f8fafc; border:1px solid #64748b; border-radius:8px; padding:1rem; margin:1.5rem 0;">
+            <div style="color:#1e293b; font-weight:bold; margin-bottom:0.5rem;">ملخص العملية</div>
+            <ol style="margin:0; padding-right:1.5rem;">
+                <li><strong>طبقة التطبيق:</strong> البيانات الأصلية (11 بايت)</li>
+                <li><strong>طبقة النقل:</strong> + ترويسة TCP = القطعة (31 بايت)</li>
+                <li><strong>طبقة الشبكة:</strong> + ترويسة IP = الحزمة (51 بايت)</li>
+                <li><strong>طبقة ربط البيانات:</strong> + ترويسة Ethernet + FCS = الإطار (69 بايت)</li>
+                <li><strong>الطبقة الفيزيائية:</strong> تحويل إلى بتات (552 بت)</li>
+            </ol>
+        </div>
+
         <h2 id="memory-units" style="color:#1e40af; margin-top:2.5rem;">وحدات قياس البيانات في الذاكرة (Memory Data Units)</h2>
         <div style="overflow-x:auto; direction:ltr;">
             <table style="width:80%; min-width:340px; margin:auto; border-collapse:collapse; text-align:center; font-size:1.1rem; background:#fff;">

@@ -294,6 +294,171 @@
 
         <hr style="margin: 2rem 0;">
         
+        <h2>جدول التوجيه (Routing Table)</h2>
+        
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">تعريف جدول التوجيه</h4>
+            <p>
+                جدول التوجيه هو قاعدة بيانات موجودة في أجهزة التوجيه (Routers) تحتوي على معلومات حول كيفية الوصول إلى الشبكات المختلفة. 
+                يعمل كخريطة للشبكة تساعد الموجه في اتخاذ قرارات التوجيه.
+            </p>
+        </div>
+
+        <h3>مكونات جدول التوجيه</h3>
+        
+        <div class="success">
+            <h4 style="color:#166534; margin-bottom: 0.8rem;">العناصر الأساسية</h4>
+            <ul>
+                <li><strong>عنوان الشبكة الهدف (Destination Network):</strong> عنوان الشبكة المراد الوصول إليها</li>
+                <li><strong>قناع الشبكة الفرعية (Subnet Mask):</strong> يحدد نطاق الشبكة</li>
+                <li><strong>المنفذ التالي (Next Hop):</strong> عنوان الموجه التالي في المسار</li>
+                <li><strong>المنفذ (Interface):</strong> المنفذ الذي سيتم إرسال البيانات من خلاله</li>
+                <li><strong>المسافة (Metric):</strong> تكلفة الوصول إلى الشبكة الهدف</li>
+                <li><strong>المسافة الإدارية (Administrative Distance):</strong> مصداقية مصدر التوجيه</li>
+            </ul>
+        </div>
+
+        <h3>مثال على جدول التوجيه</h3>
+        
+        <div class="command-box">
+            Router# show ip route<br>
+            Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, * - candidate default<br><br>
+            
+            Gateway of last resort is 192.168.1.1 to network 0.0.0.0<br><br>
+            
+            C&nbsp;&nbsp;&nbsp;&nbsp;192.168.1.0/24 is directly connected, FastEthernet0/0<br>
+            C&nbsp;&nbsp;&nbsp;&nbsp;192.168.2.0/24 is directly connected, FastEthernet0/1<br>
+            S&nbsp;&nbsp;&nbsp;&nbsp;10.0.0.0/8 [1/0] via 192.168.1.1<br>
+            R&nbsp;&nbsp;&nbsp;&nbsp;172.16.0.0/16 [120/2] via 192.168.2.1, 00:00:15, FastEthernet0/1<br>
+            O&nbsp;&nbsp;&nbsp;&nbsp;172.17.0.0/16 [110/20] via 192.168.1.2, 00:00:10, FastEthernet0/0
+        </div>
+
+        <h3>شرح رموز جدول التوجيه</h3>
+        
+        <div class="highlight">
+            <h4 style="color:#92400e; margin-bottom: 0.8rem;">أنواع المسارات</h4>
+            <ul>
+                <li><strong>C (Connected):</strong> الشبكات المتصلة مباشرة بالموجه</li>
+                <li><strong>S (Static):</strong> المسارات الثابتة المكونة يدوياً</li>
+                <li><strong>R (RIP):</strong> مسارات تم تعلمها من بروتوكول RIP</li>
+                <li><strong>O (OSPF):</strong> مسارات تم تعلمها من بروتوكول OSPF</li>
+                <li><strong>D (EIGRP):</strong> مسارات تم تعلمها من بروتوكول EIGRP</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>العلاقة بين الموجه والموزع</h2>
+        
+        <h3>الاختلافات الأساسية</h3>
+        
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">الموجه (Router)</h4>
+            <ul>
+                <li><strong>الطبقة:</strong> يعمل في الطبقة الثالثة (Network Layer)</li>
+                <li><strong>العناوين:</strong> يستخدم عناوين IP للتوجيه</li>
+                <li><strong>الوظيفة:</strong> يربط بين الشبكات المختلفة</li>
+                <li><strong>جدول التوجيه:</strong> يحتوي على معلومات عن الشبكات البعيدة</li>
+                <li><strong>القرارات:</strong> يتخذ قرارات توجيه معقدة</li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <h4 style="color:#166534; margin-bottom: 0.8rem;">الموزع (Switch)</h4>
+            <ul>
+                <li><strong>الطبقة:</strong> يعمل في الطبقة الثانية (Data Link Layer)</li>
+                <li><strong>العناوين:</strong> يستخدم عناوين MAC للتبديل</li>
+                <li><strong>الوظيفة:</strong> يربط الأجهزة داخل نفس الشبكة</li>
+                <li><strong>جدول العناوين:</strong> يحتوي على عناوين MAC المحلية فقط</li>
+                <li><strong>القرارات:</strong> يتخذ قرارات تبديل بسيطة</li>
+            </ul>
+        </div>
+
+        <h3>مثال عملي: شبكة تحتوي على موجه وموزع</h3>
+        
+        <div class="command-box">
+            <strong>السيناريو:</strong><br>
+            - شبكة مكتب صغير تحتوي على:<br>
+            &nbsp;&nbsp;• موجه واحد (Router) متصل بالإنترنت<br>
+            &nbsp;&nbsp;• موزع واحد (Switch) يربط أجهزة المكتب<br>
+            &nbsp;&nbsp;• 5 أجهزة كمبيوتر متصلة بالموزع<br><br>
+            
+            <strong>جدول التوجيه في الموجه:</strong><br>
+            C&nbsp;&nbsp;&nbsp;&nbsp;192.168.1.0/24 is directly connected, FastEthernet0/0<br>
+            S&nbsp;&nbsp;&nbsp;&nbsp;0.0.0.0/0 [1/0] via 203.0.113.1 (الإنترنت)<br><br>
+            
+            <strong>جدول عناوين MAC في الموزع:</strong><br>
+            Vlan&nbsp;&nbsp;&nbsp;Mac Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ports<br>
+            1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0001.42aa.1234&nbsp;&nbsp;&nbsp;&nbsp;DYNAMIC&nbsp;&nbsp;Fa0/1<br>
+            1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0001.42bb.5678&nbsp;&nbsp;&nbsp;&nbsp;DYNAMIC&nbsp;&nbsp;Fa0/2<br>
+            1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0001.42cc.9abc&nbsp;&nbsp;&nbsp;&nbsp;DYNAMIC&nbsp;&nbsp;Fa0/3<br>
+            1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0001.42dd.def0&nbsp;&nbsp;&nbsp;&nbsp;DYNAMIC&nbsp;&nbsp;Fa0/4<br>
+            1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0001.42ee.1234&nbsp;&nbsp;&nbsp;&nbsp;DYNAMIC&nbsp;&nbsp;Fa0/5
+        </div>
+
+        <h3>كيفية عمل الموجه والموزع معاً</h3>
+        
+        <div class="warning">
+            <h4 style="color:#991b1b; margin-bottom: 0.8rem;">مثال: إرسال رسالة من جهاز إلى الإنترنت</h4>
+            <ol>
+                <li><strong>الجهاز المرسل:</strong> يريد إرسال بيانات إلى عنوان IP خارجي (مثل 8.8.8.8)</li>
+                <li><strong>الموزع:</strong> يستقبل البيانات ويبحث في جدول عناوين MAC</li>
+                <li><strong>الموزع:</strong> يرسل البيانات إلى الموجه (المنفذ المتصل به)</li>
+                <li><strong>الموجه:</strong> يستقبل البيانات ويبحث في جدول التوجيه</li>
+                <li><strong>الموجه:</strong> يجد أن الوجهة خارجية ويرسل البيانات عبر الإنترنت</li>
+                <li><strong>الاستجابة:</strong> تأتي البيانات من الإنترنت عبر الموجه إلى الموزع</li>
+                <li><strong>الموزع:</strong> يرسل البيانات إلى الجهاز المستهدف</li>
+            </ol>
+        </div>
+
+        <h3>أوامر مفيدة لفحص جداول التوجيه</h3>
+        
+        <div class="command-box">
+            <strong>show ip route</strong> - عرض جدول التوجيه الكامل
+        </div>
+        
+        <div class="command-box">
+            <strong>show ip route [network]</strong> - عرض مسار محدد لشبكة معينة
+        </div>
+        
+        <div class="command-box">
+            <strong>show ip route summary</strong> - ملخص جدول التوجيه
+        </div>
+        
+        <div class="command-box">
+            <strong>show ip route connected</strong> - عرض الشبكات المتصلة مباشرة
+        </div>
+        
+        <div class="command-box">
+            <strong>show ip route static</strong> - عرض المسارات الثابتة
+        </div>
+
+        <h3>مثال على تكوين مسار ثابت</h3>
+        
+        <div class="command-box">
+            Router# configure terminal<br>
+            Router(config)# ip route 10.0.0.0 255.0.0.0 192.168.1.1<br>
+            Router(config)# exit<br>
+            Router# show ip route<br>
+            S&nbsp;&nbsp;&nbsp;&nbsp;10.0.0.0/8 [1/0] via 192.168.1.1
+        </div>
+
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">شرح الأمر</h4>
+            <p>
+                <strong>ip route 10.0.0.0 255.0.0.0 192.168.1.1</strong><br>
+                • 10.0.0.0: عنوان الشبكة الهدف<br>
+                • 255.0.0.0: قناع الشبكة الفرعية<br>
+                • 192.168.1.1: عنوان الموجه التالي (Next Hop)
+            </p>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
         <h2>الخلاصة</h2>
         
         <p>

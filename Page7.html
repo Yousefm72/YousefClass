@@ -373,6 +373,82 @@
 
         <hr style="margin: 2rem 0;">
         
+        <h2>بروتوكول OSPF (Open Shortest Path First)</h2>
+        
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">تعريف OSPF</h4>
+            <p>
+                OSPF هو بروتوكول توجيه ديناميكي يعمل في الطبقة الثالثة من نموذج OSI. 
+                يستخدم خوارزمية Dijkstra لحساب أقصر مسار إلى كل شبكة في المنطقة. 
+                يعتبر من أكثر بروتوكولات التوجيه استخداماً في الشبكات الكبيرة.
+            </p>
+        </div>
+
+        <h3>مميزات بروتوكول OSPF</h3>
+        
+        <div class="success">
+            <h4 style="color:#166534; margin-bottom: 0.8rem;">المميزات الرئيسية</h4>
+            <ul>
+                <li><strong>التقارب السريع:</strong> يتعافى بسرعة من الأعطال</li>
+                <li><strong>عدم وجود حلقات:</strong> يمنع تكوين حلقات التوجيه</li>
+                <li><strong>التوازن في التحميل:</strong> يوزع الحركة على عدة مسارات</li>
+                <li><strong>التحكم في التكلفة:</strong> يمكن تخصيص تكلفة لكل رابط</li>
+                <li><strong>الأمان:</strong> يدعم المصادقة</li>
+                <li><strong>قابلية التوسع:</strong> مناسب للشبكات الكبيرة</li>
+            </ul>
+        </div>
+
+        <h3>مناطق OSPF (OSPF Areas)</h3>
+        
+        <div class="highlight">
+            <h4 style="color:#92400e; margin-bottom: 0.8rem;">أنواع المناطق</h4>
+            <ul>
+                <li><strong>المنطقة 0 (Backbone Area):</strong> المنطقة الأساسية التي تربط جميع المناطق</li>
+                <li><strong>المناطق العادية:</strong> المناطق التي تتصل بالمنطقة 0</li>
+                <li><strong>المنطقة الهامشية (Stub Area):</strong> لا تتلقى مسارات خارجية</li>
+                <li><strong>المنطقة الهامشية الكاملة (Totally Stubby):</strong> لا تتلقى مسارات خارجية أو بين المناطق</li>
+            </ul>
+        </div>
+
+        <h3>مثال على تكوين OSPF</h3>
+        
+        <div class="protocol-box">
+            Router# configure terminal<br>
+            Router(config)# router ospf 1<br>
+            Router(config-router)# network 192.168.1.0 0.0.0.255 area 0<br>
+            Router(config-router)# network 10.0.0.0 0.0.0.255 area 1<br>
+            Router(config-router)# router-id 1.1.1.1<br>
+            Router(config-router)# exit
+        </div>
+
+        <h3>العلاقة بين OSPF والموجه والموزع</h3>
+        
+        <div class="warning">
+            <h4 style="color:#991b1b; margin-bottom: 0.8rem;">دور كل جهاز</h4>
+            <ul>
+                <li><strong>الموجه (Router):</strong> يدعم OSPF ويشارك في تبادل معلومات التوجيه</li>
+                <li><strong>الموزع (Switch):</strong> لا يدعم OSPF ولكنه ينقل رسائل OSPF بين الموجهات</li>
+                <li><strong>التبادل:</strong> الموزع ينقل رسائل OSPF كبيانات عادية</li>
+            </ul>
+        </div>
+
+        <h3>مثال عملي: شبكة مع OSPF</h3>
+        
+        <div class="protocol-box">
+            <strong>السيناريو:</strong><br>
+            - 3 موجهات متصلة عبر موزع<br>
+            - كل موجه يدعم OSPF<br>
+            - الموزع ينقل رسائل OSPF<br><br>
+            
+            <strong>رسائل OSPF:</strong><br>
+            • Hello Messages: للتعرف على الجيران<br>
+            • LSA (Link State Advertisement): لمشاركة معلومات الشبكة<br>
+            • LSDB (Link State Database): قاعدة بيانات حالة الروابط<br>
+            • SPF Algorithm: لحساب أقصر مسار
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
         <h2>الخلاصة</h2>
         
         <p>
