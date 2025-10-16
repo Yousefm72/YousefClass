@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أوامر الشبكات في موجه الأوامر CMD</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { background-color:#f3f4f6; color:#1f2937; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .container { width:60%; margin:5rem auto; background:#fff; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.08); padding:2rem 2.5rem; }
+        h1 { color:#2563eb; margin-bottom:1.5rem; text-align:center; }
+        h2 { color:#1e40af; margin:2rem 0 1rem; text-align:right; }
+        p  { font-size:1.1rem; line-height:2; }
+        ul { font-size:1.05rem; line-height:2; margin-bottom:1rem; }
+        .kbd { background:#eef2ff; color:#1e293b; padding:0.15rem 0.45rem; border-radius:6px; font-family:Consolas, Monaco, monospace; font-size:0.95rem; }
+        pre { background:#0f172a; color:#e2e8f0; padding:1rem; border-radius:8px; overflow-x:auto; direction:ltr; text-align:left; font-size:0.95rem; }
+        code { font-family:Consolas, Monaco, monospace; }
+        .note { background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:0.9rem 1rem; margin:1rem 0; }
+        .toc a { color:#1e40af; text-decoration:underline; }
+    </style>
+    <!-- افتح هذا الملف عبر المتصفح. جميع الأمثلة تعمل في موجه الأوامر (CMD) على ويندوز. -->
+</head>
+<body>
+    <div class="container">
+        <div style="margin-bottom:1rem; text-align:left; direction:ltr;">
+            <a href="index.html" class="btn" style="direction:rtl; display:inline-flex; align-items:center; gap:8px;">
+                <span style="font-size:1.2rem;">🏠</span>
+                <span>العودة للصفحة الرئيسية</span>
+            </a>
+        </div>
+        <h1>أوامر الشبكات في موجه الأوامر (CMD)</h1>
+
+        <ul class="toc" style="direction:rtl; font-size:1.05rem; margin-bottom:2rem; line-height:2.1;">
+            <li><a href="#open-cmd">كيفية فتح CMD كمسؤول</a></li>
+            <li><a href="#ipconfig">ipconfig</a></li>
+            <li><a href="#ping">ping</a></li>
+            <li><a href="#tracert">tracert</a></li>
+            <li><a href="#nslookup">nslookup</a></li>
+            <li><a href="#arp">arp</a></li>
+            <li><a href="#netstat">netstat</a></li>
+            <li><a href="#route">route</a></li>
+            <li><a href="#getmac">getmac</a></li>
+            <li><a href="#flushdns">ipconfig /flushdns</a></li>
+            <li><a href="#netsh">netsh interface ip show config</a></li>
+        </ul>
+
+        <div id="open-cmd" class="note">
+            <div style="color:#1e40af; font-weight:bold; margin-bottom:0.4rem;">كيفية فتح موجه الأوامر</div>
+            - اضغط <span class="kbd">Win</span> ثم اكتب <span class="kbd">cmd</span> واختر "تشغيل كمسؤول" للحصول على صلاحيات التعديل على الشبكة.
+        </div>
+
+        <h2 id="ipconfig">ipconfig — عرض إعدادات شبكة IPv4/IPv6</h2>
+        <p>يعرض عناوين IP وأقنعة الشبكة والبوابة الافتراضية لكل محوّل شبكة.</p>
+        <pre><code>ipconfig
+ipconfig /all            ^ يعرض تفاصيل شاملة (DNS, DHCP, MAC)
+ipconfig /release        ^ تحرير (إسقاط) عنوان DHCP
+ipconfig /renew          ^ طلب عنوان جديد من DHCP
+ipconfig /displaydns     ^ عرض ذاكرة أسماء DNS المحلية
+</code></pre>
+        <div class="note">استخدم <span class="kbd">ipconfig /all</span> لمعرفة ما إذا كان الجهاز يحصل على IP من DHCP واسم خادم DNS.</div>
+
+        <h2 id="ping">ping — اختبار الوصول والكمون</h2>
+        <p>يرسل حزم ICMP للتحقق من الوصول إلى مضيف وقياس زمن الاستجابة.</p>
+        <pre><code>ping 8.8.8.8              ^ اختبار الوصول إلى خادم Google DNS عبر IP
+ping www.example.com      ^ اختبار عبر اسم نطاق (يتطلب حل DNS)
+ping -n 10 1.1.1.1        ^ إرسال 10 طلبات بدلاً من 4 الافتراضية
+ping -l 1024 8.8.4.4      ^ حجم حمولة 1024 بايت لاختبار الاستقرار
+</code></pre>
+        <div class="note">إذا نجح <span class="kbd">ping</span> على IP وفشل على اسم نطاق، فالمشكلة غالبًا في DNS.</div>
+
+        <h2 id="tracert">tracert — تتبع المسار إلى وجهة</h2>
+        <p>يعرض القفزات (الموجّهات) بينك وبين الوجهة لتحديد مكان الانقطاع أو البطء.</p>
+        <pre><code>tracert 8.8.8.8
+tracert www.example.com
+</code></pre>
+        <div class="note">القفزة التي تتوقف عندها الاستجابة قد تشير إلى جهاز يرفض ICMP أو انقطاع في هذا المسار.</div>
+
+        <h2 id="nslookup">nslookup — الاستعلام عن DNS</h2>
+        <p>يستخدم لحل أسماء النطاقات إلى عناوين IP والعكس عبر خوادم DNS.</p>
+        <pre><code>nslookup www.example.com          ^ الاستعلام باستخدام DNS الافتراضي
+nslookup www.example.com 8.8.8.8 ^ الاستعلام باستخدام خادم محدد
+nslookup -type=MX example.com     ^ سجلات البريد لنطاق
+</code></pre>
+        <div class="note">إذا أعاد <span class="kbd">nslookup</span> نتيجة بينما فشل المتصفح، فربما توجد مشكلة وكيل Proxy أو جدار ناري.</div>
+
+        <h2 id="arp">arp — جدول ربط IP إلى MAC في الشبكة المحلية</h2>
+        <p>يعرض ويدير جدول ARP الذي يربط عناوين IP بعناوين MAC داخل نفس الشبكة المحلية.</p>
+        <pre><code>arp -a               ^ عرض جدول ARP الحالي
+arp -d *            ^ حذف كل السجلات المؤقتة (يتطلب أذونات)
+</code></pre>
+        <div class="note">جدول ARP مفيد لكشف التعارضات أو انتحال العناوين داخل الشبكة المحلية.</div>
+
+        <h2 id="netstat">netstat — المنافذ والاتصالات النشطة</h2>
+        <p>يعرض الاتصالات المفتوحة والمنافذ المستمعة وجداول التوجيه.</p>
+        <pre><code>netstat -ano         ^ كل الاتصالات مع PID العملية
+netstat -an | find "LISTEN"  ^ إظهار المنافذ التي في وضع الاستماع
+netstat -r          ^ عرض جدول التوجيه (Route Table)
+</code></pre>
+        <div class="note">استخدم PID مع "إدارة المهام" لمعرفة أي برنامج يستخدم منفذًا معيّنًا.</div>
+
+        <h2 id="route">route — إدارة جدول التوجيه</h2>
+        <p>اعرض أو أضف أو احذف مسارات يدوية للشبكات.</p>
+        <pre><code>route print
+route add 10.10.10.0 mask 255.255.255.0 192.168.1.1 metric 10
+route delete 10.10.10.0
+</code></pre>
+        <div class="note">تعديل المسارات يتطلب تشغيل CMD كمسؤول. استخدم <span class="kbd">route print</span> قبل وبعد للتأكد.</div>
+
+        <h2 id="getmac">getmac — عرض عناوين MAC</h2>
+        <p>يعرض عناوين MAC للمحولات المحلية وربما البعيدة (عند توفرها).</p>
+        <pre><code>getmac /v            ^ عرض مفصّل يتضمن أسماء المحولات
+</code></pre>
+
+        <h2 id="flushdns">ipconfig /flushdns — مسح ذاكرة DNS المؤقتة</h2>
+        <p>يحل مشاكل التخزين المؤقت لسجلات DNS القديمة.</p>
+        <pre><code>ipconfig /displaydns
+ipconfig /flushdns   ^ مسح الكاش
+ipconfig /displaydns ^ التحقق أن الكاش أصبح فارغًا تقريبًا
+</code></pre>
+
+        <h2 id="netsh">netsh interface ip show config — إعدادات بروتوكول IP</h2>
+        <p>يعرض تكوينات واجهات الشبكة بالتفصيل، ويمكن عبر netsh أيضًا ضبط IP وDNS.</p>
+        <pre><code>netsh interface ip show config
+netsh interface ipv4 show addresses
+rem أمثلة ضبط (تتطلب مسؤول):
+rem netsh interface ip set address name="Ethernet" static 192.168.1.50 255.255.255.0 192.168.1.1
+rem netsh interface ip set dns name="Ethernet" static 8.8.8.8
+</code></pre>
+
+        <div class="note">
+            نصيحة: عند استكشاف مشاكل الشبكة، اتبع تسلسلًا منطقيًا: تحقق من <span class="kbd">ipconfig</span>، ثم <span class="kbd">ping</span> البوابة، ثم DNS عبر <span class="kbd">nslookup</span>، وبعدها تتبع المسار <span class="kbd">tracert</span>، ولا تنس فحص المنافذ بـ <span class="kbd">netstat</span>.
+        </div>
+
+    </div>
+</body>
+</html>
+
+

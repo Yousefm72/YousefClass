@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLAN - الشبكات الافتراضية المحلية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            width: 60%;
+            margin: 5rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+        }
+        h1 {
+            color: #2563eb;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h2 {
+            color: #1e40af;
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+        h3 {
+            color: #2563eb;
+            margin: 1.5rem 0 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+        .info-box {
+            background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #0ea5e9;
+        }
+        .command-box {
+            background: #1f2937;
+            color: #f9fafb;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+        }
+        .highlight {
+            background: linear-gradient(145deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #f59e0b;
+        }
+        .warning {
+            background: linear-gradient(145deg, #fef2f2, #fecaca);
+            border: 2px solid #dc2626;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #dc2626;
+        }
+        .success {
+            background: linear-gradient(145deg, #f0fdf4, #dcfce7);
+            border: 2px solid #16a34a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #16a34a;
+        }
+        ul {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .nav-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VLAN - الشبكات الافتراضية المحلية</h1>
+        
+        <p>
+            VLAN (Virtual Local Area Network) هي تقنية تسمح بتقسيم الشبكة الفيزيائية إلى عدة شبكات منطقية منفصلة. 
+            هذا التقسيم يحسن الأمان والأداء وإدارة الشبكة بشكل كبير.
+        </p>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>ما هو VLAN؟</h2>
+        
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">تعريف VLAN</h4>
+            <p>
+                VLAN هي شبكة افتراضية تنشأ داخل موزع أو عدة موزعات متصلة. 
+                تسمح بتجميع الأجهزة منطقياً بغض النظر عن موقعها الفيزيائي في الشبكة.
+            </p>
+        </div>
+
+        <h3>مميزات استخدام VLAN</h3>
+        
+        <div class="success">
+            <h4 style="color:#166534; margin-bottom: 0.8rem;">المميزات الرئيسية</h4>
+            <ul>
+                <li><strong>تحسين الأمان:</strong> عزل حركة البيانات بين الأقسام المختلفة</li>
+                <li><strong>تقليل حركة البث:</strong> تقليل عدد الرسائل المرسلة لجميع الأجهزة</li>
+                <li><strong>سهولة الإدارة:</strong> إمكانية إعادة تنظيم الشبكة بدون تغيير الكابلات</li>
+                <li><strong>تحسين الأداء:</strong> تقليل التصادمات وزيادة الكفاءة</li>
+                <li><strong>المرونة:</strong> إمكانية نقل الأجهزة بين الأقسام بسهولة</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>أنواع VLAN</h2>
+        
+        <h3>1. VLAN الافتراضي (Default VLAN)</h3>
+        
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">VLAN 1</h4>
+            <p>
+                جميع المنافذ في الموزع تنتمي إلى VLAN 1 افتراضياً. 
+                هذا الـ VLAN يحتوي على جميع الأجهزة المتصلة قبل تكوين VLANs أخرى.
+            </p>
+        </div>
+
+        <h3>2. VLAN المستخدم (User VLAN)</h3>
+        
+        <div class="success">
+            <h4 style="color:#166534; margin-bottom: 0.8rem;">VLANs مخصصة</h4>
+            <ul>
+                <li><strong>VLAN 10:</strong> قسم المبيعات</li>
+                <li><strong>VLAN 20:</strong> قسم المحاسبة</li>
+                <li><strong>VLAN 30:</strong> قسم الموارد البشرية</li>
+                <li><strong>VLAN 40:</strong> قسم تقنية المعلومات</li>
+            </ul>
+        </div>
+
+        <h3>3. VLAN الإدارة (Management VLAN)</h3>
+        
+        <div class="highlight">
+            <h4 style="color:#92400e; margin-bottom: 0.8rem;">VLAN للإدارة</h4>
+            <p>
+                VLAN مخصص لإدارة أجهزة الشبكة مثل الموزعات والموجهات. 
+                عادة ما يكون VLAN 99 أو أي رقم آخر غير 1.
+            </p>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>تكوين VLAN</h2>
+        
+        <h3>إنشاء VLAN جديد</h3>
+        
+        <div class="command-box">
+            Switch# configure terminal<br>
+            Switch(config)# vlan 10<br>
+            Switch(config-vlan)# name Sales<br>
+            Switch(config-vlan)# exit<br>
+            Switch(config)# vlan 20<br>
+            Switch(config-vlan)# name Accounting<br>
+            Switch(config-vlan)# exit
+        </div>
+
+        <h3>تعيين منفذ إلى VLAN</h3>
+        
+        <div class="command-box">
+            Switch(config)# interface fastethernet 0/1<br>
+            Switch(config-if)# switchport mode access<br>
+            Switch(config-if)# switchport access vlan 10<br>
+            Switch(config-if)# exit<br><br>
+            
+            Switch(config)# interface range fastethernet 0/2-5<br>
+            Switch(config-if-range)# switchport mode access<br>
+            Switch(config-if-range)# switchport access vlan 20<br>
+            Switch(config-if-range)# exit
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>TRUNK - الجذع</h2>
+        
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">تعريف TRUNK</h4>
+            <p>
+                TRUNK هو رابط عالي السرعة يحمل حركة بيانات عدة VLANs بين الموزعات أو بين الموزع والموجه. 
+                يستخدم تقنية التوسيم (Tagging) لتمييز البيانات التي تنتمي لكل VLAN.
+            </p>
+        </div>
+
+        <h3>لماذا نحتاج TRUNK؟</h3>
+        
+        <div class="warning">
+            <h4 style="color:#991b1b; margin-bottom: 0.8rem;">المشكلة بدون TRUNK</h4>
+            <ul>
+                <li><strong>الحاجة لعدة كابلات:</strong> كابل منفصل لكل VLAN</li>
+                <li><strong>إهدار المنافذ:</strong> استهلاك منافذ كثيرة في الموزعات</li>
+                <li><strong>التكلفة العالية:</strong> تكلفة إضافية للكابلات والمنافذ</li>
+                <li><strong>صعوبة الإدارة:</strong> تعقيد في إدارة الكابلات</li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <h4 style="color:#166534; margin-bottom: 0.8rem;">الحل مع TRUNK</h4>
+            <ul>
+                <li><strong>كابل واحد:</strong> كابل واحد يحمل جميع VLANs</li>
+                <li><strong>توفير المنافذ:</strong> استخدام منفذ واحد بدلاً من عدة منافذ</li>
+                <li><strong>تقليل التكلفة:</strong> توفير في الكابلات والمنافذ</li>
+                <li><strong>سهولة الإدارة:</strong> إدارة مبسطة للروابط</li>
+            </ul>
+        </div>
+
+        <h3>تكوين TRUNK</h3>
+        
+        <div class="command-box">
+            Switch# configure terminal<br>
+            Switch(config)# interface fastethernet 0/24<br>
+            Switch(config-if)# switchport mode trunk<br>
+            Switch(config-if)# switchport trunk encapsulation dot1q<br>
+            Switch(config-if)# switchport trunk allowed vlan 10,20,30<br>
+            Switch(config-if)# exit
+        </div>
+
+        <h3>أوامر فحص TRUNK</h3>
+        
+        <div class="command-box">
+            Switch# show interfaces trunk<br>
+            Switch# show interfaces fastethernet 0/24 switchport<br>
+            Switch# show vlan brief
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>أمثلة عملية</h2>
+        
+        <h3>مثال 1: شركة صغيرة</h3>
+        
+        <div class="highlight">
+            <h4 style="color:#92400e; margin-bottom: 0.8rem;">السيناريو</h4>
+            <p>
+                شركة لديها 3 أقسام: المبيعات (5 أجهزة)، المحاسبة (3 أجهزة)، تقنية المعلومات (2 أجهزة). 
+                جميع الأجهزة متصلة بموزع واحد.
+            </p>
+        </div>
+
+        <div class="command-box">
+            <strong>تكوين VLANs:</strong><br>
+            Switch(config)# vlan 10<br>
+            Switch(config-vlan)# name Sales<br>
+            Switch(config-vlan)# exit<br><br>
+            
+            Switch(config)# vlan 20<br>
+            Switch(config-vlan)# name Accounting<br>
+            Switch(config-vlan)# exit<br><br>
+            
+            Switch(config)# vlan 30<br>
+            Switch(config-vlan)# name IT<br>
+            Switch(config-vlan)# exit<br><br>
+            
+            <strong>تعيين المنافذ:</strong><br>
+            Switch(config)# interface range fa0/1-5<br>
+            Switch(config-if-range)# switchport access vlan 10<br><br>
+            
+            Switch(config)# interface range fa0/6-8<br>
+            Switch(config-if-range)# switchport access vlan 20<br><br>
+            
+            Switch(config)# interface range fa0/9-10<br>
+            Switch(config-if-range)# switchport access vlan 30
+        </div>
+
+        <h3>مثال 2: شبكة متعددة الموزعات</h3>
+        
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">السيناريو</h4>
+            <p>
+                شركة لديها موزعين متصلين ببعضهما. الموزع الأول يحتوي على قسم المبيعات، 
+                والموزع الثاني يحتوي على قسم المحاسبة. نحتاج لربط القسمين عبر TRUNK.
+            </p>
+        </div>
+
+        <div class="command-box">
+            <strong>الموزع الأول (Switch1):</strong><br>
+            Switch1(config)# vlan 10<br>
+            Switch1(config-vlan)# name Sales<br>
+            Switch1(config-vlan)# exit<br><br>
+            
+            Switch1(config)# interface fa0/24<br>
+            Switch1(config-if)# switchport mode trunk<br>
+            Switch1(config-if)# switchport trunk allowed vlan 10,20<br><br>
+            
+            <strong>الموزع الثاني (Switch2):</strong><br>
+            Switch2(config)# vlan 20<br>
+            Switch2(config-vlan)# name Accounting<br>
+            Switch2(config-vlan)# exit<br><br>
+            
+            Switch2(config)# interface fa0/24<br>
+            Switch2(config-if)# switchport mode trunk<br>
+            Switch2(config-if)# switchport trunk allowed vlan 10,20
+        </div>
+
+        <h3>أوامر الفحص والتحقق</h3>
+        
+        <div class="command-box">
+            <strong>عرض جميع VLANs:</strong><br>
+            Switch# show vlan brief<br><br>
+            
+            <strong>عرض حالة TRUNK:</strong><br>
+            Switch# show interfaces trunk<br><br>
+            
+            <strong>عرض تفاصيل منفذ:</strong><br>
+            Switch# show interfaces fa0/24 switchport<br><br>
+            
+            <strong>عرض MAC addresses لكل VLAN:</strong><br>
+            Switch# show mac address-table vlan 10
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>أفضل الممارسات</h2>
+        
+        <div class="success">
+            <h4 style="color:#166534; margin-bottom: 0.8rem;">نصائح مهمة</h4>
+            <ul>
+                <li><strong>تسمية واضحة:</strong> استخدم أسماء واضحة لكل VLAN</li>
+                <li><strong>توثيق التكوين:</strong> وثق جميع VLANs والمنافذ</li>
+                <li><strong>النسخ الاحتياطي:</strong> احفظ التكوين بانتظام</li>
+                <li><strong>مراقبة الأداء:</strong> راقب حركة البيانات لكل VLAN</li>
+                <li><strong>الأمان:</strong> استخدم VLAN للإدارة منفصل عن VLANs المستخدمين</li>
+                <li><strong>التخطيط:</strong> خطط لـ VLANs قبل التطبيق</li>
+            </ul>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="page6.html" class="nav-btn">← الدرس السابق</a>
+            <a href="index.html" class="nav-btn">العودة للرئيسية</a>
+            <a href="Page7.html" class="nav-btn">الدرس التالي →</a>
+        </div>
+    </div>
+</body>
+</html>
