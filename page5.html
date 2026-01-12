@@ -171,6 +171,8 @@
             <li><a href="#ip-addresses" style="color:#1e40af; text-decoration:underline;">عناوين IP</a></li>
             <li><a href="#mac-addresses" style="color:#1e40af; text-decoration:underline;">عناوين MAC</a></li>
             <li><a href="#subnetting" style="color:#1e40af; text-decoration:underline;">تقسيم الشبكات الفرعية</a></li>
+            <li><a href="#subnet-mask" style="color:#1e40af; text-decoration:underline;">قناع الشبكة الفرعية</a></li>
+            <li><a href="#ip-classes" style="color:#1e40af; text-decoration:underline;">فئات عناوين IP</a></li>
             <li><a href="#address-types" style="color:#1e40af; text-decoration:underline;">أنواع العناوين</a></li>
             <li><a href="#practical-examples" style="color:#1e40af; text-decoration:underline;">أمثلة عملية</a></li>
         </ul>
@@ -350,6 +352,252 @@
                     <td>62</td>
                 </tr>
             </table>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="subnet-mask">قناع الشبكة الفرعية (Subnet Mask)</h2>
+        <p>
+            قناع الشبكة الفرعية (Subnet Mask) هو رقم يُستخدم لتحديد أي جزء من عنوان IP يمثل معرف الشبكة وأي جزء يمثل عنوان الجهاز. 
+            يُكتب قناع الشبكة بنفس تنسيق عنوان IP (أربعة أرقام مفصولة بنقاط).
+        </p>
+
+        <div class="subnet-example">
+            <div class="subnet-title">جدول أقنعة الشبكة الفرعية الشائعة</div>
+            <table class="comparison-table">
+                <tr>
+                    <th>CIDR</th>
+                    <th>قناع الشبكة</th>
+                    <th>عدد بتات الشبكة</th>
+                    <th>عدد بتات الأجهزة</th>
+                    <th>عدد الأجهزة المتاحة</th>
+                    <th>مثال</th>
+                </tr>
+                <tr>
+                    <td>/8</td>
+                    <td>255.0.0.0</td>
+                    <td>8</td>
+                    <td>24</td>
+                    <td>16,777,214</td>
+                    <td>10.0.0.0/8</td>
+                </tr>
+                <tr>
+                    <td>/16</td>
+                    <td>255.255.0.0</td>
+                    <td>16</td>
+                    <td>16</td>
+                    <td>65,534</td>
+                    <td>172.16.0.0/16</td>
+                </tr>
+                <tr>
+                    <td>/24</td>
+                    <td>255.255.255.0</td>
+                    <td>24</td>
+                    <td>8</td>
+                    <td>254</td>
+                    <td>192.168.1.0/24</td>
+                </tr>
+                <tr>
+                    <td>/25</td>
+                    <td>255.255.255.128</td>
+                    <td>25</td>
+                    <td>7</td>
+                    <td>126</td>
+                    <td>192.168.1.0/25</td>
+                </tr>
+                <tr>
+                    <td>/26</td>
+                    <td>255.255.255.192</td>
+                    <td>26</td>
+                    <td>6</td>
+                    <td>62</td>
+                    <td>192.168.1.0/26</td>
+                </tr>
+                <tr>
+                    <td>/27</td>
+                    <td>255.255.255.224</td>
+                    <td>27</td>
+                    <td>5</td>
+                    <td>30</td>
+                    <td>192.168.1.0/27</td>
+                </tr>
+                <tr>
+                    <td>/28</td>
+                    <td>255.255.255.240</td>
+                    <td>28</td>
+                    <td>4</td>
+                    <td>14</td>
+                    <td>192.168.1.0/28</td>
+                </tr>
+                <tr>
+                    <td>/29</td>
+                    <td>255.255.255.248</td>
+                    <td>29</td>
+                    <td>3</td>
+                    <td>6</td>
+                    <td>192.168.1.0/29</td>
+                </tr>
+                <tr>
+                    <td>/30</td>
+                    <td>255.255.255.252</td>
+                    <td>30</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>192.168.1.0/30</td>
+                </tr>
+            </table>
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: #6b7280;">
+                <strong>ملاحظة:</strong> عدد الأجهزة المتاحة = 2<sup>n</sup> - 2 (حيث n = عدد بتات الأجهزة). 
+                نطرح 2 لأن عنوان الشبكة وعنوان البث محجوزان.
+            </p>
+        </div>
+
+        <div class="info-box">
+            <div class="info-title">كيفية قراءة قناع الشبكة:</div>
+            <p>
+                في قناع الشبكة، الأرقام 255 تمثل جزء الشبكة (Network Part) والأرقام 0 تمثل جزء الجهاز (Host Part).
+            </p>
+            <div class="binary-visual">
+                <div class="binary-bit network">255</div>
+                <div class="binary-bit">.</div>
+                <div class="binary-bit network">255</div>
+                <div class="binary-bit">.</div>
+                <div class="binary-bit network">255</div>
+                <div class="binary-bit">.</div>
+                <div class="binary-bit host">0</div>
+                <br>
+                <small style="color: #64748b;">معرف الشبكة (24 بت) | عنوان الجهاز (8 بت)</small>
+            </div>
+            <p><strong>مثال:</strong> قناع 255.255.255.0 يعني أن أول 24 بت (3 بايت) تمثل الشبكة، وآخر 8 بت (1 بايت) تمثل الجهاز.</p>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+
+        <h2 id="ip-classes">فئات عناوين IP (IP Address Classes)</h2>
+        <p>
+            في النظام القديم، كانت عناوين IPv4 تُقسم إلى فئات (Classes) بناءً على قيمة البايت الأول. 
+            رغم أن النظام الحديث يستخدم CIDR، إلا أن فهم الفئات لا يزال مهماً.
+        </p>
+
+        <div class="subnet-example">
+            <div class="subnet-title">جدول فئات عناوين IP</div>
+            <table class="comparison-table">
+                <tr>
+                    <th>الفئة</th>
+                    <th>نطاق البايت الأول</th>
+                    <th>نطاق العناوين</th>
+                    <th>قناع الشبكة الافتراضي</th>
+                    <th>CIDR</th>
+                    <th>عدد الشبكات</th>
+                    <th>عدد الأجهزة لكل شبكة</th>
+                    <th>الاستخدام</th>
+                </tr>
+                <tr>
+                    <td><strong>Class A</strong></td>
+                    <td>1 - 126</td>
+                    <td>1.0.0.0 - 126.255.255.255</td>
+                    <td>255.0.0.0</td>
+                    <td>/8</td>
+                    <td>126</td>
+                    <td>16,777,214</td>
+                    <td>شبكات كبيرة جداً</td>
+                </tr>
+                <tr>
+                    <td><strong>Class B</strong></td>
+                    <td>128 - 191</td>
+                    <td>128.0.0.0 - 191.255.255.255</td>
+                    <td>255.255.0.0</td>
+                    <td>/16</td>
+                    <td>16,384</td>
+                    <td>65,534</td>
+                    <td>شبكات متوسطة</td>
+                </tr>
+                <tr>
+                    <td><strong>Class C</strong></td>
+                    <td>192 - 223</td>
+                    <td>192.0.0.0 - 223.255.255.255</td>
+                    <td>255.255.255.0</td>
+                    <td>/24</td>
+                    <td>2,097,152</td>
+                    <td>254</td>
+                    <td>شبكات صغيرة</td>
+                </tr>
+                <tr>
+                    <td><strong>Class D</strong></td>
+                    <td>224 - 239</td>
+                    <td>224.0.0.0 - 239.255.255.255</td>
+                    <td>غير محدد</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>البث المتعدد (Multicast)</td>
+                </tr>
+                <tr>
+                    <td><strong>Class E</strong></td>
+                    <td>240 - 255</td>
+                    <td>240.0.0.0 - 255.255.255.255</td>
+                    <td>غير محدد</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>محجوزة للبحث والتطوير</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="address-box">
+            <div class="address-title">شرح الفئات بالتفصيل</div>
+            
+            <h3 style="color: #1e40af; margin-top: 1rem;">Class A (الفئة A)</h3>
+            <ul>
+                <li><strong>البايت الأول:</strong> 1 - 126 (127 محجوز لـ loopback)</li>
+                <li><strong>معرف الشبكة:</strong> البايت الأول فقط</li>
+                <li><strong>معرف الجهاز:</strong> البايتات الثلاثة المتبقية</li>
+                <li><strong>مثال:</strong> 10.0.0.1 (10 = الشبكة، 0.0.1 = الجهاز)</li>
+                <li><strong>الاستخدام:</strong> شبكات كبيرة جداً مثل الشركات الكبرى</li>
+            </ul>
+
+            <h3 style="color: #1e40af; margin-top: 1rem;">Class B (الفئة B)</h3>
+            <ul>
+                <li><strong>البايت الأول:</strong> 128 - 191</li>
+                <li><strong>معرف الشبكة:</strong> البايتان الأولان</li>
+                <li><strong>معرف الجهاز:</strong> البايتان الأخيران</li>
+                <li><strong>مثال:</strong> 172.16.0.1 (172.16 = الشبكة، 0.1 = الجهاز)</li>
+                <li><strong>الاستخدام:</strong> شبكات متوسطة الحجم مثل الجامعات</li>
+            </ul>
+
+            <h3 style="color: #1e40af; margin-top: 1rem;">Class C (الفئة C)</h3>
+            <ul>
+                <li><strong>البايت الأول:</strong> 192 - 223</li>
+                <li><strong>معرف الشبكة:</strong> البايتات الثلاثة الأولى</li>
+                <li><strong>معرف الجهاز:</strong> البايت الأخير فقط</li>
+                <li><strong>مثال:</strong> 192.168.1.1 (192.168.1 = الشبكة، 1 = الجهاز)</li>
+                <li><strong>الاستخدام:</strong> شبكات صغيرة مثل المنازل والمكاتب الصغيرة</li>
+            </ul>
+
+            <h3 style="color: #1e40af; margin-top: 1rem;">Class D (الفئة D)</h3>
+            <ul>
+                <li><strong>البايت الأول:</strong> 224 - 239</li>
+                <li><strong>الاستخدام:</strong> البث المتعدد (Multicast) - إرسال بيانات لمجموعة من الأجهزة</li>
+                <li><strong>مثال:</strong> 224.0.0.1 (عنوان multicast محجوز)</li>
+            </ul>
+
+            <h3 style="color: #1e40af; margin-top: 1rem;">Class E (الفئة E)</h3>
+            <ul>
+                <li><strong>البايت الأول:</strong> 240 - 255</li>
+                <li><strong>الاستخدام:</strong> محجوزة للبحث والتطوير، غير مستخدمة حالياً</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <div class="info-title">ملاحظات مهمة:</div>
+            <ul>
+                <li><strong>127.0.0.0 - 127.255.255.255:</strong> محجوز لـ loopback (localhost)</li>
+                <li><strong>0.0.0.0:</strong> عنوان افتراضي/غير محدد</li>
+                <li><strong>255.255.255.255:</strong> عنوان البث العام</li>
+                <li>النظام الحديث يستخدم CIDR (Classless Inter-Domain Routing) بدلاً من الفئات</li>
+                <li>CIDR يوفر مرونة أكبر في تقسيم الشبكات</li>
+            </ul>
         </div>
 
         <hr style="margin: 2rem 0;">
