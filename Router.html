@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموجه - Router</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            width: 60%;
+            margin: 5rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+        }
+        h1 {
+            color: #2563eb;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h2 {
+            color: #1e40af;
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+        h3 {
+            color: #2563eb;
+            margin: 1.5rem 0 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+        .info-box {
+            background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #0ea5e9;
+        }
+        .command-box {
+            background: #1f2937;
+            color: #f9fafb;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+        }
+        .highlight {
+            background: linear-gradient(145deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #f59e0b;
+        }
+        .success {
+            background: linear-gradient(145deg, #f0fdf4, #dcfce7);
+            border: 2px solid #16a34a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #16a34a;
+        }
+        .settings-box {
+            background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+            border: 2px solid #6366f1;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #6366f1;
+        }
+        .settings-item {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .settings-item label {
+            font-weight: bold;
+            color: #1e40af;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .settings-item input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Courier New', monospace;
+        }
+        ul {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .nav-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        .router-icon {
+            text-align: center;
+            font-size: 5rem;
+            margin: 1rem 0;
+        }
+        .ip-display {
+            background: #1f2937;
+            color: #10b981;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="router-icon">📡</div>
+        <h1>الموجه (Router)</h1>
+        
+        <p>
+            الموجه هو جهاز شبكة ذكي يعمل في الطبقة الثالثة (Network Layer) من نموذج OSI. 
+            يقوم بتوجيه البيانات بين الشبكات المختلفة بناءً على عناوين IP، مما يجعله العنصر الأساسي في ربط الشبكات المحلية بالإنترنت والشبكات الأخرى.
+        </p>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>ما هو الموجه (Router)؟</h2>
+        
+        <div class="info-box">
+            <h4 style="color:#0c4a6e; margin-bottom: 0.8rem;">تعريف الموجه</h4>
+            <p>
+                الموجه هو جهاز شبكة يعمل كجسر بين الشبكات المختلفة. يقوم بفحص عناوين IP للبيانات الواردة 
+                واتخاذ قرارات ذكية حول أفضل مسار لإرسالها إلى وجهتها النهائية. يعتبر الموجه العنصر الأساسي 
+                في الإنترنت، حيث يربط ملايين الشبكات حول العالم.
+            </p>
+        </div>
+
+        <h3>مميزات الموجه</h3>
+        
+        <div class="success">
+            <h4 style="color:#166534; margin-bottom: 0.8rem;">المميزات الرئيسية</h4>
+            <ul>
+                <li><strong>ربط الشبكات:</strong> يربط بين شبكات مختلفة باستخدام بروتوكولات التوجيه</li>
+                <li><strong>اتخاذ القرارات:</strong> يختار أفضل مسار للبيانات بناءً على جداول التوجيه</li>
+                <li><strong>الأمان:</strong> يمكن تكوينه لتنفيذ قواعد جدار الحماية (Firewall)</li>
+                <li><strong>إدارة النطاق الترددي:</strong> يتحكم في حركة البيانات ويوزعها بكفاءة</li>
+                <li><strong>دعم بروتوكولات متعددة:</strong> يدعم بروتوكولات مثل RIP، OSPF، BGP</li>
+            </ul>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>كيف يعمل الموجه؟</h2>
+        
+        <h3>1. عملية التوجيه (Routing Process)</h3>
+        <p>
+            عندما يستقبل الموجه حزمة بيانات:
+        </p>
+        <ul>
+            <li>يفحص عنوان IP الوجهة من رأس الحزمة</li>
+            <li>يبحث في جدول التوجيه (Routing Table) عن أفضل مسار</li>
+            <li>يختار المنفذ (Interface) المناسب لإرسال الحزمة</li>
+            <li>يرسل الحزمة إلى الموجه التالي أو إلى الشبكة الهدف مباشرة</li>
+        </ul>
+
+        <h3>2. جدول التوجيه (Routing Table)</h3>
+        <p>
+            جدول التوجيه هو قاعدة بيانات تحتوي على معلومات حول كيفية الوصول إلى الشبكات المختلفة:
+        </p>
+        <ul>
+            <li>عنوان الشبكة الهدف</li>
+            <li>قناع الشبكة الفرعية (Subnet Mask)</li>
+            <li>المنفذ التالي (Next Hop)</li>
+            <li>المنفذ المحلي (Interface)</li>
+            <li>المسافة (Metric) - تكلفة الوصول</li>
+        </ul>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>الإعدادات الأساسية للموجه</h2>
+        
+        <div class="settings-box">
+            <h3 style="color:#4f46e5; margin-bottom: 1rem;">إعدادات الموجه الأساسية</h3>
+            
+            <div class="settings-item">
+                <label>اسم الموجه (Router Name):</label>
+                <div class="ip-display">Router-01</div>
+                <p style="font-size: 1rem; margin-top: 0.5rem; color: #6b7280;">
+                    يتم تعيين اسم فريد للموجه لتسهيل التعرف عليه في الشبكة. يمكن تغييره من خلال الأمر:
+                </p>
+                <div class="command-box">
+                    Router(config)# hostname Router-01
+                </div>
+            </div>
+
+            <div class="settings-item">
+                <label>تكوين المنافذ وعناوين IP:</label>
+                <p style="font-size: 1rem; margin-bottom: 1rem; color: #6b7280;">
+                    كل منفذ في الموجه يحتاج إلى عنوان IP وقناع شبكة فرعية:
+                </p>
+                
+                <div style="margin: 1rem 0;">
+                    <strong style="color: #1e40af;">المنفذ FastEthernet 0/0:</strong>
+                    <div class="ip-display">192.168.1.1 / 255.255.255.0</div>
+                    <div class="command-box">
+                        Router(config)# interface fastethernet 0/0<br>
+                        Router(config-if)# ip address 192.168.1.1 255.255.255.0<br>
+                        Router(config-if)# no shutdown
+                    </div>
+                </div>
+
+                <div style="margin: 1rem 0;">
+                    <strong style="color: #1e40af;">المنفذ FastEthernet 0/1:</strong>
+                    <div class="ip-display">192.168.2.1 / 255.255.255.0</div>
+                    <div class="command-box">
+                        Router(config)# interface fastethernet 0/1<br>
+                        Router(config-if)# ip address 192.168.2.1 255.255.255.0<br>
+                        Router(config-if)# no shutdown
+                    </div>
+                </div>
+
+                <div style="margin: 1rem 0;">
+                    <strong style="color: #1e40af;">المنفذ Serial 0/0/0:</strong>
+                    <div class="ip-display">10.0.0.1 / 255.255.255.252</div>
+                    <div class="command-box">
+                        Router(config)# interface serial 0/0/0<br>
+                        Router(config-if)# ip address 10.0.0.1 255.255.255.252<br>
+                        Router(config-if)# clock rate 64000<br>
+                        Router(config-if)# no shutdown
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-item">
+                <label>عرض التكوين الحالي:</label>
+                <div class="command-box">
+                    Router# show running-config<br><br>
+                    !<br>
+                    hostname Router-01<br>
+                    !<br>
+                    interface FastEthernet0/0<br>
+                    &nbsp;&nbsp;ip address 192.168.1.1 255.255.255.0<br>
+                    &nbsp;&nbsp;no shutdown<br>
+                    !<br>
+                    interface FastEthernet0/1<br>
+                    &nbsp;&nbsp;ip address 192.168.2.1 255.255.255.0<br>
+                    &nbsp;&nbsp;no shutdown<br>
+                    !<br>
+                    interface Serial0/0/0<br>
+                    &nbsp;&nbsp;ip address 10.0.0.1 255.255.255.252<br>
+                    &nbsp;&nbsp;clock rate 64000<br>
+                    &nbsp;&nbsp;no shutdown
+                </div>
+            </div>
+
+            <div class="settings-item">
+                <label>عرض حالة المنافذ:</label>
+                <div class="command-box">
+                    Router# show ip interface brief<br><br>
+                    Interface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP-Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK?&nbsp;Method&nbsp;Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Protocol<br>
+                    FastEthernet0/0&nbsp;&nbsp;192.168.1.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YES&nbsp;manual&nbsp;up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;up<br>
+                    FastEthernet0/1&nbsp;&nbsp;192.168.2.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YES&nbsp;manual&nbsp;up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;up<br>
+                    Serial0/0/0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.0.0.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YES&nbsp;manual&nbsp;up&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;up
+                </div>
+            </div>
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>الأوامر الأساسية للموجه</h2>
+        
+        <h3>1. أوامر عرض المعلومات</h3>
+        
+        <div class="command-box">
+            <strong>show version</strong> - عرض إصدار البرنامج والمعلومات الأساسية
+        </div>
+        
+        <div class="command-box">
+            <strong>show running-config</strong> - عرض التكوين الحالي
+        </div>
+        
+        <div class="command-box">
+            <strong>show ip interface brief</strong> - عرض حالة جميع المنافذ وعناوين IP
+        </div>
+        
+        <div class="command-box">
+            <strong>show ip route</strong> - عرض جدول التوجيه
+        </div>
+
+        <h3>2. أوامر التكوين الأساسية</h3>
+        
+        <div class="command-box">
+            <strong>enable</strong> - الدخول إلى وضع التكوين
+        </div>
+        
+        <div class="command-box">
+            <strong>configure terminal</strong> - الدخول إلى وضع التكوين العام
+        </div>
+        
+        <div class="command-box">
+            <strong>hostname [اسم]</strong> - تعيين اسم للموجه
+        </div>
+        
+        <div class="command-box">
+            <strong>interface [type] [number]</strong> - اختيار منفذ معين للتكوين
+        </div>
+        
+        <div class="command-box">
+            <strong>ip address [عنوان] [قناع]</strong> - تعيين عنوان IP للمنفذ
+        </div>
+        
+        <div class="command-box">
+            <strong>no shutdown</strong> - تفعيل المنفذ
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>مثال عملي: تكوين موجه جديد</h2>
+        
+        <div class="highlight">
+            <h4 style="color:#92400e; margin-bottom: 0.8rem;">سيناريو التكوين</h4>
+            <p>
+                لنفترض أنك تريد تكوين موجه جديد بالخطوات التالية:
+            </p>
+            <ol>
+                <li>تعيين اسم الموجه: "Router-Office"</li>
+                <li>تكوين المنفذ FastEthernet 0/0 بعنوان IP: 192.168.1.1/24</li>
+                <li>تكوين المنفذ FastEthernet 0/1 بعنوان IP: 192.168.2.1/24</li>
+                <li>تفعيل جميع المنافذ</li>
+            </ol>
+        </div>
+
+        <h3>خطوات التكوين:</h3>
+        <div class="command-box">
+            Router> enable<br>
+            Router# configure terminal<br>
+            Router(config)# hostname Router-Office<br>
+            Router-Office(config)# interface fastethernet 0/0<br>
+            Router-Office(config-if)# ip address 192.168.1.1 255.255.255.0<br>
+            Router-Office(config-if)# no shutdown<br>
+            Router-Office(config-if)# exit<br>
+            Router-Office(config)# interface fastethernet 0/1<br>
+            Router-Office(config-if)# ip address 192.168.2.1 255.255.255.0<br>
+            Router-Office(config-if)# no shutdown<br>
+            Router-Office(config-if)# exit<br>
+            Router-Office(config)# exit<br>
+            Router-Office# show ip interface brief
+        </div>
+
+        <hr style="margin: 2rem 0;">
+        
+        <h2>الخلاصة</h2>
+        
+        <p>
+            الموجه هو العنصر الأساسي في ربط الشبكات المختلفة. من خلال فهم كيفية عمله وتعلم الأوامر الأساسية، 
+            يمكنك إدارة الشبكات بشكل فعال وضمان التواصل بين الشبكات المختلفة.
+        </p>
+        
+        <p>
+            تذكر أن الممارسة العملية هي أفضل طريقة لتعلم هذه المفاهيم. 
+            استخدم محاكيات الشبكات مثل Packet Tracer أو GNS3 لتطبيق ما تعلمته.
+        </p>
+
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-btn">🏠 العودة للصفحة الرئيسية</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
