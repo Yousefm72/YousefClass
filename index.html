@@ -311,6 +311,39 @@
     
     <div class="footer">
         <p>© 2024 YousefClass - جميع الحقوق محفوظة</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <a href="#" id="viewCounterLink" style="color: #93c5fd; text-decoration: underline;">عرض عدد الزوار</a>
+            <span id="visitorCounter" style="display: none; margin-right: 0.5rem;">عدد الزوار: <strong id="counterValue">0</strong></span>
+        </p>
     </div>
+
+    <script>
+        (function() {
+            const PASSWORD = 'Alqmy876';
+            const STORAGE_KEY = 'yousefclass_visitor_count';
+            const SESSION_KEY = 'yousefclass_counted';
+
+            // Increment counter on new visit (once per session)
+            if (!sessionStorage.getItem(SESSION_KEY)) {
+                let count = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+                count++;
+                localStorage.setItem(STORAGE_KEY, count.toString());
+                sessionStorage.setItem(SESSION_KEY, '1');
+            }
+
+            document.getElementById('viewCounterLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                const input = prompt('أدخل كلمة المرور لعرض عدد الزوار:');
+                if (input === PASSWORD) {
+                    const count = localStorage.getItem(STORAGE_KEY) || '0';
+                    document.getElementById('counterValue').textContent = count;
+                    document.getElementById('visitorCounter').style.display = 'inline';
+                    this.style.display = 'none';
+                } else if (input !== null) {
+                    alert('كلمة المرور غير صحيحة');
+                }
+            });
+        })();
+    </script>
 </body>
 </html> 
