@@ -180,7 +180,7 @@
         
         <h3>إنشاء VLAN جديد</h3>
         
-        <div class="command-box">
+        <div class="command-box" style="direction:ltr;">
             Switch# configure terminal<br>
             Switch(config)# vlan 10<br>
             Switch(config-vlan)# name Sales<br>
@@ -192,7 +192,7 @@
 
         <h3>تعيين منفذ إلى VLAN</h3>
         
-        <div class="command-box">
+        <div class="command-box" style="direction:ltr;">
             Switch(config)# interface fastethernet 0/1<br>
             Switch(config-if)# switchport mode access<br>
             Switch(config-if)# switchport access vlan 10<br>
@@ -240,7 +240,7 @@
 
         <h3>تكوين TRUNK</h3>
         
-        <div class="command-box">
+        <div class="command-box" style="direction:ltr;">
             Switch# configure terminal<br>
             Switch(config)# interface fastethernet 0/24<br>
             Switch(config-if)# switchport mode trunk<br>
@@ -251,7 +251,7 @@
 
         <h3>أوامر فحص TRUNK</h3>
         
-        <div class="command-box">
+        <div class="command-box" style="direction:ltr;">
             Switch# show interfaces trunk<br>
             Switch# show interfaces fastethernet 0/24 switchport<br>
             Switch# show vlan brief
@@ -271,8 +271,8 @@
             </p>
         </div>
 
-        <div class="command-box">
-            <strong>تكوين VLANs:</strong><br>
+        <div class="command-box" style="direction:ltr;">
+            <p style="direction:rtl;">تكوين VLANs:</p><br>
             Switch(config)# vlan 10<br>
             Switch(config-vlan)# name Sales<br>
             Switch(config-vlan)# exit<br><br>
@@ -285,7 +285,7 @@
             Switch(config-vlan)# name IT<br>
             Switch(config-vlan)# exit<br><br>
             
-            <strong>تعيين المنافذ:</strong><br>
+            <p style="direction:rtl;" >تعيين المنافذ:</p><br>
             Switch(config)# interface range fa0/1-5<br>
             Switch(config-if-range)# switchport access vlan 10<br><br>
             
@@ -306,8 +306,8 @@
             </p>
         </div>
 
-        <div class="command-box">
-            <strong>الموزع الأول (Switch1):</strong><br>
+        <div class="command-box" style="direction:ltr;">
+            <p style="direction:rtl;">الموزع الأول (Switch1):</p><br>
             Switch1(config)# vlan 10<br>
             Switch1(config-vlan)# name Sales<br>
             Switch1(config-vlan)# exit<br><br>
@@ -316,7 +316,7 @@
             Switch1(config-if)# switchport mode trunk<br>
             Switch1(config-if)# switchport trunk allowed vlan 10,20<br><br>
             
-            <strong>الموزع الثاني (Switch2):</strong><br>
+            <p style="direction:rtl;">الموزع الثاني (Switch2):</p><br>
             Switch2(config)# vlan 20<br>
             Switch2(config-vlan)# name Accounting<br>
             Switch2(config-vlan)# exit<br><br>
@@ -328,18 +328,18 @@
 
         <h3>أوامر الفحص والتحقق</h3>
         
-        <div class="command-box">
-            <strong>عرض جميع VLANs:</strong><br>
-            Switch# show vlan brief<br><br>
+        <div class="command-box" >
+            <strong style="direction:rtl;">عرض جميع VLANs:</strong><br>
+           <p style="direction:ltr;"> Switch# show vlan brief</p>
             
-            <strong>عرض حالة TRUNK:</strong><br>
-            Switch# show interfaces trunk<br><br>
+            <strong style="direction:rtl;">عرض حالة TRUNK:</strong><br>
+            <p style="direction:ltr;"> Switch# show interfaces trunk</p>
             
-            <strong>عرض تفاصيل منفذ:</strong><br>
-            Switch# show interfaces fa0/24 switchport<br><br>
+            <strong style="direction:rtl;">عرض تفاصيل منفذ:</strong><br>
+            <p style="direction:ltr;"> Switch# show interfaces fa0/24 switchport</p>
             
-            <strong>عرض MAC addresses لكل VLAN:</strong><br>
-            Switch# show mac address-table vlan 10
+            <strong style="direction:rtl;">عرض MAC addresses لكل VLAN:</strong><br>
+            <p style="direction:ltr;"> Switch# show mac address-table vlan 10</p>       
         </div>
 
         <hr style="margin: 2rem 0;">

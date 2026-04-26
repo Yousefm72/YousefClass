@@ -28,6 +28,20 @@
             font-size: 1.2rem;
             line-height: 2;
         }
+        .return-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: #2563eb;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        .return-btn:hover {
+            background: #1d4ed8;
+        }
     </style>
 </head>
 <body>
@@ -194,33 +208,36 @@
         <ul style="font-size:1.1rem; line-height:2; margin-bottom:1.5rem;">
             <li><strong>الطوبولوجيا النجمية (Star Topology):</strong> جميع الأجهزة متصلة بجهاز مركزي (مثل الموزع أو الموجه). إذا تعطل الجهاز المركزي تتوقف الشبكة. <br><em>مثال: معظم الشبكات المنزلية الحديثة.</em></li>
             <div style="text-align:center; margin: 1rem 0;">
-                <img src="Images/Star.png" alt="رسم توضيحي للطوبولوجيا النجمية" style="width:90%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                <img src="Images/STAR.jpeg" alt="رسم توضيحي للطوبولوجيا النجمية" style="width:90%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
                 <div style="color:#2563eb; font-size:1rem; margin-top:0;">رسم توضيحي للطوبولوجيا النجمية</div>
             </div>
             <li><strong>الطوبولوجيا الخطية (Bus Topology):</strong> جميع الأجهزة متصلة بكابل رئيسي واحد. إذا حدث قطع في الكابل تتوقف الشبكة. <br><em>مثال: بعض الشبكات القديمة في المدارس أو المكاتب.</em></li>
             <div style="text-align:center; margin: 1rem 0;">
-                <img src="Images/bus.png" alt="رسم توضيحي للطوبولوجيا الخطية" style=" width:90%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                <img src="Images/bus.jpeg" alt="رسم توضيحي للطوبولوجيا الخطية" style=" width:70%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
                 <div style="color:#2563eb; font-size:1rem; margin-top:0;">رسم توضيحي للطوبولوجيا الخطية</div>
             </div>
             <li><strong>الطوبولوجيا الحلقية (Ring Topology):</strong> الأجهزة متصلة على شكل حلقة مغلقة، وتنتقل البيانات في اتجاه واحد أو اثنين. <br><em>مثال: بعض شبكات الشركات الصغيرة.</em></li>
             <div style="text-align:center; margin: 1rem 0;">
-                <img src="Images/ring.png" alt="رسم توضيحي للطوبولوجيا الحلقية" style="width:90%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                <img src="Images/ring.jpeg" alt="رسم توضيحي للطوبولوجيا الحلقية" style="width:70%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
                 <div style="color:#2563eb; font-size:1rem; margin-top:0;">رسم توضيحي للطوبولوجيا الحلقية</div>
             </div>
             <li><strong>الطوبولوجيا الشبكية (Mesh Topology):</strong> كل جهاز متصل بجميع الأجهزة الأخرى، ما يوفر اعتمادية عالية. <br><em>مثال: شبكات المؤسسات الكبيرة أو شبكات الإنترنت بين الدول.</em></li>
             <div style="text-align:center; margin: 1rem 0;">
-                <img src="Images/Mesh.png" alt="رسم توضيحي للطوبولوجيا الشبكية" style=" width:90%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                <img src="Images/mish.jpeg" alt="رسم توضيحي للطوبولوجيا الشبكية" style=" width:70%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
                 <div style="color:#2563eb; font-size:1rem; margin-top:0;">رسم توضيحي للطوبولوجيا الشبكية</div>
             </div>
             <li><strong>الطوبولوجيا الشجرية (Tree Topology):</strong> تجمع بين الطوبولوجيا النجمية والخطية، وتستخدم في الشبكات الكبيرة مثل الجامعات.</li>
             <div style="text-align:center; margin: 1rem 0;">
-                <img src="Images/tree.png" alt="رسم توضيحي للطوبولوجيا الشجرية" style=" width:90%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                <img src="Images/tree.jpeg" alt="رسم توضيحي للطوبولوجيا الشجرية" style=" width:70%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
                 <div style="color:#2563eb; font-size:1rem; margin-top:0;">رسم توضيحي للطوبولوجيا الشجرية</div>
             </div>
         </ul>
         <p>
             اختيار نوع الطوبولوجيا يعتمد على حجم الشبكة، الميزانية، ومستوى الأمان المطلوب.
         </p>
+        <div style="text-align:center;">
+            <a class="return-btn" href="index.html">العودة إلى الصفحة الرئيسية</a>
+        </div>
     </div>
 </body>
 </html> 

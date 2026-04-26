@@ -17,13 +17,26 @@
         code { font-family:Consolas, Monaco, monospace; }
         .note { background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:0.9rem 1rem; margin:1rem 0; }
         .toc a { color:#1e40af; text-decoration:underline; }
+        .return-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #2563eb;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        .return-btn:hover { background: #1d4ed8; }
     </style>
     <!-- افتح هذا الملف عبر المتصفح. جميع الأمثلة تعمل في موجه الأوامر (CMD) على ويندوز. -->
 </head>
 <body>
     <div class="container">
         <div style="margin-bottom:1rem; text-align:left; direction:ltr;">
-            <a href="index.html" class="btn" style="direction:rtl; display:inline-flex; align-items:center; gap:8px;">
+            <a href="index.html" class="return-btn" style="direction:rtl;">
                 <span style="font-size:1.2rem;">🏠</span>
                 <span>العودة للصفحة الرئيسية</span>
             </a>

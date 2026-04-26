@@ -28,6 +28,20 @@
             font-size: 1.2rem;
             line-height: 2;
         }
+        .return-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: #2563eb;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        .return-btn:hover {
+            background: #1d4ed8;
+        }
     </style>
 </head>
 <body>
@@ -156,7 +170,7 @@
             <span style="background:#eee; padding:0.3rem 0.7rem; border-radius:5px; font-family:monospace;">7B<sub>16</sub> = 123<sub>10</sub></span>
         </p>
         <p>
-            يستخدم النظام السادس عشر لأنه يسهل تمثيل الأعداد الثنائية الطويلة بشكل مختصر، فكل رقم واحد في النظام السادس عشر يعادل 4 أرقام في النظام الثنائي.
+            يستخدم النظام السادس عشر لأنه يسهل تمثيل الأعداد الثنائية الطويلة بشكل مختصر، فكل رقم واحد في النظام السادس عشر يعادل 4 ثنائيات في النظام الثنائي.
         </p>
         <h3 id="conversion-table" style="color:#2563eb; text-align:center; margin:2rem 0 1rem;">جدول التحويل بين الأنظمة حتى العدد 15</h3>
         <div style="overflow-x:auto; direction:ltr;">
@@ -186,13 +200,8 @@
         </div>
         <div id="examples" style="margin-top:2rem;">
             <h4 style="color:#1e40af; text-align:right;">مثال تطبيقي: تحويل العدد الثنائي 1011101101 إلى النظام السادس عشر وبالعكس</h4>
-            <p>نقسم العدد الثنائي إلى مجموعات من 4 أرقام بدءًا من اليمين (نضيف أصفارًا على اليسار إذا لزم الأمر):</p>
-            <p style="direction:ltr; text-align:center; font-family:monospace; font-size:1.1rem;">
-                1&nbsp;&nbsp;0111&nbsp;1011&nbsp;01<br>
-                <span style="color:#888; font-size:0.95em;">نضيف صفرين على اليسار ليصبح العدد 10 أرقام (4-4-4):</span><br>
-                00<span style="color:#2563eb;">1</span>&nbsp;0111&nbsp;1011&nbsp;01<br>
-                <span style="color:#2563eb;">0001</span>&nbsp;0111&nbsp;1011&nbsp;01
-            </p>
+            <p>نقسم العدد الثنائي إلى مجموعات من 4 ثنائيات بدءًا من اليمين (نضيف أصفارًا على اليسار إذا لزم الأمر):</p>
+            
             <p>نقسم العدد النهائي إلى مجموعات رباعية:</p>
             <p style="direction:ltr; text-align:center; font-family:monospace; font-size:1.1rem;">
                 <span style="background:#e0e7ff; padding:0.2rem 0.5rem; border-radius:5px;">0010</span>
@@ -214,6 +223,9 @@
             </ul>
             <p style="text-align:center; font-family:monospace; font-size:1.1rem;">2ED<sub>16</sub> = 001011101101<sub>2</sub></p>
             <p>نحذف الأصفار الزائدة على اليسار إذا لزم الأمر: <span style="background:#eee; padding:0.2rem 0.5rem; border-radius:5px; font-family:monospace;">1011101101<sub>2</sub></span></p>
+        </div>
+        <div style="text-align:center;">
+            <a class="return-btn" href="index.html">العودة إلى الصفحة الرئيسية</a>
         </div>
     </div>
 </body>
