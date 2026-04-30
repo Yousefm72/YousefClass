@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DHCP Explanation | شرح DHCP</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 980px;
+      margin: 24px auto;
+      padding: 20px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+    h1, h2, h3 {
+      margin-top: 0;
+      color: #0f172a;
+    }
+    .ar {
+      direction: rtl;
+      text-align: right;
+      border-right: 5px solid #2563eb;
+    }
+    .en {
+      direction: ltr;
+      text-align: left;
+      border-left: 5px solid #16a34a;
+    }
+    code, pre {
+      background: #111827;
+      color: #e5e7eb;
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-family: Consolas, monospace;
+      font-size: 0.95rem;
+    }
+    pre {
+      padding: 12px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    ul {
+      margin: 0;
+      padding-inline-start: 24px;
+    }
+    .small {
+      color: #475569;
+      font-size: 0.95rem;
+    }
+    .diagram {
+      text-align: center;
+      border-top: 5px solid #7c3aed;
+    }
+    .diagram svg {
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+    }
+    .diagram-title {
+      margin-bottom: 10px;
+    }
+    .cmd {
+      direction: ltr;
+      text-align: left;
+      unicode-bidi: embed;
+    }
+    .top-nav {
+      margin-bottom: 16px;
+      text-align: left;
+      direction: ltr;
+    }
+    .back-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    .back-btn:hover {
+      opacity: 0.92;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-nav">
+      <a class="back-btn" href="index.html">Return to Home | العودة للرئيسية</a>
+    </div>
+
+    <div class="card diagram">
+      <h1 class="diagram-title">DHCP Process Diagram | مخطط عملية DHCP</h1>
+      <svg viewBox="0 0 980 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DHCP DORA Process">
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#0f172a"></path>
+          </marker>
+        </defs>
+
+        <rect x="110" y="40" width="220" height="80" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"></rect>
+        <text x="220" y="74" text-anchor="middle" font-size="22" fill="#1e3a8a">Client</text>
+        <text x="220" y="102" text-anchor="middle" font-size="18" fill="#1e3a8a">العميل</text>
+
+        <rect x="650" y="40" width="220" height="80" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"></rect>
+        <text x="760" y="74" text-anchor="middle" font-size="22" fill="#14532d">DHCP Server</text>
+        <text x="760" y="102" text-anchor="middle" font-size="18" fill="#14532d">خادم DHCP</text>
+
+        <line x1="335" y1="155" x2="645" y2="155" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"></line>
+        <text x="490" y="145" text-anchor="middle" font-size="18" fill="#0f172a">1) DHCPDISCOVER (Broadcast)</text>
+        <text x="490" y="176" text-anchor="middle" font-size="16" fill="#334155">اكتشاف</text>
+
+        <line x1="645" y1="210" x2="335" y2="210" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"></line>
+        <text x="490" y="201" text-anchor="middle" font-size="18" fill="#0f172a">2) DHCPOFFER</text>
+        <text x="490" y="230" text-anchor="middle" font-size="16" fill="#334155">عرض</text>
+
+        <line x1="335" y1="265" x2="645" y2="265" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"></line>
+        <text x="490" y="256" text-anchor="middle" font-size="18" fill="#0f172a">3) DHCPREQUEST</text>
+        <text x="490" y="286" text-anchor="middle" font-size="16" fill="#334155">طلب</text>
+
+        <line x1="645" y1="320" x2="335" y2="320" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"></line>
+        <text x="490" y="311" text-anchor="middle" font-size="18" fill="#0f172a">4) DHCPACK</text>
+        <text x="490" y="342" text-anchor="middle" font-size="16" fill="#334155">تأكيد</text>
+      </svg>
+      <p class="small">DORA = Discover, Offer, Request, Acknowledge</p>
+    </div>
+
+    <div class="card en">
+      
+      <h3>Sample Message Flow</h3>
+      <pre>Client  -> DHCPDISCOVER -> Broadcast
+Server  -> DHCPOFFER    -> Client
+Client  -> DHCPREQUEST  -> Broadcast
+Server  -> DHCPACK      -> Client</pre>
+      <h3>Sample DHCP Lease</h3>
+      <pre>IP Address : 192.168.1.25
+Subnet Mask: 255.255.255.0
+Gateway    : 192.168.1.1
+DNS Server : 8.8.8.8
+Lease Time : 24 hours</pre>
+    </div>
+
+    <div class="card ar" lang="ar">
+      <h1>بروتوكول DHCP (التوزيع الديناميكي لعناوين الشبكة)</h1>
+      <p>
+        بروتوكول DHCP هو بروتوكول شبكي يقوم بإعطاء الأجهزة إعدادات الشبكة بشكل
+        تلقائي مثل عنوان IP وقناع الشبكة والبوابة الافتراضية وخادم DNS.
+      </p>
+      <h2>لماذا نستخدم DHCP؟</h2>
+      <ul>
+        <li>تقليل أخطاء الإدخال اليدوي لإعدادات الشبكة.</li>
+        <li>توفير الوقت لمسؤولي الشبكات.</li>
+        <li>إدارة العناوين بكفاءة من خلال نظام التأجير (Lease).</li>
+      </ul>
+      <h2>كيف يعمل DHCP؟ (مراحل DORA)</h2>
+      <ul>
+        <li><strong>Discover:</strong> الجهاز يرسل DHCPDISCOVER إلى الشبكة.</li>
+        <li><strong>Offer:</strong> الخادم يرسل DHCPOFFER بعنوان متاح.</li>
+        <li><strong>Request:</strong> الجهاز يطلب العنوان عبر DHCPREQUEST.</li>
+        <li><strong>Ack:</strong> الخادم يؤكد الطلب عبر DHCPACK.</li>
+      </ul>
+      <h3>مثال على تسلسل الرسائل</h3>
+      <pre>العميل   -> DHCPDISCOVER -> بث عام
+الخادم   -> DHCPOFFER    -> العميل
+العميل   -> DHCPREQUEST  -> بث عام
+الخادم   -> DHCPACK      -> العميل</pre>
+      <h3>مثال على بيانات تأجير DHCP</h3>
+      <pre>عنوان IP      : 192.168.1.25
+قناع الشبكة   : 255.255.255.0
+البوابة        : 192.168.1.1
+خادم DNS       : 8.8.8.8
+مدة التأجير    : 24 ساعة</pre>
+      <p class="small">
+        ملاحظة: يمكن للخادم حجز عنوان ثابت (Reservation) لجهاز معين باستخدام عنوان MAC.
+      </p>
+    </div>
+
+    <div class="card ar" lang="ar">
+      <h2>أوامر DHCP لشبكة بسيطة (Router + Switch + VLANs)</h2>
+      <p>
+        المثال التالي يوضح إعداد شبكة تحتوي على راوتر وسويتش و VLANين:
+        <strong>Teacher</strong> و <strong>Student</strong>،
+        وكل VLAN فيها 3 أجهزة. تم استخدام NetID أساسي
+        <strong>192.168.1.0</strong> وتقسيمه إلى شبكتين فرعيتين /29.
+      </p>
+      <ul>
+        <li>VLAN 10 (Teacher): <code>192.168.1.0/29</code> والبوابة <code>192.168.1.1</code></li>
+        <li>VLAN 20 (Student): <code>192.168.1.8/29</code> والبوابة <code>192.168.1.9</code></li>
+      </ul>
+
+      <h3>1) أوامر السويتش (Switch)</h3>
+      <pre class="cmd">enable
+configure terminal
+
+vlan 10
+ name Teacher
+exit
+
+vlan 20
+ name Student
+exit
+
+interface range fastEthernet 0/1 - 3
+ switchport mode access
+ switchport access vlan 10
+exit
+
+interface range fastEthernet 0/4 - 6
+ switchport mode access
+ switchport access vlan 20
+exit
+
+interface fastEthernet 0/24
+ switchport mode trunk
+exit
+
+end
+write memory</pre>
+
+      <h3>2) أوامر الراوتر (Router-on-a-Stick + DHCP)</h3>
+      <pre class="cmd">enable
+configure terminal
+
+interface gigabitEthernet 0/0
+ no shutdown
+exit
+
+interface gigabitEthernet 0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.1.1 255.255.255.248
+exit
+
+interface gigabitEthernet 0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.1.9 255.255.255.248
+exit
+
+ip dhcp excluded-address 192.168.1.1
+ip dhcp excluded-address 192.168.1.9
+
+ip dhcp pool Teacher
+ network 192.168.1.0 255.255.255.248
+ default-router 192.168.1.1
+ dns-server 8.8.8.8
+exit
+
+ip dhcp pool Student
+ network 192.168.1.8 255.255.255.248
+ default-router 192.168.1.9
+ dns-server 8.8.8.8
+exit
+
+end
+write memory</pre>
+
+      <h3>3) النتيجة المتوقعة</h3>
+      <p>
+        أجهزة VLAN <strong>Teacher</strong> تحصل تلقائيًا على IP من مدى
+        <code>192.168.1.2 - 192.168.1.6</code>،
+        وأجهزة VLAN <strong>Student</strong> من مدى
+        <code>192.168.1.10 - 192.168.1.14</code>.
+      </p>
+      <p class="small">
+        ملاحظة: اجعل كرت الشبكة في أجهزة الـ PC على DHCP/Automatic للحصول على العنوان تلقائيًا.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
