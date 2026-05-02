@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار DHCP - Dhcp Quiz</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { background-color: #f3f4f6; color: #1f2937; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .container { width: 70%; margin: 3rem auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2rem 2.5rem; }
+        h1 { color: #2563eb; margin-bottom: 1.5rem; text-align: center; }
+        h3 { color: #2563eb; margin: 1.5rem 0 1rem; }
+        p { font-size: 1.2rem; line-height: 2; }
+        .quiz-question {
+            background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #0ea5e9;
+        }
+        .quiz-options { margin: 1rem 0; }
+        .quiz-option {
+            background: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        .quiz-option:hover { border-color: #0ea5e9; background: #f0f9ff; }
+        .quiz-option.selected { border-color: #2563eb; background: #dbeafe; }
+        .quiz-option.correct { border-color: #16a34a; background: #dcfce7; }
+        .quiz-option.incorrect { border-color: #dc2626; background: #fef2f2; }
+        .submit-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 2rem auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
+        .submit-btn:disabled { background: #9ca3af; cursor: not-allowed; transform: none; }
+        .results {
+            background: linear-gradient(145deg, #f0fdf4, #dcfce7);
+            border: 2px solid #16a34a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #16a34a;
+            text-align: center;
+            display: none;
+        }
+        .score { font-size: 1.5rem; font-weight: bold; color: #166534; margin-bottom: 1rem; }
+        .feedback { font-size: 1.1rem; margin: 1rem 0; }
+        .nav-buttons { text-align: center; margin: 2rem 0; }
+        .nav-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>اختبار DHCP</h1>
+        <p style="text-align: center; font-size: 1.1rem; color: #6b7280;">
+            عشرة أسئلة بالعربية عن محتوى صفحة شرح DHCP: بروتوكول DORA، التأجير، والمثال مع VLAN
+        </p>
+
+        <form id="quizForm">
+            <div class="quiz-question">
+                <h3>السؤال 1:</h3>
+                <p>ما الوظيفة الرئيسية لبروتوكول DHCP؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q1" value="a" id="q1a"><label for="q1a"> تشفير حركة البيانات بين الأجهزة</label></div>
+                    <div class="quiz-option"><input type="radio" name="q1" value="b" id="q1b"><label for="q1b"> توزيع إعدادات الشبكة تلقائياً مثل IP وقناع الشبكة والبوابة وDNS</label></div>
+                    <div class="quiz-option"><input type="radio" name="q1" value="c" id="q1c"><label for="q1c"> استبدال عنوان MAC بعنوان IP فقط</label></div>
+                    <div class="quiz-option"><input type="radio" name="q1" value="d" id="q1d"><label for="q1d"> إدارة كلمات مرور المستخدمين</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 2:</h3>
+                <p>ما الترتيب الصحيح لمراحل DORA؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q2" value="a" id="q2a"><label for="q2a"> Offer، Discover، Request، Ack</label></div>
+                    <div class="quiz-option"><input type="radio" name="q2" value="b" id="q2b"><label for="q2b"> Discover، Offer، Request، Ack</label></div>
+                    <div class="quiz-option"><input type="radio" name="q2" value="c" id="q2c"><label for="q2c"> Request، Discover، Offer، Ack</label></div>
+                    <div class="quiz-option"><input type="radio" name="q2" value="d" id="q2d"><label for="q2d"> Ack، Offer، Request، Discover</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 3:</h3>
+                <p>أي رسالة يرسلها العميل أولاً لبدء عملية DHCP؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q3" value="a" id="q3a"><label for="q3a"> DHCPACK</label></div>
+                    <div class="quiz-option"><input type="radio" name="q3" value="b" id="q3b"><label for="q3b"> DHCPOFFER</label></div>
+                    <div class="quiz-option"><input type="radio" name="q3" value="c" id="q3c"><label for="q3c"> DHCPDISCOVER</label></div>
+                    <div class="quiz-option"><input type="radio" name="q3" value="d" id="q3d"><label for="q3d"> DHCPREQUEST</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 4:</h3>
+                <p>أي رسالة يُرسلها خادم DHCP لاقتراح عنوان IP متاح للعميل؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q4" value="a" id="q4a"><label for="q4a"> DHCPREQUEST</label></div>
+                    <div class="quiz-option"><input type="radio" name="q4" value="b" id="q4b"><label for="q4b"> DHCPOFFER</label></div>
+                    <div class="quiz-option"><input type="radio" name="q4" value="c" id="q4c"><label for="q4c"> DHCPDISCOVER</label></div>
+                    <div class="quiz-option"><input type="radio" name="q4" value="d" id="q4d"><label for="q4d"> DHCPNACK</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 5:</h3>
+                <p>كيف تُرسل رسالة DHCPREQUEST حسب المثال في الصفحة؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q5" value="a" id="q5a"><label for="q5a"> بث عام (Broadcast)</label></div>
+                    <div class="quiz-option"><input type="radio" name="q5" value="b" id="q5b"><label for="q5b"> إلى عنوان البوابة فقط دون بث</label></div>
+                    <div class="quiz-option"><input type="radio" name="q5" value="c" id="q5c"><label for="q5c"> إلى خادم DNS فقط</label></div>
+                    <div class="quiz-option"><input type="radio" name="q5" value="d" id="q5d"><label for="q5d"> لا تُرسل؛ يكتفي العميل بـ DHCPOFFER</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 6:</h3>
+                <p>أي رسالة تُؤكد للعميل الحصول على التأجير وإعدادات الشبكة؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q6" value="a" id="q6a"><label for="q6a"> DHCPOFFER</label></div>
+                    <div class="quiz-option"><input type="radio" name="q6" value="b" id="q6b"><label for="q6b"> DHCPDISCOVER</label></div>
+                    <div class="quiz-option"><input type="radio" name="q6" value="c" id="q6c"><label for="q6c"> DHCPREQUEST</label></div>
+                    <div class="quiz-option"><input type="radio" name="q6" value="d" id="q6d"><label for="q6d"> DHCPACK</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 7:</h3>
+                <p>في مثال بيانات التأجير (Lease) في الصفحة، ما مدة التأجير؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q7" value="a" id="q7a"><label for="q7a"> 12 ساعة</label></div>
+                    <div class="quiz-option"><input type="radio" name="q7" value="b" id="q7b"><label for="q7b"> 24 ساعة</label></div>
+                    <div class="quiz-option"><input type="radio" name="q7" value="c" id="q7c"><label for="q7c"> 48 ساعة</label></div>
+                    <div class="quiz-option"><input type="radio" name="q7" value="d" id="q7d"><label for="q7d"> غير محددة في المثال</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 8:</h3>
+                <p>لحجز عنوان ثابت (Reservation) لجهاز معين، ماذا يستخدم الخادم غالباً مع عنوان MAC؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q8" value="a" id="q8a"><label for="q8a"> اسم المستخدم في النظام</label></div>
+                    <div class="quiz-option"><input type="radio" name="q8" value="b" id="q8b"><label for="q8b"> رقم منفذ السويتش فقط</label></div>
+                    <div class="quiz-option"><input type="radio" name="q8" value="c" id="q8c"><label for="q8c"> ربط الحجز بجهاز محدد عبر عنوان MAC</label></div>
+                    <div class="quiz-option"><input type="radio" name="q8" value="d" id="q8d"><label for="q8d"> تجاهل MAC والاعتماد على اسم الجهاز فقط</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 9:</h3>
+                <p>في مثال VLAN 10 (Teacher)، ما شبكة الـ IP والقناع حسب الصفحة؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q9" value="a" id="q9a"><label for="q9a"> 192.168.1.0/29 والبوابة 192.168.1.1</label></div>
+                    <div class="quiz-option"><input type="radio" name="q9" value="b" id="q9b"><label for="q9b"> 192.168.1.8/29 والبوابة 192.168.1.9</label></div>
+                    <div class="quiz-option"><input type="radio" name="q9" value="c" id="q9c"><label for="q9c"> 192.168.2.0/24</label></div>
+                    <div class="quiz-option"><input type="radio" name="q9" value="d" id="q9d"><label for="q9d"> 10.0.0.0/8</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 10:</h3>
+                <p>في مثال تجمع DHCP للطلاب (Student / VLAN 20)، ما عنوان البوابة الافتراضية (default-router)؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q10" value="a" id="q10a"><label for="q10a"> 192.168.1.1</label></div>
+                    <div class="quiz-option"><input type="radio" name="q10" value="b" id="q10b"><label for="q10b"> 192.168.1.9</label></div>
+                    <div class="quiz-option"><input type="radio" name="q10" value="c" id="q10c"><label for="q10c"> 192.168.1.8</label></div>
+                    <div class="quiz-option"><input type="radio" name="q10" value="d" id="q10d"><label for="q10d"> 8.8.8.8</label></div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">إرسال الإجابات</button>
+        </form>
+
+        <div class="results" id="results">
+            <div class="score" id="score"></div>
+            <div class="feedback" id="feedback"></div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="Dhcp.html" class="nav-btn">العودة لصفحة DHCP</a>
+            <a href="index.html" class="nav-btn">العودة للرئيسية</a>
+        </div>
+    </div>
+
+    <script>
+        let quizSubmitted = false;
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('quizForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const results = document.getElementById('results');
+            const scoreElement = document.getElementById('score');
+            const feedbackElement = document.getElementById('feedback');
+
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const radio = this.querySelector('input[type="radio"]');
+                    const questionDiv = this.closest('.quiz-question');
+                    questionDiv.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+                    radio.checked = true;
+                    this.classList.add('selected');
+                });
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (quizSubmitted) return;
+                submitQuiz();
+            });
+
+            function submitQuiz() {
+                quizSubmitted = true;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'تم الإرسال';
+
+                const answers = { q1: 'b', q2: 'b', q3: 'c', q4: 'b', q5: 'a', q6: 'd', q7: 'b', q8: 'c', q9: 'a', q10: 'b' };
+                let correctAnswers = 0;
+
+                Object.keys(answers).forEach(questionId => {
+                    const firstInput = document.querySelector(`input[name="${questionId}"]`);
+                    if (!firstInput) return;
+                    const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+                    const questionDiv = firstInput.closest('.quiz-question');
+                    if (selectedAnswer && selectedAnswer.value === answers[questionId]) {
+                        correctAnswers++;
+                        questionDiv.querySelectorAll('.quiz-option').forEach(opt => {
+                            if (opt.querySelector('input').value === answers[questionId]) opt.classList.add('correct');
+                        });
+                    } else {
+                        questionDiv.querySelectorAll('.quiz-option').forEach(opt => {
+                            if (opt.querySelector('input').value === answers[questionId]) opt.classList.add('correct');
+                        });
+                        if (selectedAnswer) selectedAnswer.closest('.quiz-option').classList.add('incorrect');
+                    }
+                });
+
+                const percentage = (correctAnswers / 10) * 100;
+                scoreElement.textContent = `النتيجة: ${correctAnswers} من 10 (${Math.round(percentage)}%)`;
+                let feedback = percentage >= 90 ? 'ممتاز! لديك فهماً قوياً لـ DHCP وDORA والمثال العملي.' : percentage >= 70 ? 'جيد جداً! يمكنك مراجعة النقاط التي أخطأت فيها.' : percentage >= 50 ? 'جيد! راجع صفحة Dhcp.html لتثبيت المفاهيم.' : 'يحتاج إلى مزيد من الدراسة. راجع شرح DHCP والأمثلة.';
+                feedbackElement.textContent = feedback;
+                results.style.display = 'block';
+                results.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>

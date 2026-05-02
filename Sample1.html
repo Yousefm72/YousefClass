@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>نموذج 1 — شبكة محلية بـ VLAN والواي فاي | Sample1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: #f1f5f9;
+      color: #0f172a;
+      line-height: 1.75;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 24px auto;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+      border-right: 5px solid #2563eb;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #1e40af;
+      font-size: 1.35rem;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .card h3 {
+      color: #334155;
+      font-size: 1.1rem;
+      margin: 1rem 0 0.5rem;
+    }
+    h1.page-title {
+      text-align: center;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #64748b;
+      margin-bottom: 24px;
+      font-size: 1rem;
+    }
+    code, pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 8px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.9rem;
+    }
+    code { padding: 2px 8px; }
+    pre {
+      padding: 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      direction: ltr;
+      text-align: left;
+      unicode-bidi: embed;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 12px;
+      text-align: right;
+    }
+    th {
+      background: #1e40af;
+      color: #fff;
+    }
+    tr:nth-child(even) { background: #f8fafc; }
+    .wifi-box {
+      background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+      border: 2px solid #3b82f6;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 12px;
+    }
+    .wifi-box strong { color: #1e3a8a; }
+    .top-nav {
+      margin-bottom: 16px;
+      text-align: left;
+      direction: ltr;
+    }
+    .back-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    .back-btn:hover { opacity: 0.92; }
+    .diagram-wrap {
+      text-align: center;
+      overflow-x: auto;
+    }
+    .diagram-wrap svg { max-width: 100%; height: auto; }
+    .note {
+      font-size: 0.9rem;
+      color: #475569;
+      margin-top: 10px;
+    }
+    .badge {
+      display: inline-block;
+      background: #16a34a;
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      margin-inline-start: 8px;
+    }
+    .toc-card {
+      border-right: 5px solid #7c3aed;
+      background: linear-gradient(145deg, #faf5ff, #fff);
+    }
+    .toc-card h2 {
+      border-bottom-color: #c4b5fd;
+    }
+    .toc-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      columns: 1;
+    }
+    @media (min-width: 640px) {
+      .toc-list { columns: 2; column-gap: 2rem; }
+    }
+    .toc-list li {
+      margin: 0.45rem 0;
+      break-inside: avoid;
+    }
+    .toc-list a {
+      color: #1e40af;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      border-bottom: 1px dashed transparent;
+    }
+    .toc-list a:hover {
+      border-bottom-color: #6366f1;
+      color: #4338ca;
+    }
+    .toc-list .num {
+      color: #64748b;
+      font-weight: 600;
+      min-width: 2em;
+    }
+    .toc-sub {
+      list-style: none;
+      margin: 0.35rem 0 0 1.25rem;
+      padding: 0;
+      font-size: 0.92rem;
+    }
+    .toc-sub a { color: #475569; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-nav">
+      <a class="back-btn" href="index.html">Return to Home | العودة للرئيسية</a>
+    </div>
+
+    <h1 class="page-title">نموذج شبكة تعليمي — Sample 1</h1>
+    <p class="subtitle">
+      شبكة فيها 10 أجهزة كمبيوتر، 4 طابعات، واي فاي، موزّع واحد، موجّه واحد، وقسمان منطقيان (VLAN).
+    </p>
+
+    <nav class="card toc-card" aria-label="فهرس المحتويات">
+      <h2>فهرس المحتويات</h2>
+      <ul class="toc-list">
+        <li><a href="#sec1"><span class="num">١</span> المطلوب في التصميم</a></li>
+        <li><a href="#sec2"><span class="num">٢</span> رسم تخطيطي مبسّط للربط</a></li>
+        <li>
+          <a href="#sec3"><span class="num">٣</span> تعيين عناوين الشبكة لكل جهاز</a>
+          <ul class="toc-sub">
+            <li><a href="#sec3a">٣-أ) عنوان ثابت (Static) مع نطاق محجوز</a></li>
+            <li><a href="#sec3b">٣-ب) DHCP مع نطاق التأجير</a></li>
+          </ul>
+        </li>
+        <li><a href="#sec4"><span class="num">٤</span> تسمية الموزّع (Hostname)</a></li>
+        <li><a href="#sec5"><span class="num">٥</span> كلمة مرور التنفيذ المشفّرة (Enable Secret)</a></li>
+        <li><a href="#sec6"><span class="num">٦</span> كلمة مرور الكونسول و VTY</a></li>
+        <li><a href="#sec7"><span class="num">٧</span> إنشاء VLAN افتراضية لكل قسم</a></li>
+        <li><a href="#sec8"><span class="num">٨</span> ربط المنافذ بكل VLAN (Access)</a></li>
+        <li><a href="#sec9"><span class="num">٩</span> منفذ Trunk نحو الموجّه</a></li>
+        <li><a href="#sec10"><span class="num">١٠</span> إعداد الموجّه — Router-on-a-Stick</a></li>
+        <li><a href="#sec11"><span class="num">١١</span> شبكة Wi-Fi — SSID وكلمة المرور</a></li>
+        <li><a href="#sec12"><span class="num">١٢</span> ملخص أسماء وكلمات المرور</a></li>
+        <li><a href="#sec13"><span class="num">١٣</span> استخدام DHCP على الموجّه</a></li>
+        <li><a href="#sec14"><span class="num">١٤</span> عزل الضيوف — VLAN GUEST</a></li>
+        <li><a href="#sec15"><span class="num">١٥</span> تقييد الطابعات — ACL</a></li>
+        <li><a href="#sec16"><span class="num">١٦</span> جدار ناري — Zone-Based Firewall</a></li>
+        <li><a href="#conclusion"><span class="num">—</span> ختاماً</a></li>
+      </ul>
+    </nav>
+
+    <!-- 1 -->
+    <div class="card">
+      <h2 id="sec1">١) المطلوب في التصميم <span class="badge">نظرة عامة</span></h2>
+      <p>
+        تم بناء شبكة مؤسسة صغيرة: جميع الأجهزة السلكية تتصل بـ <strong>موزّع (Switch)</strong> من طراز Cisco افتراضياً،
+        والموزّع يتصل بـ <strong>موجّه (Router)</strong> عبر رابط <strong>Trunk</strong> ليمرّر VLANين.
+        شبكة <strong>Wi-Fi</strong> تخدمها نقطة وصول (Access Point) موصولة بمنفذ في VLAN ثانٍ.
+        عناوين الشبكة من فضاءين خاصّين: <code>192.168.10.0/24</code> و <code>192.168.20.0/24</code>.
+      </p>
+    </div>
+
+    <!-- Diagram -->
+    <div class="card">
+      <h2 id="sec2">٢) رسم تخطيطي مبسّط للربط</h2>
+      <p class="note">الموجّه يفصل الشبكة الداخلية عن الإنترنت؛ الموزّع يقسّم المنافذ إلى VLANين؛ نقطة الواي فاي في VLAN المختبر.</p>
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="شبكة موجّه وموزّع وأجهزة">
+          <rect x="280" y="20" width="160" height="56" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+          <text x="360" y="48" text-anchor="middle" font-size="14" fill="#92400e">Router — الموجّه</text>
+          <text x="360" y="66" text-anchor="middle" font-size="12" fill="#78350f">R-YOUSEF-01</text>
+
+          <rect x="260" y="120" width="200" height="70" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+          <text x="360" y="148" text-anchor="middle" font-size="14" fill="#1e3a8a">Switch — الموزّع</text>
+          <text x="360" y="168" text-anchor="middle" font-size="12" fill="#1e40af">SW-YOUSEF-01</text>
+          <text x="360" y="184" text-anchor="middle" font-size="11" fill="#475569">Fa0/24 ⟷ Trunk ⟷ Gi0/0</text>
+
+          <line x1="360" y1="76" x2="360" y2="118" stroke="#334155" stroke-width="2"/>
+
+          <text x="90" y="230" text-anchor="middle" font-size="12" fill="#0f172a">VLAN 10 — مكاتب</text>
+          <text x="90" y="248" text-anchor="middle" font-size="11" fill="#64748b">5 كمبيوتر + طابعتان</text>
+          <text x="360" y="230" text-anchor="middle" font-size="12" fill="#0f172a">منفذ Trunk</text>
+          <text x="620" y="230" text-anchor="middle" font-size="12" fill="#0f172a">VLAN 20 — مختبر + Wi-Fi</text>
+          <text x="620" y="248" text-anchor="middle" font-size="11" fill="#64748b">5 كمبيوتر + طابعتان + AP</text>
+
+          <line x1="260" y1="175" x2="90" y2="210" stroke="#94a3b8" stroke-width="1.5"/>
+          <line x1="460" y1="175" x2="620" y2="210" stroke="#94a3b8" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Address tables -->
+    <div class="card">
+      <h2 id="sec3">٣) تعيين عناوين الشبكة لكل جهاز</h2>
+      <p>
+        <strong>الشرح:</strong> كل VLAN له شبكة IP مستقلة؛ عنوان البوابة هو واجهة الموجّه الفرعية لذلك الـ VLAN.
+        القناع <code>255.255.255.0</code> يعني /24.
+      </p>
+      <h3>VLAN 10 — اسم المنطقية: OFFICE (المكاتب) — الشبكة 192.168.10.0/24 — البوابة 192.168.10.1</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>الجهاز</th>
+            <th>عنوان IP</th>
+            <th>القناع</th>
+            <th>البوابة</th>
+            <th>منفذ الموزّع</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>كمبيوتر 1</td><td>192.168.10.11</td><td>255.255.255.0</td><td>192.168.10.1</td><td>Fa0/1</td></tr>
+          <tr><td>كمبيوتر 2</td><td>192.168.10.12</td><td>255.255.255.0</td><td>192.168.10.1</td><td>Fa0/2</td></tr>
+          <tr><td>كمبيوتر 3</td><td>192.168.10.13</td><td>255.255.255.0</td><td>192.168.10.1</td><td>Fa0/3</td></tr>
+          <tr><td>كمبيوتر 4</td><td>192.168.10.14</td><td>255.255.255.0</td><td>192.168.10.1</td><td>Fa0/4</td></tr>
+          <tr><td>كمبيوتر 5</td><td>192.168.10.15</td><td>255.255.255.0</td><td>192.168.10.1</td><td>Fa0/5</td></tr>
+          <tr><td>طابعة 1</td><td>192.168.10.21</td><td>255.255.255.0</td><td>192.168.10.1</td><td>Fa0/6</td></tr>
+          <tr><td>طابعة 2</td><td>192.168.10.22</td><td>255.255.255.0</td><td>192.168.10.1</td><td>Fa0/7</td></tr>
+        </tbody>
+      </table>
+
+      <h3>VLAN 20 — اسم المنطقية: LAB-WIFI (المختبر والواي فاي) — الشبكة 192.168.20.0/24 — البوابة 192.168.20.1</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>الجهاز</th>
+            <th>عنوان IP</th>
+            <th>القناع</th>
+            <th>البوابة</th>
+            <th>منفذ الموزّع</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>كمبيوتر 6</td><td>192.168.20.11</td><td>255.255.255.0</td><td>192.168.20.1</td><td>Fa0/8</td></tr>
+          <tr><td>كمبيوتر 7</td><td>192.168.20.12</td><td>255.255.255.0</td><td>192.168.20.1</td><td>Fa0/9</td></tr>
+          <tr><td>كمبيوتر 8</td><td>192.168.20.13</td><td>255.255.255.0</td><td>192.168.20.1</td><td>Fa0/10</td></tr>
+          <tr><td>كمبيوتر 9</td><td>192.168.20.14</td><td>255.255.255.0</td><td>192.168.20.1</td><td>Fa0/11</td></tr>
+          <tr><td>كمبيوتر 10</td><td>192.168.20.15</td><td>255.255.255.0</td><td>192.168.20.1</td><td>Fa0/12</td></tr>
+          <tr><td>طابعة 3</td><td>192.168.20.21</td><td>255.255.255.0</td><td>192.168.20.1</td><td>Fa0/13</td></tr>
+          <tr><td>طابعة 4</td><td>192.168.20.22</td><td>255.255.255.0</td><td>192.168.20.1</td><td>Fa0/14</td></tr>
+          <tr><td>نقطة وصول Wi-Fi (AP)</td><td>192.168.20.30</td><td>255.255.255.0</td><td>192.168.20.1</td><td>Fa0/15</td></tr>
+        </tbody>
+      </table>
+      <p class="note">عنوان AP ثابت للإدارة؛ أجهزة الواي فاي تحصل على عنوان من نفس الشبكة عبر DHCP من الموجّه (اختياري في التطبيق).</p>
+
+      <h3 id="sec3a" style="margin-top: 2rem; color: #1e40af;">٣-أ) اختيار عنوان ثابت (Static IP) مع نطاق محجوز</h3>
+      <p>
+        <strong>الفكرة:</strong> تختار نطاقاً من العناوين لا يُستخدم لأي جهاز آخر (مثلاً أجهزة المكاتب من <code>192.168.10.11</code> إلى <code>192.168.10.15</code>، والطابعات <code>.21</code>–<code>.22</code>).
+        يُضبط كل جهاز يدوياً على هذا العنوان، أو تترك هذه العناوين خارج تجمع DHCP كي لا يوزّعها الخادم بالخطأ.
+      </p>
+      <p><strong>على الموجّه (Cisco IOS)</strong> — استثناء النطاق الثابت بالكامل من التأجير عند تفعيل DHCP في نفس الشبكة:</p>
+      <pre>! محجوز للأجهزة الثابتة في VLAN 10 (لا يُؤجَّر عبر DHCP)
+ip dhcp excluded-address 192.168.10.11 192.168.10.15
+ip dhcp excluded-address 192.168.10.21 192.168.10.22
+
+! مثال VLAN 20 — أجهزة ثابتة من .11 إلى .15 وطابعات .21–.22 و AP على .30
+ip dhcp excluded-address 192.168.20.11 192.168.20.15
+ip dhcp excluded-address 192.168.20.21 192.168.20.22
+ip dhcp excluded-address 192.168.20.30</pre>
+      <p><strong>على جهاز Windows (مثال سطر أوامر — استبدل اسم الواجهة)</strong> — تعيين ثابت يطابق الجدول:</p>
+      <pre>netsh interface ip set address name="Ethernet" static 192.168.10.11 255.255.255.0 192.168.10.1
+netsh interface ip set dns name="Ethernet" static 8.8.8.8</pre>
+      <p class="note">في الواجهة الرسومية: إعدادات الشبكة ← تعديل خصائص المحول ← IPv4 ← «استخدام عنوان IP التالي» وإدخال العنوان والقناع والبوابة.</p>
+
+      <h3 id="sec3b" style="margin-top: 2rem; color: #1e40af;">٣-ب) اختيار DHCP مع نطاق عناوين التأجير (Lease Range) على الموجّه</h3>
+      <p>
+        <strong>الفكرة:</strong> الموجّه يوزّع عناوين تلقائياً ضمن الشبكة، لكن نحدد «من وأين» يُؤجَر عبر <code>ip dhcp excluded-address</code>:
+        نستثني البوابة والنطاقات التي نريدها ثابتة أو غير مستخدمة، فيبقى <strong>نطاق التأجير الفعلي</strong> (مثلاً من <code>.50</code> إلى <code>.200</code> فقط).
+      </p>
+      <p><strong>مثال VLAN 10:</strong> تأجير DHCP فقط من <code>192.168.10.50</code> إلى <code>192.168.10.200</code> — أي استثناء كل ما عدا هذا المدى:</p>
+      <pre>! استثناء: البوابة + كل العناوين قبل .50 + كل العناوين بعد .200
+ip dhcp excluded-address 192.168.10.1 192.168.10.49
+ip dhcp excluded-address 192.168.10.201 192.168.10.254
+
+ip dhcp pool POOL_OFFICE
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 8.8.8.8
+exit</pre>
+      <p><strong>مثال VLAN 20:</strong> تأجير من <code>192.168.20.100</code> إلى <code>192.168.20.220</code> (للكمبيوترات والهواتف؛ البوابة والـ AP ثابتان):</p>
+      <pre>ip dhcp excluded-address 192.168.20.1 192.168.20.99
+ip dhcp excluded-address 192.168.20.221 192.168.20.254
+ip dhcp excluded-address 192.168.20.30
+
+ip dhcp pool POOL_LAB_WIFI
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+ dns-server 8.8.8.8
+exit</pre>
+      <p class="note">
+        الأمر <code>ip dhcp excluded-address &lt;أول عنوان&gt; &lt;آخر عنوان&gt;</code> يحدد <strong>مجالاً متصلاً من العناوين</strong> لا يُمنح عبر DHCP.
+        تجمع <code>ip dhcp pool</code> مع <code>network</code> يعرّف الشبكة؛ النطاق الفعلي للعناوين المؤجرة = الشبكة ناقص كل الأسطر المستثناة.
+        على العميل: IPv4 ← «الحصول على عنوان IP تلقائياً» (DHCP).
+      </p>
+    </div>
+
+    <!-- Hostname -->
+    <div class="card">
+      <h2 id="sec4">٤) تسمية الموزّع (Hostname)</h2>
+      <p>
+        <strong>الشرح:</strong> الأمر <code>hostname</code> يعطي المبدّل اسماً يظهر في الموجّه ويسهّل التعرف عليه في الشبكات التي فيها أكثر من موزّع.
+        هنا الاسم المختار: <strong>SW-YOUSEF-01</strong>.
+      </p>
+      <pre>enable
+configure terminal
+hostname SW-YOUSEF-01</pre>
+    </div>
+
+    <!-- Enable secret -->
+    <div class="card">
+      <h2 id="sec5">٥) كلمة مرور صلاحيات التنفيذ المشفّرة (Enable Secret)</h2>
+      <p>
+        <strong>الشرح:</strong> <code>enable secret</code> تحدد كلمة المرور للدخول إلى وضع التكوين المميز (privileged EXEC).
+        يخزّنها النظام بشكل مشفّر (أقوى من <code>enable password</code> القديم). هذه هي «كلمة المرور المشفّرة» للمستوى الإداري.
+      </p>
+      <pre>enable secret Yousef_Class_Enable_9</pre>
+      <p class="note">في المختبر الحقيقي استخدم طولاً ومعقّدية أعلى وتغييراً دورياً.</p>
+    </div>
+
+    <!-- Line passwords -->
+    <div class="card">
+      <h2 id="sec6">٦) كلمة مرور الموزّع لخط الكونسول وخطوط الاتصال عن بُعد (VTY)</h2>
+      <p>
+        <strong>الشرح:</strong> «كلمة مرور الموزّع» العادية تُربط عادةً بـ <strong>الكونسول</strong> (كابل اتصال مباشر)
+        و<strong>VTY</strong> (جلسات Telnet/SSH). تُدخل عبر <code>password</code> مع <code>login</code> ليطلب الموجّه المصادقة.
+        المثال التعليمي يفصل كلمة كونسول وكلمة جلسات بعيدة.
+      </p>
+      <pre>line console 0
+ password Console_Yousef_2026
+ login
+ logging synchronous
+ exit
+
+line vty 0 4
+ password Vty_Yousef_2026
+ login
+ transport input ssh telnet
+ exit</pre>
+      <p class="note">للإنتاج يُفضّل تعطيل Telnet والاكتفاء بـ SSH وتوليد مفاتيح على المبدّل.</p>
+    </div>
+
+    <!-- VLANs -->
+    <div class="card">
+      <h2 id="sec7">٧) إنشاء VLAN افتراضية لكل قسم من الشبكة</h2>
+      <p>
+        <strong>الشرح:</strong> كل VLAN رقم تعريف (<code>vlan id</code>) واسم وصفي. VLAN 10 للمكاتب، VLAN 20 للمختبر ونقطة الواي فاي.
+        الفصل المنطقي يقلل البرودكاست ويسهّل السياسات والأمان.
+      </p>
+      <pre>vlan 10
+ name OFFICE
+exit
+
+vlan 20
+ name LAB_WIFI
+exit</pre>
+    </div>
+
+    <!-- Port assignment -->
+    <div class="card">
+      <h2 id="sec8">٨) ربط المنافذ بكل VLAN (Access Ports)</h2>
+      <p>
+        <strong>الشرح:</strong> المنافذ التي توصل أجهزة طرفية تُضبط <code>access</code> وتُعيَّن لـ VLAN محدد.
+        نطاق Fa0/1–7 لـ VLAN 10، و Fa0/8–15 لـ VLAN 20 (يشمل منفذ نقطة الواي فاي).
+      </p>
+      <pre>interface range fastEthernet 0/1 - 7
+ switchport mode access
+ switchport access vlan 10
+exit
+
+interface range fastEthernet 0/8 - 15
+ switchport mode access
+ switchport access vlan 20
+exit</pre>
+    </div>
+
+    <!-- Trunk -->
+    <div class="card">
+      <h2 id="sec9">٩) منفذ Trunk نحو الموجّه</h2>
+      <p>
+        <strong>الشرح:</strong> رابط <strong>Trunk</strong> ينقل أكثر من VLAN على نفس السلك باستخدام tagging (مثل IEEE 802.1Q).
+        الموزّع يرسل إلى الموجّه جميع الـ VLANات المطلوبة على منفذ واحد (هنا Fa0/24).
+      </p>
+      <pre>interface fastEthernet 0/24
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+exit</pre>
+    </div>
+
+    <!-- Router -->
+    <div class="card">
+      <h2 id="sec10">١٠) إعداد الموجّه — واجهة فرعية لكل VLAN (Router-on-a-Stick)</h2>
+      <p>
+        <strong>الشرح:</strong> الموجّه يحمل عنوان البوابة لكل شبكة. الواجهة الفعلية <code>gigabitEthernet 0/0</code> تُقسَّم إلى
+        واجهتين فرعيتين بـ <code>encapsulation dot1Q</code> ليتم فصل حركة VLAN 10 عن VLAN 20.
+      </p>
+      <pre>hostname R-YOUSEF-01
+
+interface gigabitEthernet 0/0
+ no shutdown
+exit
+
+interface gigabitEthernet 0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+exit
+
+interface gigabitEthernet 0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+exit
+
+! مثال واجهة للإنترنت (يختلف حسب مزود الخدمة)
+interface gigabitEthernet 0/1
+ ip address dhcp
+ no shutdown
+exit</pre>
+      <p class="note">
+        العناوين في جداول القسم ٣ مُعيّنة يدوياً في هذا المثال. لاستخدام <strong>DHCP</strong> من الموجّه لتوزيع العناوين تلقائياً (تجمعان لـ VLAN 10 و 20 واستثناءات العناوين) راجع <strong>القسم ١٣</strong> في نهاية الصفحة.
+      </p>
+    </div>
+
+    <!-- Wi-Fi -->
+    <div class="card">
+      <h2 id="sec11">١١) شبكة Wi-Fi — الاسم (SSID) وكلمة المرور</h2>
+      <p>
+        <strong>الشرح:</strong> نقطة الوصول تبثّ شبكة لاسلكية؛ اسم الشبكة هو <strong>SSID</strong>، وكلمة المرور تُضبط في واجهة الـ AP
+        (أو تُدار مركزياً). العملاء ينضمون إلى نفس VLAN 20 حسب التصميم.
+      </p>
+      <div class="wifi-box">
+        <p><strong>اسم شبكة Wi-Fi (SSID):</strong> YousefClass-Net</p>
+        <p><strong>كلمة مرور Wi-Fi (WPA2/WPA3):</strong> NetSecure_Yousef_2026</p>
+      </div>
+      <p class="note">في الواجهة الحقيقية للـ AP اختر WPA3 أو WPA2-AES، وعطّل WEP والمصادقة المفتوحة.</p>
+    </div>
+
+    <!-- Summary -->
+    <div class="card">
+      <h2 id="sec12">١٢) ملخص أسماء وكلمات المرور في هذا النموذج</h2>
+      <table>
+        <thead>
+          <tr><th>العنصر</th><th>القيمة التعليمية</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>اسم الموزّع</td><td>SW-YOUSEF-01</td></tr>
+          <tr><td>اسم الموجّه</td><td>R-YOUSEF-01</td></tr>
+          <tr><td>Enable Secret (مشفّر)</td><td>Yousef_Class_Enable_9</td></tr>
+          <tr><td>كلمة مرور الكونسول</td><td>Console_Yousef_2026</td></tr>
+          <tr><td>كلمة مرور VTY</td><td>Vty_Yousef_2026</td></tr>
+          <tr><td>SSID الواي فاي</td><td>YousefClass-Net</td></tr>
+          <tr><td>كلمة مرور الواي فاي</td><td>NetSecure_Yousef_2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="border-right-color: #7c3aed;">
+      <h2 id="sec13">١٣) استخدام DHCP على الموجّه لتوزيع العناوين والإعدادات تلقائياً</h2>
+      <p class="note" style="margin-bottom: 1rem;">لـ <strong>عناوين ثابتة داخل نطاق محجوز</strong> و<strong>DHCP داخل نطاق تأجير محدد</strong> بأوامر <code>excluded-address</code> تفصيلاً، راجع <strong>القسم ٣-أ</strong> و<strong>٣-ب</strong> أعلاه.</p>
+      <p>
+        <strong>الشرح:</strong> بروتوكول <strong>DHCP</strong> يوزّع على الأجهزة عنوان IP وقناع الشبكة والبوابة وخادم DNS دون إدخال يدوي.
+        الموجّه (أو خادم DHCP مخصّص) يستجيب بعد تسلسل <strong>DORA</strong> (Discover، Offer، Request، Ack).
+        عند تفعيل DHCP، تُضبط بطاقة الشبكة في كل كمبيوتر وطابعة تدعم DHCP على <strong>«الحصول على عنوان تلقائياً»</strong>.
+      </p>
+      <p>
+        نستثني (<code>ip dhcp excluded-address</code>) العناوين التي نريدها ثابتة—مثل بوابة كل VLAN (<code>.1</code>) وعنوان إدارة نقطة الواي فاي (<code>192.168.20.30</code>) إن رغبت ببقائه ثابتاً.
+        باقي الأجهزة يمكن أن تأخذ عناوين من مجال التأجير (مثلاً من <code>.50</code> إلى <code>.200</code>) أو من الشبكة كاملة بعد الاستثناءات.
+      </p>
+      <h3>مثال تكوين DHCP كامل على الموجّه R-YOUSEF-01 (بعد واجهات VLAN)</h3>
+      <pre>! استثناء العناوين المحجوزة (بوابات، خادم، AP إدارة، طابعات إن أردتها ثابتة بالـ Reservation لاحقاً)
+ip dhcp excluded-address 192.168.10.1
+ip dhcp excluded-address 192.168.10.21 192.168.10.22
+ip dhcp excluded-address 192.168.20.1
+ip dhcp excluded-address 192.168.20.21 192.168.20.22
+ip dhcp excluded-address 192.168.20.30
+
+! تجمع VLAN 10 — المكاتب
+ip dhcp pool POOL_OFFICE
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 8.8.8.8
+exit
+
+! تجمع VLAN 20 — المختبر والأجهزة اللاسلكية خلف الـ AP
+ip dhcp pool POOL_LAB_WIFI
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+ dns-server 8.8.8.8
+exit</pre>
+      <p class="note">
+        إن أردت أن تأخذ أجهزة الكمبيوتر العناوين من DHCP بدلاً من الجدول اليدوي، أزل استثناءات نطاق الأجهزة (أو لا تستثني إلا البوابة والطابعات إن ثبّتها يدوياً).
+        يمكن حجز عنوان ثابت لجهاز معيّن عبر <strong>Reservation</strong> بربط عنوان MAC بعنوان IP على الموجّه.
+        للمزيد عن مراحل DHCP راجع صفحة <a href="Dhcp.html" style="color:#2563eb;">شرح DHCP</a>.
+      </p>
+    </div>
+
+    <!-- Security expansion: Guest VLAN, ACL, Firewall -->
+    <div class="card" style="border-right-color: #ea580c;">
+      <h2 id="sec14">١٤) عزل الضيوف — VLAN ثالث (GUEST) خطوة بخطوة</h2>
+      <p>
+        <strong>الهدف:</strong> شبكة ضيوف منفصلة <code>192.168.30.0/24</code> لا ترى أجهزة المكاتب أو المختبر مباشرة؛ تخرج للإنترنت عبر الموجّه فقط.
+        نفترض منفذ الموزّع <code>Fa0/16</code> لنقطة وصول ثانية أو كابل يخص الضيوف، ونحدّث الـ <strong>Trunk</strong> ليشمل VLAN 30.
+      </p>
+
+      <h3>الخطوة 1 — الموزّع: إنشاء VLAN 30 وتسميتها</h3>
+      <pre>configure terminal
+vlan 30
+ name GUEST
+exit</pre>
+
+      <h3>الخطوة 2 — الموزّع: جعل منفذ الضيوف في VLAN 30 (Access)</h3>
+      <pre>interface fastEthernet 0/16
+ switchport mode access
+ switchport access vlan 30
+exit</pre>
+      <p class="note">إذا كان منفذ AP يمرّ عبره أكثر من VLAN، استخدم <code>trunk</code> على منفذ الـ AP وعلّم SSID الضيف بـ VLAN 30 من واجهة الـ AP.</p>
+
+      <h3>الخطوة 3 — الموزّع: تحديث Trunk نحو الموجّه ليشمل 30</h3>
+      <pre>interface fastEthernet 0/24
+ switchport trunk allowed vlan 10,20,30
+exit
+end
+write memory</pre>
+
+      <h3>الخطوة 4 — الموجّه: واجهة فرعية للضيوف وعنوان البوابة</h3>
+      <pre>configure terminal
+interface gigabitEthernet 0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0
+ no shutdown
+exit</pre>
+
+      <h3>الخطوة 5 — الموجّه: DHCP لتأجير عناوين الضيوف (مثال)</h3>
+      <pre>ip dhcp excluded-address 192.168.30.1
+ip dhcp pool POOL_GUEST
+ network 192.168.30.0 255.255.255.0
+ default-router 192.168.30.1
+ dns-server 8.8.8.8
+exit</pre>
+
+      <h3>الخطوة 6 — شبكة Wi-Fi للضيوف (وصف)</h3>
+      <p>
+        أنشئ SSID منفصلاً مثل <strong>YousefClass-Guest</strong> واربطه بـ <strong>VLAN 30</strong> على نقطة الوصول؛ كلمة مرور مختلفة عن شبكة الموظفين.
+        على العملاء يُضبط الحصول على عنوان تلقائياً (DHCP).
+      </p>
+    </div>
+
+    <div class="card" style="border-right-color: #c2410c;">
+      <h2 id="sec15">١٥) تقييد الطابعات بقوائم وصول (ACL) — خطوة بخطوة</h2>
+      <p>
+        <strong>الهدف:</strong> السماح بطباعة من شبكات المكاتب والمختبر فقط على منافذ الطباعة الشائعة، ومنع شبكة الضيوف من الوصول للطابعات، مع منع الطابعات من بدء اتصالات غير ضرورية للخادمات الداخلية أو الإنترنت (حسب سياسة المختبر).
+      </p>
+      <p class="note">
+        قوائم الوصول على <strong>واجهات الموجّه</strong> تتحكم في الحركة <strong>الممرَّرة عبر التوجيه بين الشبكات</strong>.
+        إذا كان الجهاز والطابعة في <strong>نفس VLAN</strong> دون المرور بالموجّه، فلن تُطبَّق هذه ACL؛ للطباعة من نفس VLAN مع سياسة صارمة يُفضّل VLAN مخصص للطابعات أو إعدادات على الموزّع الطبقي (L3).
+      </p>
+
+      <h3>الخطوة 1 — تعريف قائمة موسعة: من يصل للطابعات (من الشبكات الموثوقة فقط)</h3>
+      <pre>ip access-list extended ACL_TO_PRINTERS
+ remark طباعة TCP 9100 و LPD 515 — من المكاتب والمختبر فقط
+ permit tcp 192.168.10.0 0.0.0.255 host 192.168.10.21 eq 9100
+ permit tcp 192.168.10.0 0.0.0.255 host 192.168.10.22 eq 9100
+ permit tcp 192.168.20.0 0.0.0.255 host 192.168.20.21 eq 9100
+ permit tcp 192.168.20.0 0.0.0.255 host 192.168.20.22 eq 9100
+ permit tcp 192.168.10.0 0.0.0.255 host 192.168.10.21 eq 515
+ permit tcp 192.168.20.0 0.0.0.255 host 192.168.20.21 eq 515
+ remark منع الضيوف من الوصول لعناوين الطابعات
+ deny   ip 192.168.30.0 0.0.0.255 host 192.168.10.21
+ deny   ip 192.168.30.0 0.0.0.255 host 192.168.10.22
+ deny   ip 192.168.30.0 0.0.0.255 host 192.168.20.21
+ deny   ip 192.168.30.0 0.0.0.255 host 192.168.20.22
+ permit ip any any</pre>
+
+      <h3>الخطوة 2 — تطبيق القائمة على واجهات VLAN (الاتجاه الوارد للموجّه من كل شبكة)</h3>
+      <pre>interface gigabitEthernet 0/0.10
+ ip access-group ACL_TO_PRINTERS in
+exit
+interface gigabitEthernet 0/0.20
+ ip access-group ACL_TO_PRINTERS in
+exit
+interface gigabitEthernet 0/0.30
+ ip access-group ACL_TO_PRINTERS in
+exit</pre>
+      <p class="note">يمكن تقسيم القوائم لاحقاً إلى قائمة للضيوف وقائمة للموظفين؛ المثال أعلاه موحّد للتوضيح.</p>
+
+      <h3>الخطوة 3 (اختياري) — تقييد ما «تخرجه» الطابعات من اتصالات للأعلى</h3>
+      <pre>ip access-list extended ACL_FROM_PRINTERS
+ remark منع الطابعات من تصفّح أنظمة داخلية أو إنترنت — عدّل حسب الحاجة
+ deny   ip host 192.168.10.21 any
+ deny   ip host 192.168.10.22 any
+ deny   ip host 192.168.20.21 any
+ deny   ip host 192.168.20.22 any
+ permit ip any any</pre>
+      <p class="note">هذا يمنع الطابعات من بدء أي حركة صادرة؛ إذا احتجت تحديثات من الشركة عبر الإنترنت، أضف <code>permit tcp host … eq 443</code> قبل سطر المنع أو أزل المنع عن الإنترنت.</p>
+      <pre>! تطبيق على واجهة VLAN الذي يمرّ منها الصادر من الطابعات نحو التوجيه (مثال اتجاه out على نفس الشبكة —
+! غالباً يُعدَّل التصميم لوضع الطابعات في VLAN طابعات؛ راجع سياسة الشبكة لديك)
+interface gigabitEthernet 0/0.10
+ ip access-group ACL_FROM_PRINTERS out</pre>
+      <p class="note">تطبيق <code>out</code> على الواجهة الفرعية يعتمد على اتجاه الحزم؛ للتبسيط استخدم في المختبر الخطوة 1–2 أولاً ثم طوّر سياسة الطابعات.</p>
+    </div>
+
+    <div class="card" style="border-right-color: #b91c1c;">
+      <h2 id="sec16">١٦) جدار ناري على الموجّه (Zone-Based Firewall) — خطوة بخطوة</h2>
+      <p>
+        <strong>الهدف:</strong> فصل مناطق الأمان: <strong>الداخلية</strong> (المكاتب والمختبر)، <strong>الضيوف</strong>، و<strong>الخارج</strong> (WAN)، مع فحص حالة الاتصال (inspect) نحو الإنترنت ومنع مرور الضيوف إلى الداخل بشكل حالة-ملزم.
+        الأوامر التالية نموذجية لـ Cisco IOS مع دعم <code>zone security</code>؛ قد تختلف أسماء الصور البرمجية حسب الجهاز.
+      </p>
+      <p class="note">
+        إذا كانت الواجهات تستخدم مسبقاً <code>ip access-group</code> من القسم ١٥، قد يحدث تعارض؛ في المختبر إما تعطل ACL على الواجهة التي انتقلت إلى منطقة أمنية أو تكتفي بالبديل السريع في أسفل هذا القسم.
+      </p>
+
+      <h3>الخطوة 1 — تعريف المناطق الأمنية</h3>
+      <pre>configure terminal
+zone security Z_INSIDE
+zone security Z_GUEST
+zone security Z_OUTSIDE</pre>
+
+      <h3>الخطوة 2 — ربط الواجهات بالمناطق</h3>
+      <pre>interface gigabitEthernet 0/0.10
+ zone-member security Z_INSIDE
+exit
+interface gigabitEthernet 0/0.20
+ zone-member security Z_INSIDE
+exit
+interface gigabitEthernet 0/0.30
+ zone-member security Z_GUEST
+exit
+interface gigabitEthernet 0/1
+ zone-member security Z_OUTSIDE
+exit</pre>
+
+      <h3>الخطوة 3 — سياسة فحص (inspect) من الداخل والضيوف نحو الخارج</h3>
+      <pre>class-map type inspect match-any CM_INSP_PROTOCOLS
+ match protocol tcp
+ match protocol udp
+ match protocol icmp
+exit
+
+policy-map type inspect PM_INSIDE_TO_OUT
+ class type inspect CM_INSP_PROTOCOLS
+  inspect
+exit
+
+policy-map type inspect PM_GUEST_TO_OUT
+ class type inspect CM_INSP_PROTOCOLS
+  inspect
+exit</pre>
+      <p class="note">قد تحتاج تعريف <code>parameter-map</code> أو مطابقة بروتوكولات حسب صورة IOS؛ إن فشل <code>match protocol</code> استخدم مطابقة ACL داخل class-map.</p>
+
+      <h3>الخطوة 4 — منع الضيوف من الوصول للشبكات الداخلية (مع السماح بالإنترنت عبر الفحص)</h3>
+      <pre>ip access-list extended ACL_GUEST_BLOCK_INTERNAL
+ deny   ip 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255
+ deny   ip 192.168.30.0 0.0.0.255 192.168.20.0 0.0.0.255
+ permit ip 192.168.30.0 0.0.0.255 any
+exit
+
+class-map type inspect match-all CM_GUEST_TO_INSIDE
+ match access-group name ACL_GUEST_BLOCK_INTERNAL
+exit
+
+policy-map type inspect PM_GUEST_TO_INSIDE
+ class type inspect CM_GUEST_TO_INSIDE
+  drop
+ class class-default
+  drop
+exit</pre>
+      <p class="note">أحياناً يُدمَج المنع داخل zone-pair مع inspect للإنترنت فقط؛ البديل البسيط بدون ZBF هو القسم ١٤ مع <code>ip access-group ACL_GUEST_IN in</code> على <code>Gi0/0.30</code>.</p>
+
+      <h3>الخطوة 5 — ربط أزواج المناطق (Zone-Pairs) بسياسات الفحص والمنع</h3>
+      <pre>zone-pair security ZP_IN_OUT source Z_INSIDE destination Z_OUTSIDE
+ service-policy type inspect PM_INSIDE_TO_OUT
+exit
+
+zone-pair security ZP_G_OUT source Z_GUEST destination Z_OUTSIDE
+ service-policy type inspect PM_GUEST_TO_OUT
+exit
+
+zone-pair security ZP_G_IN source Z_GUEST destination Z_INSIDE
+ service-policy type inspect PM_GUEST_TO_INSIDE
+exit
+end
+write memory</pre>
+
+      <h3>بديل سريع بدون مناطق (قائمة وصول على واجهة الضيوف)</h3>
+      <p>إن كان جهازك لا يدعم ZBF، استخدم نفس منطق المنع:</p>
+      <pre>ip access-list extended ACL_GUEST_IN
+ deny   ip 192.168.30.0 0.0.0.255 192.168.10.0 0.0.0.255
+ deny   ip 192.168.30.0 0.0.0.255 192.168.20.0 0.0.0.255
+ permit ip 192.168.30.0 0.0.0.255 any
+exit
+
+interface gigabitEthernet 0/0.30
+ ip access-group ACL_GUEST_IN in</pre>
+      <p class="note">هذا البديل يمنع الضيوف من الوصول للشبكات 10 و 20 لكنه لا يضيف فحصاً حالة-ملزماً (stateful) للإنترنت مثل <code>inspect</code>؛ للإنتاج يُفضّل ZBF أو جدار ناري مخصص.</p>
+    </div>
+
+    <div class="card" style="border-right-color: #16a34a;">
+      <h2 id="conclusion">ختاماً</h2>
+      <p>
+        هذا الملف <strong>Sample1.html</strong> يجمع بين مخطط العناوين، تقسيم الفيلانات، منافذ الموزّع، وإعدادات أمنية أساسية مع شرح كل خطوة بالعربية، واستخدام <strong>DHCP</strong> على الموجّه، و<strong>توسّعات أمنية</strong>:
+        VLAN ضيوف (<strong>القسم ١٤</strong>)، قوائم وصول للطابعات (<strong>القسم ١٥</strong>)، وجدار ناري مبني على المناطق أو بديل ACL (<strong>القسم ١٦</strong>).
+      </p>
+    </div>
+
+    <div class="top-nav" style="margin-top: 24px;">
+      <a class="back-btn" href="index.html">العودة للرئيسية</a>
+    </div>
+  </div>
+</body>
+</html>
