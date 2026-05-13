@@ -201,6 +201,35 @@
             <strong>الموزع (Switch):</strong> هو جهاز يستخدم داخل الشبكة المحلية (LAN) لربط عدة أجهزة معًا (مثل الحواسيب والطابعات). يقوم الموزع بتوجيه البيانات بين الأجهزة داخل نفس الشبكة بكفاءة عالية، حيث يرسل البيانات فقط إلى الجهاز المستهدف وليس إلى جميع الأجهزة، مما يزيد من سرعة وأمان الشبكة المحلية.
         </p>
         <hr style="margin: 2rem 0;">
+        <h2 style="color:#1e40af; text-align:center; margin-bottom:1rem;">درس التصادم في شبكات الإيثرنت (CSMA/CD)</h2>
+        <p>
+            عندما كانت الشبكات المحلية تعتمد على <strong>وسيط مشترك</strong> (مثل كابل إيثرنت واحد بنصف ازدواجية Half-Duplex)، كان بإمكان أكثر من جهاز أن يحاول الإرسال في نفس الوقت. إذا تداخلت إشارتان على السلك، نتحدث عن <strong>تصادم (Collision)</strong>: تتشوه الإطارات (Frames) ولا يمكن فكها بشكل صحيح.
+        </p>
+        <div style="background: linear-gradient(145deg, #fff7ed, #ffedd5); border: 2px solid #ea580c; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-right: 5px solid #ea580c;">
+            <h4 style="color:#9a3412; margin-bottom: 0.8rem;">ما هو CSMA/CD؟</h4>
+            <p style="margin-bottom: 0.75rem;">
+                اختصار لـ <strong>Carrier Sense Multiple Access with Collision Detection</strong> — أي: الاستماع للوسيط قبل الإرسال، السماح لعدة أجهزة بالوصول لنفس الوسيط، و<strong>اكتشاف التصادم</strong> أثناء الإرسال.
+            </p>
+            <ol style="font-size:1.05rem; line-height:1.9; margin: 0; padding-right: 1.25rem;">
+                <li><strong>Carrier Sense (الاستشعار):</strong> الجهاز يتحقق أولًا هل السلك «هادئ» قبل أن يبدأ الإرسال.</li>
+                <li><strong>Multiple Access:</strong> عدة أجهزة تشترك نفس الوسيط وتتناوب الإرسال عندما يكون الخط حرًا.</li>
+                <li><strong>Collision Detection:</strong> أثناء الإرسال، يراقب الجهاز السلك؛ إذا لاحظ تصادمًا، يوقف الإرسال فورًا.</li>
+            </ol>
+        </div>
+        <p>
+            بعد اكتشاف التصادم، ترسل الأجهزة إشارة تشويش قصيرة (<strong>Jam signal</strong>) ليتأكد الجميع من أن الإطار تالف، ثم تنتظر كل محطة فترة عشوائية (<strong>Backoff</strong> — تراجع أسي عادةً) قبل المحاولة من جديد. هذا يقلل احتمال أن تصطدم المحاولات التالية مرة أخرى في نفس اللحظة.
+        </p>
+        <div style="background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0;">
+            <h4 style="color:#334155; margin-bottom: 0.75rem;">الربط بما تعرفه عن الشبكات اليوم</h4>
+            <ul style="font-size:1.05rem; line-height:1.9; margin: 0; padding-right: 1.25rem;">
+                <li>في شبكات <strong>المفتاح (Switch)</strong> مع منافذ <strong>كامل الازدواجية (Full-Duplex)</strong>، كل رابط بين الجهاز والمفتاح منفصل؛ لا يوجد وسيط مشترك على مستوى الإطار، لذلك <strong>لا حاجة لـ CSMA/CD</strong> على ذلك الرابط في الوضع النموذجي.</li>
+                <li>لا يزال فهم التصادم مفيدًا تاريخيًا ومفاهيميًا لفهم لماذا صُممت طبقة الوصول للوسيط بهذه الطريقة، وللمقارنة مع تقنيات لاسلكية أخرى تستخدم آليات مشابهة (مثل CSMA/CA في Wi‑Fi).</li>
+            </ul>
+        </div>
+        <p style="text-align: center; color: #64748b; font-style: italic; margin: 1rem 0 0;">
+            الخلاصة: التصادم يحدث عندما يتداخل إرسالان على وسيط مشترك؛ CSMA/CD هو آلية الإيثرنت الكلاسيكية للحد من التصادم وإعادة المحاولة بذكاء.
+        </p>
+        <hr style="margin: 2rem 0;">
         <h2 style="color:#1e40af; text-align:center; margin-bottom:1rem;">أنواع طوبولوجيا الشبكات مع أمثلة</h2>
         <p>
             طوبولوجيا الشبكة (Network Topology) تعني الطريقة التي يتم بها ترتيب وربط الأجهزة والأسلاك داخل الشبكة. هناك عدة أنواع من الطوبولوجيا، ولكل نوع خصائصه واستخداماته:
