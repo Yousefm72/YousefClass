@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>امتحان عناوين IP - الأنواع والصلاحية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            width: 70%;
+            margin: 3rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+        }
+        h1 {
+            color: #2563eb;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h2 {
+            color: #1e40af;
+            margin: 2.5rem 0 1rem;
+            text-align: center;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #bfdbfe;
+        }
+        h3 {
+            color: #2563eb;
+            margin: 1.5rem 0 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+        .section-intro {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+        .quiz-question {
+            background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #0ea5e9;
+        }
+        .quiz-options {
+            margin: 1rem 0;
+        }
+        .quiz-option {
+            background: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        .quiz-option:hover {
+            border-color: #0ea5e9;
+            background: #f0f9ff;
+        }
+        .quiz-option.selected {
+            border-color: #2563eb;
+            background: #dbeafe;
+        }
+        .quiz-option.correct {
+            border-color: #16a34a;
+            background: #dcfce7;
+        }
+        .quiz-option.incorrect {
+            border-color: #dc2626;
+            background: #fef2f2;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 2rem auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        .submit-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .results {
+            background: linear-gradient(145deg, #f0fdf4, #dcfce7);
+            border: 2px solid #16a34a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-right: 5px solid #16a34a;
+            text-align: center;
+            display: none;
+        }
+        .score {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #166534;
+            margin-bottom: 1rem;
+        }
+        .feedback {
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .nav-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            margin: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        .ip-example {
+            background: #1f2937;
+            color: #f9fafb;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            margin: 0.75rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.15rem;
+            text-align: center;
+            direction: ltr;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>امتحان عناوين IP — الأنواع والصلاحية</h1>
+        <p class="section-intro">
+            تمارين بالعربية عن أنواع عناوين IPv4 (الفئات، عام/خاص، محجوز مثل APIPA)
+            وصلاحية تنسيق العنوان
+        </p>
+
+        <form id="quizForm">
+            <h2>القسم الأول: صلاحية عنوان IPv4</h2>
+            <p class="section-intro">حدد أي العناوين صالح وأيها غير صالح حسب قواعد IPv4.</p>
+
+            <div class="quiz-question">
+                <h3>السؤال 1:</h3>
+                <p>حسب قواعد تنسيق IPv4، أي العناوين التالية <strong>غير صالح</strong>؟ (كل جزء يجب أن يكون من 0 إلى 255)</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q1" value="a" id="q1a"><label for="q1a"> 192.168.1.100</label></div>
+                    <div class="quiz-option"><input type="radio" name="q1" value="b" id="q1b"><label for="q1b"> 10.0.0.256</label></div>
+                    <div class="quiz-option"><input type="radio" name="q1" value="c" id="q1c"><label for="q1c"> 172.16.0.1</label></div>
+                    <div class="quiz-option"><input type="radio" name="q1" value="d" id="q1d"><label for="q1d"> 8.8.8.8</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 2:</h3>
+                <p>أي العناوين التالية يمثل عنوان IPv4 <strong>صالحاً</strong>؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q2" value="a" id="q2a"><label for="q2a"> 192.168.1</label></div>
+                    <div class="quiz-option"><input type="radio" name="q2" value="b" id="q2b"><label for="q2b"> 256.1.1.1</label></div>
+                    <div class="quiz-option"><input type="radio" name="q2" value="c" id="q2c"><label for="q2c"> 192.168.0.1</label></div>
+                    <div class="quiz-option"><input type="radio" name="q2" value="d" id="q2d"><label for="q2d"> 192.168.1.1.5</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 3:</h3>
+                <p>لماذا العنوان التالي غير صالح كعنوان جهاز عادي في شبكة؟</p>
+                <div class="ip-example">192.168.1.255</div>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q3" value="a" id="q3a"><label for="q3a"> لأنه عنوان خاص لا يعمل أبداً</label></div>
+                    <div class="quiz-option"><input type="radio" name="q3" value="b" id="q3b"><label for="q3b"> لأنه عنوان البث (Broadcast) في شبكة /24، ومحجوز لهذا الغرض</label></div>
+                    <div class="quiz-option"><input type="radio" name="q3" value="c" id="q3c"><label for="q3c"> لأن الجزء الأخير أكبر من 255</label></div>
+                    <div class="quiz-option"><input type="radio" name="q3" value="d" id="q3d"><label for="q3d"> لأنه عنوان Class D للبث المتعدد</label></div>
+                </div>
+            </div>
+
+            <h2>القسم الثاني: فئات عناوين IP</h2>
+            <p class="section-intro">حدد فئة العنوان بناءً على قيمة البايت الأول.</p>
+
+            <div class="quiz-question">
+                <h3>السؤال 4:</h3>
+                <p>إلى أي فئة ينتمي العنوان التالي؟</p>
+                <div class="ip-example">10.5.2.1</div>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q4" value="a" id="q4a"><label for="q4a"> Class A (الفئة A)</label></div>
+                    <div class="quiz-option"><input type="radio" name="q4" value="b" id="q4b"><label for="q4b"> Class B (الفئة B)</label></div>
+                    <div class="quiz-option"><input type="radio" name="q4" value="c" id="q4c"><label for="q4c"> Class C (الفئة C)</label></div>
+                    <div class="quiz-option"><input type="radio" name="q4" value="d" id="q4d"><label for="q4d"> Class D (الفئة D)</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 5:</h3>
+                <p>إلى أي فئة ينتمي العنوان التالي؟</p>
+                <div class="ip-example">192.168.10.50</div>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q5" value="a" id="q5a"><label for="q5a"> Class A</label></div>
+                    <div class="quiz-option"><input type="radio" name="q5" value="b" id="q5b"><label for="q5b"> Class B</label></div>
+                    <div class="quiz-option"><input type="radio" name="q5" value="c" id="q5c"><label for="q5c"> Class C</label></div>
+                    <div class="quiz-option"><input type="radio" name="q5" value="d" id="q5d"><label for="q5d"> Class E</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 6:</h3>
+                <p>العنوان <span style="direction:ltr; display:inline-block;">224.0.0.1</span> ينتمي إلى Class D. ما استخدام هذه الفئة؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q6" value="a" id="q6a"><label for="q6a"> شبكات المنازل الصغيرة فقط</label></div>
+                    <div class="quiz-option"><input type="radio" name="q6" value="b" id="q6b"><label for="q6b"> البث المتعدد (Multicast)</label></div>
+                    <div class="quiz-option"><input type="radio" name="q6" value="c" id="q6c"><label for="q6c"> عناوين خاصة للشبكات المحلية</label></div>
+                    <div class="quiz-option"><input type="radio" name="q6" value="d" id="q6d"><label for="q6d"> عناوين عامة على الإنترنت فقط</label></div>
+                </div>
+            </div>
+
+            <h2>القسم الثالث: العناوين العامة والخاصة والمحجوزة</h2>
+            <p class="section-intro">ميّز بين العنوان العام والخاص والمحجوز (Loopback، APIPA، البث، وغيرها).</p>
+
+            <div class="quiz-question">
+                <h3>السؤال 7:</h3>
+                <p>أي العناوين التالية عنوان <strong>خاص</strong> (Private) يُستخدم في الشبكات المحلية؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q7" value="a" id="q7a"><label for="q7a"> 8.8.8.8</label></div>
+                    <div class="quiz-option"><input type="radio" name="q7" value="b" id="q7b"><label for="q7b"> 203.0.113.45</label></div>
+                    <div class="quiz-option"><input type="radio" name="q7" value="c" id="q7c"><label for="q7c"> 192.168.1.100</label></div>
+                    <div class="quiz-option"><input type="radio" name="q7" value="d" id="q7d"><label for="q7d"> 1.1.1.1</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 8:</h3>
+                <p>ما نطاق العناوين الخاصة ضمن Class B؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q8" value="a" id="q8a"><label for="q8a"> 10.0.0.0 – 10.255.255.255</label></div>
+                    <div class="quiz-option"><input type="radio" name="q8" value="b" id="q8b"><label for="q8b"> 172.16.0.0 – 172.31.255.255</label></div>
+                    <div class="quiz-option"><input type="radio" name="q8" value="c" id="q8c"><label for="q8c"> 192.168.0.0 – 192.168.255.255</label></div>
+                    <div class="quiz-option"><input type="radio" name="q8" value="d" id="q8d"><label for="q8d"> 127.0.0.0 – 127.255.255.255</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 9:</h3>
+                <p>أي العناوين التالية عنوان <strong>عام</strong> (Public) يمكن الوصول إليه من الإنترنت؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q9" value="a" id="q9a"><label for="q9a"> 10.0.0.50</label></div>
+                    <div class="quiz-option"><input type="radio" name="q9" value="b" id="q9b"><label for="q9b"> 192.168.1.10</label></div>
+                    <div class="quiz-option"><input type="radio" name="q9" value="c" id="q9c"><label for="q9c"> 172.16.5.20</label></div>
+                    <div class="quiz-option"><input type="radio" name="q9" value="d" id="q9d"><label for="q9d"> 8.8.8.8</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 10:</h3>
+                <p>ما الخاصية الأساسية للعنوان العام (Public IP)؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q10" value="a" id="q10a"><label for="q10a"> يُستخدم فقط داخل الشبكة المحلية ولا يصل للإنترنت</label></div>
+                    <div class="quiz-option"><input type="radio" name="q10" value="b" id="q10b"><label for="q10b"> فريد عالمياً ويُخصص للوصول عبر الإنترنت</label></div>
+                    <div class="quiz-option"><input type="radio" name="q10" value="c" id="q10c"><label for="q10c"> يظهر تلقائياً عند فشل DHCP فقط</label></div>
+                    <div class="quiz-option"><input type="radio" name="q10" value="d" id="q10d"><label for="q10d"> محجوز دائماً لـ localhost</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 11:</h3>
+                <p>ما وظيفة العنوان <span style="direction:ltr; display:inline-block;">127.0.0.1</span>؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q11" value="a" id="q11a"><label for="q11a"> عنوان بوابة الإنترنت الافتراضية</label></div>
+                    <div class="quiz-option"><input type="radio" name="q11" value="b" id="q11b"><label for="q11b"> عنوان localhost (الجهاز نفسه / Loopback)</label></div>
+                    <div class="quiz-option"><input type="radio" name="q11" value="c" id="q11c"><label for="q11c"> عنوان بث عام لجميع الشبكات</label></div>
+                    <div class="quiz-option"><input type="radio" name="q11" value="d" id="q11d"><label for="q11d"> عنوان خاص من نطاق 192.168</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 12:</h3>
+                <p>متى يظهر عنوان من النوع <span style="direction:ltr; display:inline-block;">169.254.x.x</span> على الجهاز؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q12" value="a" id="q12a"><label for="q12a"> عند الاتصال الناجح بخادم DHCP</label></div>
+                    <div class="quiz-option"><input type="radio" name="q12" value="b" id="q12b"><label for="q12b"> عند فشل الحصول على عنوان من DHCP (عنوان APIPA)</label></div>
+                    <div class="quiz-option"><input type="radio" name="q12" value="c" id="q12c"><label for="q12c"> عند استخدام عنوان عام على الإنترنت</label></div>
+                    <div class="quiz-option"><input type="radio" name="q12" value="d" id="q12d"><label for="q12d"> عند تفعيل البث المتعدد Class D فقط</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 13:</h3>
+                <p>ما نطاق عناوين APIPA المحجوزة؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q13" value="a" id="q13a"><label for="q13a"> 10.0.0.0 – 10.255.255.255</label></div>
+                    <div class="quiz-option"><input type="radio" name="q13" value="b" id="q13b"><label for="q13b"> 127.0.0.0 – 127.255.255.255</label></div>
+                    <div class="quiz-option"><input type="radio" name="q13" value="c" id="q13c"><label for="q13c"> 169.254.0.0 – 169.254.255.255</label></div>
+                    <div class="quiz-option"><input type="radio" name="q13" value="d" id="q13d"><label for="q13d"> 192.168.0.0 – 192.168.255.255</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 14:</h3>
+                <p>ماذا يعني العنوان المحجوز <span style="direction:ltr; display:inline-block;">0.0.0.0</span> عادةً؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q14" value="a" id="q14a"><label for="q14a"> عنوان بث عام لكل الأجهزة على الإنترنت</label></div>
+                    <div class="quiz-option"><input type="radio" name="q14" value="b" id="q14b"><label for="q14b"> عنوان افتراضي / غير محدد (مثل: أي واجهة أو مسار افتراضي)</label></div>
+                    <div class="quiz-option"><input type="radio" name="q14" value="c" id="q14c"><label for="q14c"> عنوان APIPA عند فشل DHCP</label></div>
+                    <div class="quiz-option"><input type="radio" name="q14" value="d" id="q14d"><label for="q14d"> عنوان عام مخصص من IANA للمنازل</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 15:</h3>
+                <p>ما استخدام العنوان المحجوز <span style="direction:ltr; display:inline-block;">255.255.255.255</span>؟</p>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q15" value="a" id="q15a"><label for="q15a"> عنوان localhost للجهاز نفسه</label></div>
+                    <div class="quiz-option"><input type="radio" name="q15" value="b" id="q15b"><label for="q15b"> عنوان بث محدود (Limited Broadcast) لجميع الأجهزة في الشبكة المحلية</label></div>
+                    <div class="quiz-option"><input type="radio" name="q15" value="c" id="q15c"><label for="q15c"> عنوان خاص من نطاق Class A</label></div>
+                    <div class="quiz-option"><input type="radio" name="q15" value="d" id="q15d"><label for="q15d"> عنوان عام فريد عالمياً</label></div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>السؤال 16:</h3>
+                <p>جهاز حصل على العنوان التالي. أي استنتاج صحيح؟</p>
+                <div class="ip-example">169.254.23.10</div>
+                <div class="quiz-options">
+                    <div class="quiz-option"><input type="radio" name="q16" value="a" id="q16a"><label for="q16a"> الاتصال بالإنترنت ناجح عبر عنوان عام</label></div>
+                    <div class="quiz-option"><input type="radio" name="q16" value="b" id="q16b"><label for="q16b"> الجهاز في شبكة خاصة 192.168 بشكل طبيعي</label></div>
+                    <div class="quiz-option"><input type="radio" name="q16" value="c" id="q16c"><label for="q16c"> فشل DHCP؛ العنوان APIPA ومحجوز، وغالباً لا يوجد اتصال بالإنترنت</label></div>
+                    <div class="quiz-option"><input type="radio" name="q16" value="d" id="q16d"><label for="q16d"> هذا عنوان Loopback مثل 127.0.0.1</label></div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">إرسال الإجابات</button>
+        </form>
+
+        <div class="results" id="results">
+            <div class="score" id="score"></div>
+            <div class="feedback" id="feedback"></div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="page5.html" class="nav-btn">صفحة عناوين الشبكة</a>
+            <a href="Page5Quiz.html" class="nav-btn">اختبار سابق</a>
+            <a href="index.html" class="nav-btn">العودة للرئيسية</a>
+        </div>
+    </div>
+
+    <script>
+        let quizSubmitted = false;
+        const answers = {
+            q1: 'b', q2: 'c', q3: 'b', q4: 'a', q5: 'c',
+            q6: 'b', q7: 'c', q8: 'b', q9: 'd', q10: 'b',
+            q11: 'b', q12: 'b', q13: 'c', q14: 'b', q15: 'b', q16: 'c'
+        };
+        const totalQuestions = 16;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('quizForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const results = document.getElementById('results');
+            const scoreElement = document.getElementById('score');
+            const feedbackElement = document.getElementById('feedback');
+
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const radio = this.querySelector('input[type="radio"]');
+                    const questionDiv = this.closest('.quiz-question');
+                    questionDiv.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+                    radio.checked = true;
+                    this.classList.add('selected');
+                });
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (quizSubmitted) return;
+                quizSubmitted = true;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'تم الإرسال';
+
+                let correctAnswers = 0;
+                Object.keys(answers).forEach(questionId => {
+                    const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+                    const questionDiv = document.querySelector(`input[name="${questionId}"]`).closest('.quiz-question');
+                    if (selectedAnswer && selectedAnswer.value === answers[questionId]) {
+                        correctAnswers++;
+                        questionDiv.querySelectorAll('.quiz-option').forEach(opt => {
+                            if (opt.querySelector('input').value === answers[questionId]) opt.classList.add('correct');
+                        });
+                    } else {
+                        questionDiv.querySelectorAll('.quiz-option').forEach(opt => {
+                            if (opt.querySelector('input').value === answers[questionId]) opt.classList.add('correct');
+                        });
+                        if (selectedAnswer) selectedAnswer.closest('.quiz-option').classList.add('incorrect');
+                    }
+                });
+
+                const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+                scoreElement.textContent = `النتيجة: ${correctAnswers} من ${totalQuestions} (${percentage}%)`;
+                let feedback = '';
+                if (percentage >= 90) feedback = 'ممتاز! لديك فهم قوي لأنواع عناوين IP العامة والخاصة والمحجوزة.';
+                else if (percentage >= 70) feedback = 'جيد جداً! راجع العناوين العامة أو المحجوزة مثل APIPA وLoopback.';
+                else if (percentage >= 50) feedback = 'جيد. راجع أقسام العناوين العامة والخاصة والمحجوزة في page5.html.';
+                else feedback = 'يحتاج إلى مزيد من الدراسة. راجع Public/Private وAPIPA والعناوين المحجوزة ثم أعد المحاولة.';
+                feedbackElement.textContent = feedback;
+                results.style.display = 'block';
+                results.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
